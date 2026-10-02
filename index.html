@@ -1933,9 +1933,21 @@
       case "download-shortlist":
         showToast("Download isn't wired up yet \u2014 in production this fetches all " + state.shortlist.length + " shortlisted families as a zip.");
         break;
-      case "report-issue":
-        showToast("Not wired up yet \u2014 needs a target: ticket system, email, or a form.");
+      case "report-issue": {
+        var issueFamily = currentFamily();
+        var issueSubject = encodeURIComponent(
+          issueFamily ? "Family error \u2014 " + issueFamily.name : "Family error report"
+        );
+        var issueBody = encodeURIComponent(
+          (issueFamily
+            ? "Family: " + issueFamily.name + "\nPath: " + issueFamily.realPath + "\n\n"
+            : "Family name / product:\n\n") +
+          "What's wrong:\n\n" +
+          "Other details:\n"
+        );
+        window.location.href = "mailto:MastersDrafting@glenvill.com.au?subject=" + issueSubject + "&body=" + issueBody;
         break;
+      }
       case "request-family": {
         var reqSubject = encodeURIComponent("Revit family request");
         var reqBody = encodeURIComponent(

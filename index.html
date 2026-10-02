@@ -1936,9 +1936,18 @@
       case "report-issue":
         showToast("Not wired up yet \u2014 needs a target: ticket system, email, or a form.");
         break;
-      case "request-family":
-        showToast("Not wired up yet \u2014 needs a target: ticket system, email, or a form.");
+      case "request-family": {
+        var reqSubject = encodeURIComponent("Revit family request");
+        var reqBody = encodeURIComponent(
+          "Family name / product:\n\n" +
+          "Manufacturer or product link (if known):\n\n" +
+          "Category (e.g. Bath Room, Kitchen):\n\n" +
+          "Project(s) this is needed for:\n\n" +
+          "Other details:\n"
+        );
+        window.location.href = "mailto:MastersDrafting@glenvill.com.au?subject=" + reqSubject + "&body=" + reqBody;
         break;
+      }
       case "copy-path": {
         var path = el.getAttribute("data-path");
         if (navigator.clipboard && navigator.clipboard.writeText) {

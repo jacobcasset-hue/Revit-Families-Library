@@ -2009,6 +2009,21 @@
     noteRecent(id);
   }
 
+  var pressStartedInDetail = false;
+  document.addEventListener("pointerdown", function (e) {
+    pressStartedInDetail = !!(e.target.closest && e.target.closest("#detailCol"));
+  }, true);
+
+  document.addEventListener("click", function (e) {
+    if (!state.selId || pressStartedInDetail) return;
+    var t = e.target;
+    if (!t.closest || !t.isConnected) return;
+    if (t.closest("#detailCol, [data-action=\"select-family\"], #searchInput, #toast")) return;
+    state.selId = null;
+    renderDetail();
+    renderList();
+  }, true);
+
   document.addEventListener("click", function (e) {
     var el = e.target.closest("[data-action]");
     if (!el) return;

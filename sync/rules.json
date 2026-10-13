@@ -1,0 +1,19 @@
+{
+ "root": "X:/Systems/REVIT/Revit Families",
+ "specImagesRoot": "X:/Standard Inclusions/Specification Images",
+ "revitUrl": "http://127.0.0.1:48884/revit_mcp",
+ "ignore": [
+  "/manufacturer's content/",
+  "/superseded/"
+ ],
+ "flatCategories": ["Doors", "Windows"],
+ "brandFolders": [
+  { "match": "^(gh|glenvill)", "brand": "Glenvill Homes" },
+  { "match": "^aplace", "brand": "Aplace" },
+  { "match": "^mayde", "brand": "Mayde Home" }
+ ],
+ "subFolders": {
+  "Bath Room/Shower": "Shower"
+ },
+ "catAliases": {}
+}

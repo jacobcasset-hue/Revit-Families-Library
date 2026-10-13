@@ -1,0 +1,1253 @@
+{
+ "version": 1,
+ "files": {
+  "kitchen/mayde spec families/starter/fp_oven_ob60sbc6b5.rfa": {
+   "id": "myfpov1",
+   "mtime": 1791867099485,
+   "size": 12107776,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/mayde spec families/starter/fp_cooktop_ci604ctb2.rfa": {
+   "id": "myfpct1",
+   "mtime": 1791867112734,
+   "size": 397312,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/mayde spec families/elevate/fp_oven_ob90s9mepb1.rfa": {
+   "id": "myfpov2",
+   "mtime": 1791867119344,
+   "size": 1650688,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/mayde spec families/elevate/fp_cooktop_ci905ctb2.rfa": {
+   "id": "myfpct2",
+   "mtime": 1791867123914,
+   "size": 401408,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/mayde spec families/elevate/fp_dishwasher_dw60u2i2.rfa": {
+   "id": "myfpdw1",
+   "mtime": 1791867145592,
+   "size": 12107776,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/mayde spec families/elevate/fp_fridge_rs9120wrj1.rfa": {
+   "id": "myfpfr1",
+   "mtime": 1791867159083,
+   "size": 1671168,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/gh spec families/classic/phoenix_vividslimlinesinkmixer_vs733-00-1.rfa": {
+   "id": "aplmx1l",
+   "mtime": 1767540770000,
+   "size": 720896,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/classic/caroma_40mmbottletrap_687294w.rfa": {
+   "id": "ghbt1",
+   "mtime": 1789705883964,
+   "size": 413696,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/classic/caroma_luna_handwallbasin_873715w.rfa": {
+   "id": "ghlhw1",
+   "mtime": 1789706057789,
+   "size": 2256896,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/classic/caroma_luna_universalinsetbasin_899615w.rfa": {
+   "id": "ghlui1",
+   "mtime": 1789708335140,
+   "size": 544768,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/classic/phoenix_vividrailshower_v685chr.rfa": {
+   "id": "ghrs1",
+   "mtime": 1767615112000,
+   "size": 823296,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/classic/phoenix_vividslimlinebasinmixer_vs770chr.rfa": {
+   "id": "ghbm1",
+   "mtime": 1767537882000,
+   "size": 770048,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/gh spec families/prestige/fp_fridge_rs9121wruve1.rfa": {
+   "id": "ghfr1",
+   "mtime": 1789705643479,
+   "size": 2183168,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/gh spec families/prestige/phoenix_vividslimlinepulloutsinkmixer_vs7105-10-1.rfa": {
+   "id": "ghpom1",
+   "mtime": 1767544018000,
+   "size": 774144,
+   "syncedAt": 1789394399000
+  },
+  "laundry/gh spec families/prestige/phoenix_vividslimlinesinkmixer_vs733-10-1.rfa": {
+   "id": "ghsm2",
+   "mtime": 1791867165642,
+   "size": 720896,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/caroma_conturaii_freestandingbath_cii7fsmw.rfa": {
+   "id": "ghcb1",
+   "mtime": 1789705840091,
+   "size": 1110016,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/caroma_lianoii_abovecounterbasin_852500mw.rfa": {
+   "id": "ghlac1",
+   "mtime": 1789705969410,
+   "size": 454656,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/caroma_lianoii_handwallbasin_853010mw.rfa": {
+   "id": "ghlhw2",
+   "mtime": 1789706012080,
+   "size": 520192,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/caroma_lianoii_insetbasin_852400mw.rfa": {
+   "id": "ghlib1",
+   "mtime": 1789705926884,
+   "size": 458752,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/caroma_urbaneii_bidettoilet_848610w.rfa": {
+   "id": "ghut1",
+   "mtime": 1789705794111,
+   "size": 827392,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/phoenix_switchmixwallbasinbathmixer_vs2820-10-1.rfa": {
+   "id": "ghswm1",
+   "mtime": 1765122140000,
+   "size": 651264,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/phoenix_vividslimlinedoubletowelrail_111-8130-10.rfa": {
+   "id": "ghdtr1",
+   "mtime": 1744227610000,
+   "size": 593920,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/phoenix_vividslimlinehandtowelrail_111-8500-10.rfa": {
+   "id": "ghhtr1",
+   "mtime": 1744227610000,
+   "size": 581632,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/phoenix_vividslimlinemetalshelf_111-8600-10.rfa": {
+   "id": "ghsh1",
+   "mtime": 1744227608000,
+   "size": 688128,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/phoenix_vividslimlinerobehook_111-8400-10.rfa": {
+   "id": "ghrh1",
+   "mtime": 1744227608000,
+   "size": 585728,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/phoenix_vividslimlinetoiletrollholder_111-8200-10.rfa": {
+   "id": "ghtrh1",
+   "mtime": 1744227610000,
+   "size": 606208,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/phoenix_vividslimlinevesselmixer_vs7901-10.rfa": {
+   "id": "ghvm1",
+   "mtime": 1767544826000,
+   "size": 765952,
+   "syncedAt": 1789394399000
+  },
+  "bath room/mayde spec families/starter/caroma_luna_insetbasin_899215w.rfa": {
+   "id": "vb1_my_st",
+   "mtime": 1789698827056,
+   "size": 2441216,
+   "syncedAt": 1789394399000
+  },
+  "bath room/mayde spec families/elevate/caroma_luna_insetbasin_899215w.rfa": {
+   "id": "vb1_my_el",
+   "mtime": 1789698827056,
+   "size": 2441216,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/classic/caroma_luna_insetbasin_899215w.rfa": {
+   "id": "vb1_gh_cl",
+   "mtime": 1789698827056,
+   "size": 2441216,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/caroma_40mmbottletrap_687294w.rfa": {
+   "id": "ghbt1_pr",
+   "mtime": 1789705883964,
+   "size": 413696,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/caroma_luna_universalinsetbasin_899615w.rfa": {
+   "id": "ghlui1_pr",
+   "mtime": 1789708335140,
+   "size": 544768,
+   "syncedAt": 1789394399000
+  },
+  "doors/a&l/al_boutique sliding door.rfa": {
+   "id": "bsd1",
+   "mtime": 1765336473195,
+   "size": 1871872,
+   "syncedAt": 1789394399000
+  },
+  "doors/a&l/al_boutique sliding door_stacker.rfa": {
+   "id": "bsds1",
+   "mtime": 1765240379033,
+   "size": 1732608,
+   "syncedAt": 1789394399000
+  },
+  "doors/a&l/al_standard sliding door_stacker.rfa": {
+   "id": "ssds1",
+   "mtime": 1765240565695,
+   "size": 1564672,
+   "syncedAt": 1789394399000
+  },
+  "doors/internal door/internal cavity sliding.rfa": {
+   "id": "ics1",
+   "mtime": 1775780318288,
+   "size": 2789376,
+   "syncedAt": 1789394399000
+  },
+  "doors/internal door/internal cavity sliding_double.rfa": {
+   "id": "icsd1",
+   "mtime": 1791867267292,
+   "size": 1425408,
+   "syncedAt": 1789394399000
+  },
+  "doors/internal door/internal cavity sliding_single.rfa": {
+   "id": "icss1",
+   "mtime": 1791867277392,
+   "size": 2027520,
+   "syncedAt": 1789394399000
+  },
+  "doors/entry doors/entry door_hume timber_hilite.rfa": {
+   "id": "edht1",
+   "mtime": 1777359608147,
+   "size": 3637248,
+   "syncedAt": 1789394399000
+  },
+  "doors/entry doors/entry door_hume timber_no sidelights.rfa": {
+   "id": "edhn1",
+   "mtime": 1777359566301,
+   "size": 3698688,
+   "syncedAt": 1789394399000
+  },
+  "doors/entry doors/entry door_timber_1 sidelight.rfa": {
+   "id": "edt1",
+   "mtime": 1777359853344,
+   "size": 5369856,
+   "syncedAt": 1789394399000
+  },
+  "doors/entry doors/entry door_timber_no sidelights.rfa": {
+   "id": "edtn1",
+   "mtime": 1791867290722,
+   "size": 3633152,
+   "syncedAt": 1789394399000
+  },
+  "doors/external doors/external flush door_laundry_single.rfa": {
+   "id": "efdl1",
+   "mtime": 1777359491588,
+   "size": 3264512,
+   "syncedAt": 1789394399000
+  },
+  "doors/external doors/external flush door_single.rfa": {
+   "id": "efds1",
+   "mtime": 1765243206161,
+   "size": 3055616,
+   "syncedAt": 1789394399000
+  },
+  "doors/external doors/external timber flush door_laundry_single_hume.rfa": {
+   "id": "etfdl1",
+   "mtime": 1777359313977,
+   "size": 3497984,
+   "syncedAt": 1789394399000
+  },
+  "doors/external doors/external timber flush door_single_hume.rfa": {
+   "id": "etfds1",
+   "mtime": 1777359367986,
+   "size": 3145728,
+   "syncedAt": 1789394399000
+  },
+  "doors/garage door/sectional garage door.rfa": {
+   "id": "sgd1",
+   "mtime": 1777001940396,
+   "size": 1884160,
+   "syncedAt": 1789394399000
+  },
+  "doors/internal door/door - opening.rfa": {
+   "id": "dop1",
+   "mtime": 1791767243727,
+   "size": 786432,
+   "syncedAt": 1789394399000
+  },
+  "doors/internal door/internal timber flush door_single.rfa": {
+   "id": "itfs1",
+   "mtime": 1778221688685,
+   "size": 1712128,
+   "syncedAt": 1789394399000
+  },
+  "doors/robe doors/robe sliding door_smartrobe.rfa": {
+   "id": "rsdsr1",
+   "mtime": 1758174200546,
+   "size": 2220032,
+   "syncedAt": 1789394399000
+  },
+  "doors/robe doors/robe sliding door_standard.rfa": {
+   "id": "rsdst1",
+   "mtime": 1782101389078,
+   "size": 1986560,
+   "syncedAt": 1789394399000
+  },
+  "doors/trend/door-sliding-trend synergy-102mm.rfa": {
+   "id": "dstsy1",
+   "mtime": 1765336025780,
+   "size": 3862528,
+   "syncedAt": 1789394399000
+  },
+  "doors/trend/door-stacker-trend synergy-102mm.rfa": {
+   "id": "dttsy1",
+   "mtime": 1765333656105,
+   "size": 2408448,
+   "syncedAt": 1789394399000
+  },
+  "windows/al_boutique armadale awning windows.rfa": {
+   "id": "baaw1",
+   "mtime": 1790736412890,
+   "size": 2707456,
+   "syncedAt": 1789394399000
+  },
+  "windows/al_boutique awning windows.rfa": {
+   "id": "baw1",
+   "mtime": 1787893909867,
+   "size": 2965504,
+   "syncedAt": 1789394399000
+  },
+  "windows/al_boutique fixed windows.rfa": {
+   "id": "bfw1",
+   "mtime": 1787893875973,
+   "size": 2998272,
+   "syncedAt": 1789394399000
+  },
+  "windows/al_standard armadale awning windows.rfa": {
+   "id": "saaw1",
+   "mtime": 1790736693774,
+   "size": 1994752,
+   "syncedAt": 1789394399000
+  },
+  "windows/al_standard awning windows.rfa": {
+   "id": "saw1",
+   "mtime": 1787893806476,
+   "size": 2859008,
+   "syncedAt": 1789394399000
+  },
+  "windows/al_standard fixed windows.rfa": {
+   "id": "sfw1",
+   "mtime": 1787893759219,
+   "size": 2842624,
+   "syncedAt": 1789394399000
+  },
+  "windows/al_standard georgian awning windows.rfa": {
+   "id": "sgaw1",
+   "mtime": 1787893725080,
+   "size": 1761280,
+   "syncedAt": 1789394399000
+  },
+  "windows/al_standard sliding windows.rfa": {
+   "id": "ssw1",
+   "mtime": 1789515622922,
+   "size": 2973696,
+   "syncedAt": 1789394399000
+  },
+  "windows/trend windows/window-awning-trend synergy-48mm.rfa": {
+   "id": "watsy1",
+   "mtime": 1777252137998,
+   "size": 3682304,
+   "syncedAt": 1789394399000
+  },
+  "windows/trend windows/window-double hung-trend synergy standard-64mm.rfa": {
+   "id": "wdhtsy1",
+   "mtime": 1776902995085,
+   "size": 4448256,
+   "syncedAt": 1789394399000
+  },
+  "windows/trend windows/window-fixed-trend synergy-48mm.rfa": {
+   "id": "wftsy1",
+   "mtime": 1775785938856,
+   "size": 3293184,
+   "syncedAt": 1789394399000
+  },
+  "windows/trend windows/window-sliding-trend synergy-48mm.rfa": {
+   "id": "wstsy1",
+   "mtime": 1774236668911,
+   "size": 4956160,
+   "syncedAt": 1789394399000
+  },
+  "windows/skylight_velux.rfa": {
+   "id": "skv1",
+   "mtime": 1753147194402,
+   "size": 704512,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/essential/caroma_40mmbottletrap_687294w.rfa": {
+   "id": "aplbt1e",
+   "mtime": 1790645374896,
+   "size": 413696,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/essential/stylus basis back to wall toilet suite.rfa": {
+   "id": "apltoi1e",
+   "mtime": 1790645381203,
+   "size": 921600,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/essential/origin 1500 right hand corner bath.rfa": {
+   "id": "aplbo1",
+   "mtime": 1790645385835,
+   "size": 491520,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/essential/origin 1700 left hand corner bath.rfa": {
+   "id": "aplbo2",
+   "mtime": 1790645390967,
+   "size": 483328,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/oven with upgrades.rfa": {
+   "id": "aplov1a",
+   "mtime": 1755139229447,
+   "size": 6922240,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/cooktop with upgrades.rfa": {
+   "id": "aplct1a",
+   "mtime": 1762728702368,
+   "size": 8790016,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/phoenix_vividslimlinebasinmixer_vs770chr.rfa": {
+   "id": "aplbm1",
+   "mtime": 1790645408730,
+   "size": 770048,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/caroma_luna_insetbasin_899215w.rfa": {
+   "id": "aplbn1",
+   "mtime": 1790645419096,
+   "size": 2441216,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/shower_rail_phoenix_vivid.rfa": {
+   "id": "aplsr1",
+   "mtime": 1790651266187,
+   "size": 983040,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/spout_wall_phoenix_vividslimlineplus 230.rfa": {
+   "id": "aplsp1",
+   "mtime": 1790651315895,
+   "size": 507904,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/mixertap_wall_phoenix_vividslimline.rfa": {
+   "id": "aplwm1",
+   "mtime": 1790651368232,
+   "size": 540672,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/phoenix_vividslimlinedoubletowelrail_111-8130-10.rfa": {
+   "id": "apltr1",
+   "mtime": 1790651469684,
+   "size": 593920,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/phoenix_vividslimlinehandtowelrail_111-8500-10.rfa": {
+   "id": "aplht1",
+   "mtime": 1790651475972,
+   "size": 581632,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/phoenix_vividslimlinetoiletrollholder_111-8200-10.rfa": {
+   "id": "apltp1",
+   "mtime": 1790651480387,
+   "size": 606208,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/phoenix_vividslimlinerobehook_111-8400-10.rfa": {
+   "id": "aplrh1",
+   "mtime": 1790651483879,
+   "size": 585728,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/shelf_metal_phoenix_radii_roundplate.rfa": {
+   "id": "aplsh1",
+   "mtime": 1790651487474,
+   "size": 901120,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/kitchen_dishwasher_standard.rfa": {
+   "id": "apldw1",
+   "mtime": 1753147195057,
+   "size": 524288,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/rangehood with upgrades.rfa": {
+   "id": "aplrg1",
+   "mtime": 1791766017293,
+   "size": 2633728,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/caroma_40mmbottletrap_687294w.rfa": {
+   "id": "aplbt1a",
+   "mtime": 1790645395458,
+   "size": 413696,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/stylus basis back to wall toilet suite.rfa": {
+   "id": "apltoi1a",
+   "mtime": 1790645402593,
+   "size": 921600,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/essential/shelf_metal_phoenix_radii_roundplate.rfa": {
+   "id": "nf001",
+   "mtime": 1791757949433,
+   "size": 741376,
+   "syncedAt": 1791727200000
+  },
+  "bath room/floor waste.rfa": {
+   "id": "nf002",
+   "mtime": 1753147191065,
+   "size": 458752,
+   "syncedAt": 1791727200000
+  },
+  "bath room/mayde spec families/starter/base mk2 basin mixer (4 star).rfa": {
+   "id": "nf003",
+   "mtime": 1753147190784,
+   "size": 1396736,
+   "syncedAt": 1791727200000
+  },
+  "bath room/mayde spec families/starter/reece_basin_kado_lux_vanity_with overflow_415 mm.rfa": {
+   "id": "nf004",
+   "mtime": 1791761802676,
+   "size": 536576,
+   "syncedAt": 1791727200000
+  },
+  "bath room/mayde spec families/starter/reece_basin_roca_debba_wall basin_500 mm.rfa": {
+   "id": "nf005",
+   "mtime": 1791761864833,
+   "size": 2203648,
+   "syncedAt": 1791727200000
+  },
+  "bath room/shower niche.rfa": {
+   "id": "nf006",
+   "mtime": 1784674389876,
+   "size": 483328,
+   "syncedAt": 1791727200000
+  },
+  "bath room/shower/shower hob.rfa": {
+   "id": "nf007",
+   "mtime": 1779423467177,
+   "size": 749568,
+   "syncedAt": 1791727200000
+  },
+  "bath room/shower/shower hob_strip grate.rfa": {
+   "id": "nf008",
+   "mtime": 1779423427246,
+   "size": 851968,
+   "syncedAt": 1791727200000
+  },
+  "bath room/shower/shower screen_pivot door.rfa": {
+   "id": "nf009",
+   "mtime": 1779423405468,
+   "size": 864256,
+   "syncedAt": 1791727200000
+  },
+  "bath room/shower/shower screen_return.rfa": {
+   "id": "nf010",
+   "mtime": 1779423386480,
+   "size": 835584,
+   "syncedAt": 1791727200000
+  },
+  "bath room/vanity base cupboards.rfa": {
+   "id": "nf011",
+   "mtime": 1765166726166,
+   "size": 3530752,
+   "syncedAt": 1791727200000
+  },
+  "electrical/access hatch.rfa": {
+   "id": "nf012",
+   "mtime": 1759464220055,
+   "size": 921600,
+   "syncedAt": 1791727200000
+  },
+  "electrical/ceiling fan - no light.rfa": {
+   "id": "nf013",
+   "mtime": 1774475942820,
+   "size": 831488,
+   "syncedAt": 1791727200000
+  },
+  "electrical/downlight generic.rfa": {
+   "id": "nf014",
+   "mtime": 1770078453715,
+   "size": 1118208,
+   "syncedAt": 1791727200000
+  },
+  "electrical/ducted system - actronair - indoor unit.rfa": {
+   "id": "nf015",
+   "mtime": 1761859552591,
+   "size": 974848,
+   "syncedAt": 1791727200000
+  },
+  "electrical/ducted system actronair outdoor unit.rfa": {
+   "id": "nf016",
+   "mtime": 1753147189574,
+   "size": 954368,
+   "syncedAt": 1791727200000
+  },
+  "electrical/ducted system diffuser -generic.rfa": {
+   "id": "nf017",
+   "mtime": 1753147189606,
+   "size": 1368064,
+   "syncedAt": 1791727200000
+  },
+  "electrical/ev.rfa": {
+   "id": "nf018",
+   "mtime": 1753147186030,
+   "size": 892928,
+   "syncedAt": 1791727200000
+  },
+  "electrical/exhaust fan timer.rfa": {
+   "id": "nf019",
+   "mtime": 1760499544061,
+   "size": 716800,
+   "syncedAt": 1791727200000
+  },
+  "electrical/exhaust fan.rfa": {
+   "id": "nf020",
+   "mtime": 1753147186063,
+   "size": 675840,
+   "syncedAt": 1791727200000
+  },
+  "electrical/external strobe light generic.rfa": {
+   "id": "nf021",
+   "mtime": 1753147187321,
+   "size": 954368,
+   "syncedAt": 1791727200000
+  },
+  "electrical/fibre optics.rfa": {
+   "id": "nf022",
+   "mtime": 1753147183069,
+   "size": 536576,
+   "syncedAt": 1791727200000
+  },
+  "electrical/gas bottles.rfa": {
+   "id": "nf023",
+   "mtime": 1759453829689,
+   "size": 937984,
+   "syncedAt": 1791727200000
+  },
+  "electrical/gas meter.rfa": {
+   "id": "nf024",
+   "mtime": 1758772935220,
+   "size": 983040,
+   "syncedAt": 1791727200000
+  },
+  "electrical/heat pump_rheem_amipower.rfa": {
+   "id": "nf025",
+   "mtime": 1761527152239,
+   "size": 991232,
+   "syncedAt": 1791727200000
+  },
+  "electrical/instantaneous hot water unit_rheem.rfa": {
+   "id": "nf026",
+   "mtime": 1753147189714,
+   "size": 770048,
+   "syncedAt": 1791727200000
+  },
+  "electrical/isolator switch.rfa": {
+   "id": "nf027",
+   "mtime": 1779320864488,
+   "size": 794624,
+   "syncedAt": 1791727200000
+  },
+  "electrical/junction box.rfa": {
+   "id": "nf028",
+   "mtime": 1785382463921,
+   "size": 475136,
+   "syncedAt": 1791727200000
+  },
+  "electrical/led linear amphis solna linear.rfa": {
+   "id": "nf029",
+   "mtime": 1759369604795,
+   "size": 794624,
+   "syncedAt": 1791727200000
+  },
+  "electrical/meter box.rfa": {
+   "id": "nf030",
+   "mtime": 1757981145994,
+   "size": 770048,
+   "syncedAt": 1791727200000
+  },
+  "electrical/nbn.rfa": {
+   "id": "nf031",
+   "mtime": 1753147186197,
+   "size": 901120,
+   "syncedAt": 1791727200000
+  },
+  "electrical/paraflood light generic.rfa": {
+   "id": "nf032",
+   "mtime": 1753147187377,
+   "size": 532480,
+   "syncedAt": 1791727200000
+  },
+  "electrical/return air.rfa": {
+   "id": "nf033",
+   "mtime": 1753147189746,
+   "size": 761856,
+   "syncedAt": 1791727200000
+  },
+  "electrical/security alarm box.rfa": {
+   "id": "nf034",
+   "mtime": 1753147194506,
+   "size": 9748480,
+   "syncedAt": 1791727200000
+  },
+  "electrical/security alarm key pad.rfa": {
+   "id": "nf035",
+   "mtime": 1753147194570,
+   "size": 811008,
+   "syncedAt": 1791727200000
+  },
+  "electrical/security alarm sensor detector.rfa": {
+   "id": "nf036",
+   "mtime": 1753147194601,
+   "size": 475136,
+   "syncedAt": 1791727200000
+  },
+  "electrical/security alarm siren internal.rfa": {
+   "id": "nf037",
+   "mtime": 1753147194537,
+   "size": 503808,
+   "syncedAt": 1791727200000
+  },
+  "electrical/smoke alarm.rfa": {
+   "id": "nf038",
+   "mtime": 1753147186638,
+   "size": 671744,
+   "syncedAt": 1791727200000
+  },
+  "electrical/solar battery.rfa": {
+   "id": "nf039",
+   "mtime": 1753147186253,
+   "size": 536576,
+   "syncedAt": 1791727200000
+  },
+  "electrical/solar inverter.rfa": {
+   "id": "nf040",
+   "mtime": 1790573766212,
+   "size": 774144,
+   "syncedAt": 1791727200000
+  },
+  "electrical/solar panel - array.rfa": {
+   "id": "nf041",
+   "mtime": 1753147186462,
+   "size": 1392640,
+   "syncedAt": 1791727200000
+  },
+  "electrical/solar panel - one.rfa": {
+   "id": "nf042",
+   "mtime": 1753147186518,
+   "size": 667648,
+   "syncedAt": 1791727200000
+  },
+  "electrical/split system - actronair - indoor unit.rfa": {
+   "id": "nf043",
+   "mtime": 1760930689467,
+   "size": 901120,
+   "syncedAt": 1791727200000
+  },
+  "electrical/split system - actronair - outdoor unit.rfa": {
+   "id": "nf044",
+   "mtime": 1753147189813,
+   "size": 987136,
+   "syncedAt": 1791727200000
+  },
+  "electrical/step light generic.rfa": {
+   "id": "nf045",
+   "mtime": 1753147187412,
+   "size": 675840,
+   "syncedAt": 1791727200000
+  },
+  "electrical/telephone point_standard.rfa": {
+   "id": "nf046",
+   "mtime": 1753147183095,
+   "size": 909312,
+   "syncedAt": 1791727200000
+  },
+  "electrical/television aerial point.rfa": {
+   "id": "nf047",
+   "mtime": 1753147186579,
+   "size": 1544192,
+   "syncedAt": 1791727200000
+  },
+  "electrical/wall controller - actronair.rfa": {
+   "id": "nf048",
+   "mtime": 1753147189838,
+   "size": 716800,
+   "syncedAt": 1791727200000
+  },
+  "electrical/wall lights generic.rfa": {
+   "id": "nf049",
+   "mtime": 1753147187441,
+   "size": 974848,
+   "syncedAt": 1791727200000
+  },
+  "electrical/water heater instantaneous - stiebeleltron - 3phase comfort plus.rfa": {
+   "id": "nf050",
+   "mtime": 1753147189898,
+   "size": 864256,
+   "syncedAt": 1791727200000
+  },
+  "facade elements/curved void_face hosted.rfa": {
+   "id": "nf051",
+   "mtime": 1753147187022,
+   "size": 671744,
+   "syncedAt": 1791727200000
+  },
+  "facade elements/gh - dummy rafters - hamptons facade.rfa": {
+   "id": "nf052",
+   "mtime": 1789965997921,
+   "size": 585728,
+   "syncedAt": 1791727200000
+  },
+  "facade elements/gh - post moulding - hamptons facade.rfa": {
+   "id": "nf053",
+   "mtime": 1789966093484,
+   "size": 1056768,
+   "syncedAt": 1791727200000
+  },
+  "facade elements/gable feature_timber strips.rfa": {
+   "id": "nf054",
+   "mtime": 1774843626595,
+   "size": 774144,
+   "syncedAt": 1791727200000
+  },
+  "facade elements/rectangular void_face hosted.rfa": {
+   "id": "nf055",
+   "mtime": 1753147187097,
+   "size": 659456,
+   "syncedAt": 1791727200000
+  },
+  "facade elements/window shroud.rfa": {
+   "id": "nf056",
+   "mtime": 1753147195564,
+   "size": 679936,
+   "syncedAt": 1791727200000
+  },
+  "facade elements/window shroud_external corner.rfa": {
+   "id": "nf057",
+   "mtime": 1753147195596,
+   "size": 675840,
+   "syncedAt": 1791727200000
+  },
+  "furniture/bed n side tables_generic.rfa": {
+   "id": "nf058",
+   "mtime": 1753147186681,
+   "size": 1261568,
+   "syncedAt": 1791727200000
+  },
+  "furniture/chairs_array_generic.rfa": {
+   "id": "nf059",
+   "mtime": 1753147186707,
+   "size": 540672,
+   "syncedAt": 1791727200000
+  },
+  "furniture/curvedsofa.rfa": {
+   "id": "nf060",
+   "mtime": 1761907247000,
+   "size": 1310720,
+   "syncedAt": 1791727200000
+  },
+  "furniture/dining chair_generic.rfa": {
+   "id": "nf061",
+   "mtime": 1753147186727,
+   "size": 454656,
+   "syncedAt": 1791727200000
+  },
+  "furniture/dining chair_generic_roundtable.rfa": {
+   "id": "nf062",
+   "mtime": 1753147186747,
+   "size": 430080,
+   "syncedAt": 1791727200000
+  },
+  "furniture/dining table n chair set_generic.rfa": {
+   "id": "nf063",
+   "mtime": 1753147186771,
+   "size": 548864,
+   "syncedAt": 1791727200000
+  },
+  "furniture/dining table n chair set_generic_round.rfa": {
+   "id": "nf064",
+   "mtime": 1753147186798,
+   "size": 548864,
+   "syncedAt": 1791727200000
+  },
+  "furniture/dining table n chair set_square.rfa": {
+   "id": "nf065",
+   "mtime": 1782796346817,
+   "size": 835584,
+   "syncedAt": 1791727200000
+  },
+  "furniture/dining_table_6_chairs.rfa": {
+   "id": "nf066",
+   "mtime": 1761907250000,
+   "size": 1810432,
+   "syncedAt": 1791727200000
+  },
+  "furniture/furn - sofa.rfa": {
+   "id": "nf067",
+   "mtime": 1777427783702,
+   "size": 561152,
+   "syncedAt": 1791727200000
+  },
+  "furniture/robe_shelf_hanging rail.rfa": {
+   "id": "nf068",
+   "mtime": 1768436887973,
+   "size": 2011136,
+   "syncedAt": 1791727200000
+  },
+  "furniture/section tail - upgrade.rfa": {
+   "id": "nf069",
+   "mtime": 1784614131135,
+   "size": 679936,
+   "syncedAt": 1791727200000
+  },
+  "furniture/sofa n table_generic.rfa": {
+   "id": "nf070",
+   "mtime": 1753147186824,
+   "size": 729088,
+   "syncedAt": 1791727200000
+  },
+  "furniture/sofa.rfa": {
+   "id": "nf071",
+   "mtime": 1761907250000,
+   "size": 684032,
+   "syncedAt": 1791727200000
+  },
+  "furniture/tv cabinet n tv_generic.rfa": {
+   "id": "nf072",
+   "mtime": 1753147186858,
+   "size": 741376,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/barbecue.rfa": {
+   "id": "nf073",
+   "mtime": 1753147194801,
+   "size": 655360,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/bulkhead.rfa": {
+   "id": "nf074",
+   "mtime": 1759896339907,
+   "size": 1007616,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/fridge position.rfa": {
+   "id": "nf075",
+   "mtime": 1764740681224,
+   "size": 798720,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/fridge water point.rfa": {
+   "id": "nf076",
+   "mtime": 1788495213866,
+   "size": 753664,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/gh spec families/classic/caroma-monaco-evbu-singlebowl-undermount.rfa": {
+   "id": "nf077",
+   "mtime": 1791766335352,
+   "size": 450560,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/gh spec families/classic/caroma-monaco-exdu-doublebowl-undermount.rfa": {
+   "id": "nf078",
+   "mtime": 1791766334993,
+   "size": 716800,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/gh spec families/prestige/franke-maris-mrg610-37-singlebowl.rfa": {
+   "id": "nf079",
+   "mtime": 1791766514788,
+   "size": 1654784,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/integrated underbench wine cabinet_fisher & paykel.rfa": {
+   "id": "nf080",
+   "mtime": 1753147194905,
+   "size": 1388544,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/kitchen cooker run.rfa": {
+   "id": "nf081",
+   "mtime": 1785368405492,
+   "size": 19480576,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/kitchen_dishwasher_integrated.rfa": {
+   "id": "nf082",
+   "mtime": 1753147195034,
+   "size": 667648,
+   "syncedAt": 1791727200000
+  },
+  "plants/featuretree_type 1.rfa": {
+   "id": "nf083",
+   "mtime": 1753147190397,
+   "size": 532480,
+   "syncedAt": 1791727200000
+  },
+  "plants/gh-plant-ground cover plants.rfa": {
+   "id": "nf084",
+   "mtime": 1755839474311,
+   "size": 1077248,
+   "syncedAt": 1791727200000
+  },
+  "plants/ground cover plants.rfa": {
+   "id": "nf085",
+   "mtime": 1753147190425,
+   "size": 1060864,
+   "syncedAt": 1791727200000
+  },
+  "plants/planting_rpc_tree_deciduous.rfa": {
+   "id": "nf086",
+   "mtime": 1753147190482,
+   "size": 548864,
+   "syncedAt": 1791727200000
+  },
+  "plants/shrub.rfa": {
+   "id": "nf087",
+   "mtime": 1753147190510,
+   "size": 688128,
+   "syncedAt": 1791727200000
+  },
+  "site/downpipe.rfa": {
+   "id": "nf088",
+   "mtime": 1785370698924,
+   "size": 786432,
+   "syncedAt": 1791727200000
+  },
+  "site/roof vent.rfa": {
+   "id": "nf089",
+   "mtime": 1780617896782,
+   "size": 823296,
+   "syncedAt": 1791727200000
+  },
+  "site/site_capped gas point.rfa": {
+   "id": "nf090",
+   "mtime": 1648079966023,
+   "size": 376832,
+   "syncedAt": 1791727200000
+  },
+  "site/site_clothes line slimline.rfa": {
+   "id": "nf091",
+   "mtime": 1625020953783,
+   "size": 348160,
+   "syncedAt": 1791727200000
+  },
+  "site/site_clothes lines - ground mount.rfa": {
+   "id": "nf092",
+   "mtime": 1753147194632,
+   "size": 761856,
+   "syncedAt": 1791727200000
+  },
+  "site/site_gas bollard.rfa": {
+   "id": "nf093",
+   "mtime": 1750635833020,
+   "size": 458752,
+   "syncedAt": 1791727200000
+  },
+  "site/site_kingspan water tank - slimline.rfa": {
+   "id": "nf094",
+   "mtime": 1753852592570,
+   "size": 1179648,
+   "syncedAt": 1791727200000
+  },
+  "site/site_letterbox - standard.rfa": {
+   "id": "nf095",
+   "mtime": 1753147194661,
+   "size": 516096,
+   "syncedAt": 1791727200000
+  },
+  "site/site_outdoor recycled water tap.rfa": {
+   "id": "nf096",
+   "mtime": 1645595395385,
+   "size": 462848,
+   "syncedAt": 1791727200000
+  },
+  "site/site_outdoor tap.rfa": {
+   "id": "nf097",
+   "mtime": 1645595351734,
+   "size": 462848,
+   "syncedAt": 1791727200000
+  },
+  "site/site_parking space.rfa": {
+   "id": "nf098",
+   "mtime": 1759700026832,
+   "size": 712704,
+   "syncedAt": 1791727200000
+  },
+  "site/site_water meter (potable).rfa": {
+   "id": "nf099",
+   "mtime": 1718070290235,
+   "size": 1916928,
+   "syncedAt": 1791727200000
+  },
+  "site/site_water meter (recycled).rfa": {
+   "id": "nf100",
+   "mtime": 1718070290235,
+   "size": 1916928,
+   "syncedAt": 1791727200000
+  },
+  "site/site_wheelie bins.rfa": {
+   "id": "nf101",
+   "mtime": 1753147194741,
+   "size": 1884160,
+   "syncedAt": 1791727200000
+  },
+  "site/sump.rfa": {
+   "id": "nf102",
+   "mtime": 1781220764346,
+   "size": 856064,
+   "syncedAt": 1791727200000
+  },
+  "site/whirlybird.rfa": {
+   "id": "nf103",
+   "mtime": 1753147187123,
+   "size": 634880,
+   "syncedAt": 1791727200000
+  },
+  "structural/3d posi.rfa": {
+   "id": "nf104",
+   "mtime": 1763089520325,
+   "size": 1482752,
+   "syncedAt": 1791727200000
+  },
+  "structural/adjustable steel posts.rfa": {
+   "id": "nf105",
+   "mtime": 1753147196284,
+   "size": 548864,
+   "syncedAt": 1791727200000
+  },
+  "structural/c channel beam.rfa": {
+   "id": "nf106",
+   "mtime": 1755824087000,
+   "size": 679936,
+   "syncedAt": 1791727200000
+  },
+  "structural/channel column.rfa": {
+   "id": "nf107",
+   "mtime": 1753147196339,
+   "size": 671744,
+   "syncedAt": 1791727200000
+  },
+  "structural/facade corner window post.rfa": {
+   "id": "nf108",
+   "mtime": 1783463844704,
+   "size": 917504,
+   "syncedAt": 1791727200000
+  },
+  "structural/facade v shape column.rfa": {
+   "id": "nf109",
+   "mtime": 1753147196563,
+   "size": 675840,
+   "syncedAt": 1791727200000
+  },
+  "structural/structural beams.rfa": {
+   "id": "nf110",
+   "mtime": 1755824089000,
+   "size": 548864,
+   "syncedAt": 1791727200000
+  },
+  "windows/al_standard multi transom contempo awning windows.rfa": {
+   "id": "nf111",
+   "mtime": 1788848580591,
+   "size": 1748992,
+   "syncedAt": 1791727200000
+  },
+  "bath room/caroma luna® inset basin 1th.rfa": {
+   "id": "vb1",
+   "mtime": 1791867173557,
+   "size": 2441216,
+   "syncedAt": 1789394399000
+  },
+  "bath room/freestanding bath.rfa": {
+   "id": "fb1",
+   "mtime": 1791867181534,
+   "size": 983040,
+   "syncedAt": 1789394399000
+  },
+  "bath room/toilet with upgrades.rfa": {
+   "id": "tw1",
+   "mtime": 1791867187767,
+   "size": 1511424,
+   "syncedAt": 1789394399000
+  },
+  "doors/a&l/al_standard sliding door.rfa": {
+   "id": "sd1",
+   "mtime": 1779430613055,
+   "size": 1712128,
+   "syncedAt": 1789394399000
+  },
+  "doors/internal door/internal timber flush door_double.rfa": {
+   "id": "itf1",
+   "mtime": 1760594201220,
+   "size": 2072576,
+   "syncedAt": 1789394399000
+  },
+  "electrical/gpos.rfa": {
+   "id": "gpo1",
+   "mtime": 1753147186145,
+   "size": 7884800,
+   "syncedAt": 1789394399000
+  },
+  "facade elements/facade posts.rfa": {
+   "id": "fp1",
+   "mtime": 1791867195226,
+   "size": 798720,
+   "syncedAt": 1789394399000
+  },
+  "plants/feature tree.rfa": {
+   "id": "ft1",
+   "mtime": 1753147190349,
+   "size": 565248,
+   "syncedAt": 1789394399000
+  },
+  "laundry/laundry trough cabinet.rfa": {
+   "id": "ltc1",
+   "mtime": 1756185275000,
+   "size": 2416640,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/kitchen sink.rfa": {
+   "id": "ks1",
+   "mtime": 1791867259691,
+   "size": 32423936,
+   "syncedAt": 1789394399000
+  },
+  "furniture/sofa 2.rfa": {
+   "id": "sofa1",
+   "mtime": 1781827219765,
+   "size": 995328,
+   "syncedAt": 1789394399000
+  }
+ }
+}

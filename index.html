@@ -342,6 +342,15 @@
   }
   .card .card-body { display: flex; flex-direction: column; gap: 3px; padding: 8px 2px 2px; }
   .card { min-width: 0; overflow: hidden; }
+  .card-wrap { position: relative; display: flex; flex-direction: column; min-width: 0; }
+  .card-wrap .card { flex: 1 1 auto; }
+  .card-remove {
+    position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; padding: 0;
+    border-radius: 999px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.92);
+    color: var(--ink-3); font-size: 15px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-remove:hover { border-color: var(--accent); color: var(--ink); background: var(--white); }
   .card .card-name { font-size: 12.5px; font-weight: 500; line-height: 1.3; overflow-wrap: anywhere; }
   .card .card-meta { font-size: 10.5px; color: var(--ink-4); letter-spacing: 0.04em; overflow-wrap: anywhere; }
   .empty-note { font-size: 11px; color: var(--ink-3); padding: 24px 2px; line-height: 1.6; }
@@ -1364,7 +1373,10 @@
       html += '<div class="grid">';
       state.shortlist.forEach(function (id) {
         var f = findFamily(id);
-        if (f) html += buildCardHtml(f);
+        if (f) {
+          html += '<div class="card-wrap">' + buildCardHtml(f) +
+            '<button class="card-remove" data-action="remove-short" data-id="' + id + '" title="Remove from shortlist" aria-label="Remove ' + escapeHtml(f.name) + ' from shortlist">×</button></div>';
+        }
       });
       html += '</div>';
     }

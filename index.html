@@ -539,6 +539,8 @@
   .path-row .path-text {
     font-size: 10.5px; color: var(--ink-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1 1 auto;
   }
+  .path-row .path-text a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .path-row .path-text a:hover { color: var(--ink); }
   .btn-copy {
     font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
     background: var(--white); border: 1px solid var(--border); color: var(--accent);
@@ -975,6 +977,28 @@
     return null;
   }
   function currentFamily() { return findFamily(state.selId); }
+
+  var SP_SITE = "/sites/Masters.Drafting/Shared Documents/Revit/GH Revit Families Library/";
+  var SP_HOST = "https://glenvillhomes.sharepoint.com";
+  var LOCAL_ROOT = "X:\\R & D\\REVIT\\Master Revit Families\\";
+
+  function spRelativeSegments(f) {
+    if (!f || !f.realPath || f.realPath.indexOf(LOCAL_ROOT) !== 0) return null;
+    return f.realPath.slice(LOCAL_ROOT.length).split("\\");
+  }
+  function spEncodePath(p) {
+    return p.split("/").map(encodeURIComponent).join("/");
+  }
+  function spFileUrl(f) {
+    var segs = spRelativeSegments(f);
+    return segs ? SP_HOST + spEncodePath(SP_SITE + segs.join("/")) : null;
+  }
+  function spFolderUrl(f) {
+    var segs = spRelativeSegments(f);
+    if (!segs) return null;
+    var folder = SP_SITE + segs.slice(0, -1).join("/");
+    return SP_HOST + "/sites/Masters.Drafting/Shared%20Documents/Forms/AllItems.aspx?id=" + encodeURIComponent(folder.replace(/\/$/, ""));
+  }
 
   function findParamValue(params, name) {
     for (var i = 0; i < params.length; i++) if (params[i][0] === name) return params[i][1];
@@ -1505,7 +1529,9 @@
       '<button class="btn btn-secondary btn-short mono' + (inShort ? " is-active" : "") + '" data-action="toggle-short">' + (inShort ? "Remove from shortlist" : "Add to shortlist") + '</button>' +
       '<button class="btn btn-secondary mono" data-action="report-issue">Report an issue</button>' +
       '</div>' +
-      '<div class="path-row"><span class="path-text mono">' + escapeHtml(path) + '</span>' +
+      '<div class="path-row"><span class="path-text mono">' +
+        (spFolderUrl(sel) ? '<a href="' + escapeHtml(spFolderUrl(sel)) + '" target="_blank" rel="noopener" title="Open this folder in SharePoint">' + escapeHtml(path) + '</a>' : escapeHtml(path)) +
+      '</span>' +
       '<button class="btn-copy mono" data-action="copy-path" data-path="' + escapeHtml(path) + '">Copy path</button></div>' +
       '</div>';
 
@@ -1928,7 +1954,9 @@
       }
       case "primary-action": {
         var s4 = currentFamily();
-        showToast("Download isn't wired up yet \u2014 in production this fetches " + s4.name + ".rfa from the library.");
+        var s4Url = spFileUrl(s4);
+        if (s4Url) window.open(s4Url, "_blank", "noopener");
+        else showToast("This family isn't in the SharePoint library yet, so there's no file to download.");
         break;
       }
       case "download-shortlist":

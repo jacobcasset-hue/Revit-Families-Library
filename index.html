@@ -1694,10 +1694,6 @@
       '<button class="btn btn-secondary btn-short mono' + (inShort ? " is-active" : "") + '" data-action="toggle-short">' + (inShort ? "Remove from shortlist" : "Add to shortlist") + '</button>' +
       '<button class="btn btn-secondary mono" data-action="report-issue">Report an issue</button>' +
       '</div>' +
-      '<div class="path-row"><span class="path-text mono">' +
-        (spFolderUrl(sel) ? '<a href="' + escapeHtml(spFolderUrl(sel)) + '" target="_blank" rel="noopener" title="Open this folder in SharePoint">' + escapeHtml(path) + '</a>' : escapeHtml(path)) +
-      '</span>' +
-      '<button class="btn-copy mono" data-action="copy-path" data-path="' + escapeHtml(path) + '">Copy path</button></div>' +
       '</div>';
 
     html += '<div class="source-note mono">Type catalog, parameters, Instance/Type scope, plan/3D images and network path are all read from the real family files and the live Revit session on 2026-09-14. Nothing on this screen is invented.</div>';

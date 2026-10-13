@@ -1579,14 +1579,6 @@
       '<div class="fam-meta mono">' + escapeHtml(manufacturer || "Manufacturer not set") + " \u00b7 " + escapeHtml(model || "no model code") + '</div>' +
       '</div>';
 
-    html += '<div class="detail-section type-panel">' +
-      '<div class="section-cap mono">Type catalog &nbsp;<span>' + sel.types.length + '</span></div><div class="type-list">';
-    sel.types.forEach(function (t, i) {
-      html += '<button class="type-btn mono' + (i === state.typeIdx ? " is-selected" : "") + '" data-action="select-type" data-idx="' + i + '">' +
-        '<span class="t-name">' + escapeHtml(t.name) + '</span></button>';
-    });
-    html += '</div></div>';
-
     var images = FAMILY_IMAGES[sel.id];
     var typeMesh = (MESH_DATA_TYPE[sel.id] && MESH_DATA_TYPE[sel.id][state.typeIdx]) || null;
     var typePlan = (FAMILY_IMAGES_TYPE[sel.id] && FAMILY_IMAGES_TYPE[sel.id][state.typeIdx]) || null;
@@ -1664,6 +1656,14 @@
       html += '<div class="no-schematic mono">No real export or dimension parameter is available for this family\u2019s ' + (state.view === "Plan" ? "plan" : "3D") + ' view.</div>';
     }
     html += '</div>';
+
+    html += '<div class="detail-section type-panel">' +
+      '<div class="section-cap mono">Type catalog &nbsp;<span>' + sel.types.length + '</span></div><div class="type-list">';
+    sel.types.forEach(function (t, i) {
+      html += '<button class="type-btn mono' + (i === state.typeIdx ? " is-selected" : "") + '" data-action="select-type" data-idx="' + i + '">' +
+        '<span class="t-name">' + escapeHtml(t.name) + '</span></button>';
+    });
+    html += '</div></div>';
 
     html += '<div class="detail-section instance-panel' + (isSectionCollapsed("instance") ? " is-collapsed" : "") + '">' +
       sectionHeader("instance", "Instance parameters (vary per placement)") + '<div class="section-body">';

@@ -400,6 +400,15 @@
 
   .detail-section { padding: 16px 20px; border-bottom: 1px solid var(--border-strong); }
   .section-cap { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4); padding-bottom: 9px; }
+  .section-toggle {
+    display: flex; align-items: center; gap: 7px; width: 100%; text-align: left;
+    background: none; border: none; cursor: pointer; font-family: inherit;
+  }
+  .section-toggle:hover { color: var(--ink); }
+  .section-chev { display: inline-block; font-size: 11px; transition: transform 0.15s ease; }
+  .detail-section.is-collapsed .section-chev { transform: rotate(-90deg); }
+  .detail-section.is-collapsed .section-body { display: none; }
+  .detail-section.is-collapsed .section-toggle { padding-bottom: 0; }
 
   .identity .breadcrumb { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4); padding-bottom: 5px; }
   .identity .fam-name { font-size: 19px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance; }
@@ -1046,8 +1055,24 @@
     view: "Plan",
     shortlist: loadShortlist(),
     recent: loadRecent(),
-    navCollapsed: loadNavCollapsed()
+    navCollapsed: loadNavCollapsed(),
+    collapsedSections: loadCollapsedSections()
   };
+
+  function loadCollapsedSections() {
+    try {
+      var raw = window.localStorage.getItem("rfl-collapsed-sections-v1");
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function saveCollapsedSections() {
+    try { window.localStorage.setItem("rfl-collapsed-sections-v1", JSON.stringify(state.collapsedSections)); } catch (e) {}
+  }
+  function sectionHeader(key, labelHtml) {
+    var collapsed = !!state.collapsedSections[key];
+    return '<button class="section-cap section-toggle" data-action="toggle-section" data-sec="' + key + '" aria-expanded="' + (collapsed ? "false" : "true") + '">' +
+      '<span class="section-chev" aria-hidden="true">▾</span><span>' + labelHtml + '</span></button>';
+  }
 
   function loadNavCollapsed() {
     try {
@@ -1610,8 +1635,8 @@
     }
     html += '</div>';
 
-    html += '<div class="detail-section instance-panel">' +
-      '<div class="section-cap">Instance parameters (vary per placement)</div>';
+    html += '<div class="detail-section instance-panel' + (state.collapsedSections.instance ? " is-collapsed" : "") + '">' +
+      sectionHeader("instance", "Instance parameters (vary per placement)") + '<div class="section-body">';
     if (sel.instanceParams.length === 0) {
       html += '<div class="instance-empty mono">None on this family \u2014 every parameter is set on the type. Switch type to change anything.</div>';
     } else {
@@ -1621,14 +1646,15 @@
       });
       html += '</div>';
     }
-    html += '</div>';
+    html += '</div></div>';
 
-    html += '<div class="detail-section"><div class="section-cap">Type catalog &nbsp;<span>' + sel.types.length + '</span></div><div class="type-list">';
+    html += '<div class="detail-section' + (state.collapsedSections.types ? " is-collapsed" : "") + '">' +
+      sectionHeader("types", 'Type catalog &nbsp;<span>' + sel.types.length + '</span>') + '<div class="section-body"><div class="type-list">';
     sel.types.forEach(function (t, i) {
       html += '<button class="type-btn mono' + (i === state.typeIdx ? " is-selected" : "") + '" data-action="select-type" data-idx="' + i + '">' +
         '<span class="t-name">' + escapeHtml(t.name) + '</span></button>';
     });
-    html += '</div></div>';
+    html += '</div></div></div>';
 
     var visibleParams = type.params.filter(function (p) {
       if (BORING_PARAMS[p[0]]) return false;
@@ -1640,7 +1666,8 @@
       return findParamValue(type.params, n) === null;
     });
 
-    html += '<div class="detail-section"><div class="section-cap">Parameters \u2014 real, from this type</div><div class="param-table mono">' +
+    html += '<div class="detail-section' + (state.collapsedSections.params ? " is-collapsed" : "") + '">' +
+      sectionHeader("params", "Parameters \u2014 real, from this type") + '<div class="section-body"><div class="param-table mono">' +
       '<div class="ph">Name</div><div class="ph">Value</div><div class="ph">Scope</div>';
     visibleParams.forEach(function (p) {
       var scope = sel.instanceParams.indexOf(p[0]) !== -1 ? "Instance" : "Type";
@@ -1653,7 +1680,7 @@
         '<div class="pc value">Varies per instance</div>' +
         '<div class="pc scope">Instance</div>';
     });
-    html += '</div></div>';
+    html += '</div></div></div>';
 
     html += '<div class="detail-section meta-grid">' +
       metaCell("Manufacturer", manufacturer || "\u2014") +
@@ -2085,6 +2112,16 @@
         pickFamily(el.getAttribute("data-id"));
         renderAll();
         break;
+      case "toggle-section": {
+        var secKey = el.getAttribute("data-sec");
+        var secEl = el.closest(".detail-section");
+        var nowCollapsed = !state.collapsedSections[secKey];
+        state.collapsedSections[secKey] = nowCollapsed;
+        saveCollapsedSections();
+        if (secEl) secEl.classList.toggle("is-collapsed", nowCollapsed);
+        el.setAttribute("aria-expanded", nowCollapsed ? "false" : "true");
+        break;
+      }
       case "select-type": {
         var idx = Number(el.getAttribute("data-idx"));
         state.typeIdx = idx;

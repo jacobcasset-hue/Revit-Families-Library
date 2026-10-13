@@ -407,6 +407,7 @@
   }
   .section-toggle:hover { color: var(--ink); }
   .section-chev { display: inline-block; font-size: 14px; transition: transform 0.15s ease; }
+  .type-panel .type-list { max-height: 140px; overflow-y: auto; }
   .detail-section.is-collapsed .section-chev { transform: rotate(-90deg); }
   .detail-section.is-collapsed .section-body { display: none; }
   .detail-section.is-collapsed .section-toggle { padding-bottom: 0; }
@@ -1578,6 +1579,14 @@
       '<div class="fam-meta mono">' + escapeHtml(manufacturer || "Manufacturer not set") + " \u00b7 " + escapeHtml(model || "no model code") + '</div>' +
       '</div>';
 
+    html += '<div class="detail-section type-panel">' +
+      '<div class="section-cap mono">Type catalog &nbsp;<span>' + sel.types.length + '</span></div><div class="type-list">';
+    sel.types.forEach(function (t, i) {
+      html += '<button class="type-btn mono' + (i === state.typeIdx ? " is-selected" : "") + '" data-action="select-type" data-idx="' + i + '">' +
+        '<span class="t-name">' + escapeHtml(t.name) + '</span></button>';
+    });
+    html += '</div></div>';
+
     var images = FAMILY_IMAGES[sel.id];
     var typeMesh = (MESH_DATA_TYPE[sel.id] && MESH_DATA_TYPE[sel.id][state.typeIdx]) || null;
     var typePlan = (FAMILY_IMAGES_TYPE[sel.id] && FAMILY_IMAGES_TYPE[sel.id][state.typeIdx]) || null;
@@ -1668,14 +1677,6 @@
       html += '</div>';
     }
     html += '</div></div>';
-
-    html += '<div class="detail-section' + (isSectionCollapsed("types") ? " is-collapsed" : "") + '">' +
-      sectionHeader("types", 'Type catalog &nbsp;<span>' + sel.types.length + '</span>') + '<div class="section-body"><div class="type-list">';
-    sel.types.forEach(function (t, i) {
-      html += '<button class="type-btn mono' + (i === state.typeIdx ? " is-selected" : "") + '" data-action="select-type" data-idx="' + i + '">' +
-        '<span class="t-name">' + escapeHtml(t.name) + '</span></button>';
-    });
-    html += '</div></div></div>';
 
     var visibleParams = type.params.filter(function (p) {
       if (BORING_PARAMS[p[0]]) return false;

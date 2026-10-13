@@ -128,11 +128,20 @@ function printScan(r) {
 }
 
 // ---------------------------------------------------------------- Revit
+// /status/ answers 503 when Revit sits at the Home screen with no project open, but code can still run
+// (families are opened in the background), so probe with a trivial script instead.
 async function revitStatus() {
   const base = L.rules.revitUrl;
   try {
-    const r = await fetch(base + '/status/', { signal: AbortSignal.timeout(8000) });
-    return await r.json();
+    const r = await fetch(base + '/execute_code/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: 'print(1)', description: 'Library sync: connection check' }),
+      signal: AbortSignal.timeout(15000),
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || j.status !== 'success') return null;
+    return { revit_available: true, document_title: 'no project name available' };
   } catch (e) {
     return null;
   }
@@ -165,10 +174,10 @@ async function extract(pending) {
   if (jobs.length) {
     const status = await revitStatus();
     if (!status || status.revit_available === false) {
-      throw new Error('Cannot reach Revit on ' + L.rules.revitUrl + '. Open Revit (with a project open and pyRevit running) and try again. ' +
+      throw new Error('Cannot reach Revit on ' + L.rules.revitUrl + '. Open Revit (pyRevit must be running) and try again. ' +
         'If it still fails, check Task Manager for a second Revit.exe fighting over port 48884.');
     }
-    log('Revit connected (' + status.document_title + '). Extracting ' + jobs.length + ' families...');
+    log('Revit connected. Extracting ' + jobs.length + ' families...');
   }
   mkdirp(EXPORT);
   jobs.forEach(j => { const f = path.join(EXPORT, j.id + '.json'); if (fs.existsSync(f)) fs.unlinkSync(f); });

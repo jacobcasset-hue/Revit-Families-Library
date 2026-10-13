@@ -17,7 +17,7 @@ function writeJson(p, obj, pretty) {
 
 const rules = readJson(RULES_FILE, null);
 if (!rules) throw new Error('sync/rules.json is missing');
-const ROOT = process.env.SYNC_ROOT || rules.root; // e.g. X:/Systems/REVIT/Revit Families (SYNC_ROOT is for testing)
+const ROOT = String(process.env.SYNC_ROOT || rules.root).replace(/\\/g, '/'); // e.g. X:/Systems/REVIT/Revit Families (SYNC_ROOT is for testing)
 
 function norm(p) { return String(p || '').replace(/\\/g, '/'); }
 function relPath(full) {

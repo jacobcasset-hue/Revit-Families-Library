@@ -1104,6 +1104,21 @@
     var segs = spRelativeSegments(f);
     return segs ? SP_HOST + spEncodePath(SP_SITE + segs.join("/")) : null;
   }
+  function spDownloadUrl(f) {
+    var u = spFileUrl(f);
+    return u ? u + "?download=1" : null;
+  }
+  function startDownloads(urls) {
+    urls.forEach(function (u, i) {
+      setTimeout(function () {
+        var frame = document.createElement("iframe");
+        frame.style.display = "none";
+        frame.src = u;
+        document.body.appendChild(frame);
+        setTimeout(function () { if (frame.parentNode) frame.parentNode.removeChild(frame); }, 120000);
+      }, i * 900);
+    });
+  }
   function spFolderUrl(f) {
     var segs = spRelativeSegments(f);
     if (!segs) return null;
@@ -2065,14 +2080,24 @@
       }
       case "primary-action": {
         var s4 = currentFamily();
-        var s4Url = spFileUrl(s4);
-        if (s4Url) window.open(s4Url, "_blank", "noopener");
+        var s4Url = spDownloadUrl(s4);
+        if (s4Url) { startDownloads([s4Url]); showToast("Downloading " + s4.name + ".rfa from SharePoint\u2026"); }
         else showToast("This family isn't in the new library layout yet, so there's no file to download.");
         break;
       }
-      case "download-shortlist":
-        showToast("Download isn't wired up yet \u2014 in production this fetches all " + state.shortlist.length + " shortlisted families as a zip.");
+      case "download-shortlist": {
+        var dlUrls = [], dlSkipped = 0;
+        state.shortlist.forEach(function (id) {
+          var f = findFamily(id);
+          var u = f ? spDownloadUrl(f) : null;
+          if (u) dlUrls.push(u); else dlSkipped++;
+        });
+        if (dlUrls.length === 0) { showToast("None of the shortlisted families have a file to download yet."); break; }
+        startDownloads(dlUrls);
+        showToast("Downloading " + dlUrls.length + " file" + (dlUrls.length === 1 ? "" : "s") + " from SharePoint" +
+          (dlSkipped ? " (" + dlSkipped + " skipped, no file)" : "") + ". If your browser asks, allow multiple downloads.");
         break;
+      }
       case "report-issue": {
         var issueFamily = currentFamily();
         var issueSubject = encodeURIComponent(

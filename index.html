@@ -2256,6 +2256,8 @@
     });
     Object.keys(overrides || {}).forEach(function (id) {
       FAMILIES.forEach(function (f) { if (f.id === id) Object.assign(f, overrides[id]); });
+      var from = overrides[id] && overrides[id].meshFrom;
+      if (from && MESH_DATA[from] && !MESH_DATA[id]) MESH_DATA[id] = MESH_DATA[from];
     });
     // make sure every category / sub-category in use has a place in the navigation
     FAMILIES.forEach(function (f) {

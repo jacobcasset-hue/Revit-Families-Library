@@ -2,6 +2,7 @@
  "root": "X:/Systems/REVIT/Revit Families",
  "specImagesRoot": "X:/Standard Inclusions/Specification Images",
  "revitUrl": "http://127.0.0.1:48884/revit_mcp",
+ "meshVertCap": 25000,
  "ignore": [
   "/manufacturer's content/",
   "/superseded/"

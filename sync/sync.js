@@ -189,7 +189,7 @@ async function extract(pending) {
   for (let i = 0; i < jobs.length; i += BATCH) {
     const end = Math.min(i + BATCH, jobs.length);
     const code = template.split('__MANIFEST__').join(manifestPath).split('__OUTDIR__').join(EXPORT)
-      .split('__START__').join(String(i)).split('__END__').join(String(end));
+      .split('__START__').join(String(i)).split('__END__').join(String(end)).split('__VERTCAP__').join(String(L.rules.meshVertCap || 5000));
     process.stdout.write('  ' + (i + 1) + '-' + end + ' of ' + jobs.length + ' ... ');
     try {
       await revitExec(code, 'Library sync: extract families ' + (i + 1) + '-' + end);
@@ -378,6 +378,21 @@ function baseline() {
     if (cmd === 'scan') scan();
     else if (cmd === 'extract') { if (!fs.existsSync(PENDING)) scan(); await extract(); }
     else if (cmd === 'merge') merge();
+    else if (cmd === 'reextract') {
+      // node sync/sync.js reextract nf112 nf113   -> read those families out of Revit again (keeps names / photos)
+      const ids = process.argv.slice(3).filter(a => !a.startsWith('--'));
+      if (!ids.length) throw new Error('give one or more family ids, e.g. reextract nf112 nf113');
+      const byId = {};
+      L.libraryFamilies().forEach(f => { byId[f.id] = f; });
+      const changed = ids.map(id => {
+        const f = byId[id];
+        if (!f || !f.realPath) throw new Error('unknown family or no file path: ' + id);
+        return { id: id, name: f.name, cat: f.cat, sub: f.sub, rel: L.relPath(f.realPath), full: L.norm(f.realPath) };
+      });
+      await extract({ new: [], changed: changed, moved: [] });
+      merge();
+      if (!flag('no-push')) push();
+    }
     else if (cmd === 'push') push();
     else if (cmd === 'baseline') baseline();
     else if (cmd === 'run') {

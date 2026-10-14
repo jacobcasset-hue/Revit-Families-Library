@@ -15,7 +15,7 @@ if not os.path.exists(OUT_DIR):
 START = __START__
 END = __END__
 
-MESH_VERT_CAP = 5000
+MESH_VERT_CAP = __VERTCAP__
 FT_TO_MM = 304.8
 
 app = __revit__.Application

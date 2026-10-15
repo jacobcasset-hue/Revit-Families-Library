@@ -189,7 +189,7 @@ async function extract(pending) {
   for (let i = 0; i < jobs.length; i += BATCH) {
     const end = Math.min(i + BATCH, jobs.length);
     const code = template.split('__MANIFEST__').join(manifestPath).split('__OUTDIR__').join(EXPORT)
-      .split('__START__').join(String(i)).split('__END__').join(String(end)).split('__VERTCAP__').join(String(L.rules.meshVertCap || 5000));
+      .split('__START__').join(String(i)).split('__END__').join(String(end)).split('__VERTCAP__').join(String(process.env.SYNC_VERTCAP || L.rules.meshVertCap || 5000));
     process.stdout.write('  ' + (i + 1) + '-' + end + ' of ' + jobs.length + ' ... ');
     try {
       await revitExec(code, 'Library sync: extract families ' + (i + 1) + '-' + end);
@@ -254,7 +254,8 @@ function findPhoto(fam, specFiles) {
   fam.types.forEach(t => texts.push(t.name));
   fam.types.forEach(t => t.params.forEach(p => { if (/^(Model|Description|Type Mark|Type Comments)$/.test(p[0]) && p[1]) texts.push(p[1]); }));
   const text = texts.join(' | ').toLowerCase();
-  const hit = specFiles.find(s => s.code.length >= 5 && /[0-9]/.test(s.code) && text.indexOf(s.code) >= 0);
+  // a code such as 154-7300-00.01 also matches as 154-7300-00 (family type names omit the colour suffix)
+  const hit = specFiles.find(s => [s.code, s.code.replace(/\.\d+$/, '')].some(c => c.length >= 5 && /[0-9]/.test(c) && text.indexOf(c) >= 0));
   return hit ? { file: hit.file, how: 'Specification Images' } : null;
 }
 

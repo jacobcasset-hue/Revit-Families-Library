@@ -1,5 +1,6 @@
 # Runs INSIDE Revit (IronPython) via the pyRevit Routes execute_code endpoint.
 # sync.js fills in the __MANIFEST__ / __OUTDIR__ / __START__ / __END__ placeholders before sending it.
+import io
 import json
 import os
 import traceback
@@ -152,23 +153,37 @@ def find_floor_plan_view(document):
     return candidates[0]
 
 
-def hide_dimensions(document, view):
-    try:
-        cat = DB.Category.GetCategory(document, DB.BuiltInCategory.OST_Dimensions)
-        if cat is not None and view.CanCategoryBeHidden(cat.Id):
-            view.SetCategoryHidden(cat.Id, True)
-    except Exception:
-        pass
+def find_sheet_view(document):
+    for vv in DB.FilteredElementCollector(document).OfClass(DB.View).ToElements():
+        try:
+            if vv.ViewType == DB.ViewType.DrawingSheet:
+                return vv
+        except Exception:
+            continue
+    return None
 
 
-def export_plan_png(document, view, out_prefix):
+def hide_dimensions(document, view, extra=False):
+    cats = [DB.BuiltInCategory.OST_Dimensions]
+    if extra:
+        cats += [DB.BuiltInCategory.OST_CLines, DB.BuiltInCategory.OST_ReferenceLines]
+    for bic in cats:
+        try:
+            cat = DB.Category.GetCategory(document, bic)
+            if cat is not None and view.CanCategoryBeHidden(cat.Id):
+                view.SetCategoryHidden(cat.Id, True)
+        except Exception:
+            pass
+
+
+def export_plan_png(document, view, out_prefix, pixel_size=700, sheet=False):
     opts = DB.ImageExportOptions()
     opts.ExportRange = DB.ExportRange.SetOfViews
     opts.SetViewsAndSheets(NetList[DB.ElementId]([view.Id]))
     opts.FilePath = os.path.join(OUT_DIR, out_prefix)
     opts.HLRandWFViewsFileType = DB.ImageFileType.PNG
     opts.ZoomType = DB.ZoomFitType.FitToPage
-    opts.PixelSize = 700
+    opts.PixelSize = pixel_size
     opts.ImageResolution = DB.ImageResolution.DPI_150
     opts.ShouldCreateWebSite = False
     document.ExportImage(opts)
@@ -178,7 +193,7 @@ def export_plan_png(document, view, out_prefix):
         return expected
     base = os.path.basename(out_prefix)
     for fn in os.listdir(OUT_DIR):
-        if fn.startswith(base) and fn.lower().endswith('.png'):
+        if fn.startswith(base + " ") and fn.lower().endswith('.png'):
             return fn
     return None
 
@@ -222,10 +237,14 @@ def process_family(entry):
         dims = detect_dims(fm)
 
         view = find_floor_plan_view(famdoc)
+        sheet_mode = False
+        if view is None:
+            view = find_sheet_view(famdoc)
+            sheet_mode = view is not None
         if view is not None:
             t0 = DB.Transaction(famdoc, "prep view")
             t0.Start()
-            hide_dimensions(famdoc, view)
+            hide_dimensions(famdoc, view, sheet_mode)
             t0.Commit()
 
         types_out = []
@@ -253,7 +272,12 @@ def process_family(entry):
             if view is not None:
                 try:
                     prefix = "%s_t%d" % (fid, idx)
-                    plan_file = export_plan_png(famdoc, view, prefix)
+                    if sheet_mode:
+                        # annotation sheet: one large image per family is enough (types share the drawing)
+                        if idx == 0:
+                            plan_file = export_plan_png(famdoc, view, prefix, 2400, True)
+                    else:
+                        plan_file = export_plan_png(famdoc, view, prefix)
                 except Exception:
                     plan_file = None
 
@@ -270,6 +294,7 @@ def process_family(entry):
             })
 
         result["ok"] = True
+        result["sheetView"] = sheet_mode
         result["name"] = entry["name"]
         result["cat"] = entry["cat"]
         result["sub"] = entry["sub"]
@@ -289,7 +314,7 @@ def process_family(entry):
     return result
 
 
-manifest = json.load(open(MANIFEST_PATH, "r"))
+manifest = json.load(io.open(MANIFEST_PATH, "r", encoding="utf-8"))
 batch = manifest[START:END]
 log("=== batch start %d:%d (%d families) ===" % (START, END, len(batch)))
 

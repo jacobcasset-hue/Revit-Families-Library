@@ -240,6 +240,15 @@ function toDataUri(file) {
     return null;
   }
 }
+function trimImage(file) {
+  const out = path.join(WORK, 'trim_' + path.basename(file).replace(/[^A-Za-z0-9_.]/g, '_'));
+  try {
+    execFileSync('powershell', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', path.join(__dirname, 'trim_image.ps1'), '-InFile', file, '-OutFile', out], { stdio: 'pipe' });
+    return fs.existsSync(out) ? out : null;
+  } catch (e) {
+    return null;
+  }
+}
 function findPhoto(fam, specFiles) {
   // 1. a picture dropped into sync/photos/<id>.(jpg|png) or named after the family file
   const dir = path.join(__dirname, 'photos');
@@ -290,7 +299,9 @@ function merge() {
         file = fs.readdirSync(EXPORT).find(fn => fn.indexOf(prefix) === 0 && /\.(png|jpe?g)$/i.test(fn)) || null;
       }
       if (!file || !fs.existsSync(path.join(EXPORT, file))) return null;
-      return 'data:' + (/\.jpe?g$/i.test(file) ? 'image/jpeg' : 'image/png') + ';base64,' + fs.readFileSync(path.join(EXPORT, file)).toString('base64');
+      let full = path.join(EXPORT, file);
+      if (d.sheetView) full = trimImage(full) || full; // annotation sheet: cut the empty paper away and enlarge the symbol
+      return 'data:' + (/\.jpe?g$/i.test(file) ? 'image/jpeg' : 'image/png') + ';base64,' + fs.readFileSync(full).toString('base64');
     });
     if (j.kind === 'new') {
       const hit = findPhoto(entry, specFiles);

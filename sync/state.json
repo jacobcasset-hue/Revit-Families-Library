@@ -1284,7 +1284,955 @@
    "mtime": 1792037761050,
    "size": 24887296,
    "syncedAt": 1792038026805
+  },
+  "annotations/annotation option spec.rfa": {
+   "id": "nf118",
+   "mtime": 1790212848208,
+   "size": 679936,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-callout_head.rfa": {
+   "id": "nf119",
+   "mtime": 1756084134546,
+   "size": 622592,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-callout_head_detail.rfa": {
+   "id": "nf120",
+   "mtime": 1756084142062,
+   "size": 622592,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-centreline.rfa": {
+   "id": "nf121",
+   "mtime": 1756084153725,
+   "size": 622592,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-det_textinput.rfa": {
+   "id": "nf122",
+   "mtime": 1756945309727,
+   "size": 622592,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-elevation_floorplan_internal elevation.rfa": {
+   "id": "nf123",
+   "mtime": 1772080671552,
+   "size": 729088,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-elevation_floorplan_mark_body_circle.rfa": {
+   "id": "nf124",
+   "mtime": 1760410691208,
+   "size": 724992,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-elevation_floorplan_mark_body_circle_abcd.rfa": {
+   "id": "nf125",
+   "mtime": 1772080211151,
+   "size": 757760,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-elevation_floorplan_mark_body_circle_empty.rfa": {
+   "id": "nf126",
+   "mtime": 1760410191714,
+   "size": 753664,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-elevation_floorplan_mark_pointer_circle.rfa": {
+   "id": "nf127",
+   "mtime": 1760410204197,
+   "size": 688128,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-elevation_floorplan_mark_pointer_circle_abcd.rfa": {
+   "id": "nf128",
+   "mtime": 1761712553693,
+   "size": 696320,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-elevation_floorplan_mark_pointer_circle_interior elevation.rfa": {
+   "id": "nf129",
+   "mtime": 1760329601257,
+   "size": 692224,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-elevation_mark_body_circle.rfa": {
+   "id": "nf130",
+   "mtime": 1760410276423,
+   "size": 716800,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-elevation_mark_pointer_circle.rfa": {
+   "id": "nf131",
+   "mtime": 1760410295609,
+   "size": 688128,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-grid_head_circle.rfa": {
+   "id": "nf132",
+   "mtime": 1756084202535,
+   "size": 622592,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-level_head.rfa": {
+   "id": "nf133",
+   "mtime": 1756962862340,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-level_head_filled_arrow.rfa": {
+   "id": "nf134",
+   "mtime": 1756084210679,
+   "size": 630784,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-northarrow.rfa": {
+   "id": "nf135",
+   "mtime": 1764220944313,
+   "size": 745472,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-northarrow_minimalistic.rfa": {
+   "id": "nf136",
+   "mtime": 1765423041790,
+   "size": 745472,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-sec_head_filled.rfa": {
+   "id": "nf137",
+   "mtime": 1756084216883,
+   "size": 630784,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-sec_head_openfilled.rfa": {
+   "id": "nf138",
+   "mtime": 1756084222122,
+   "size": 622592,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-sec_tail_filled.rfa": {
+   "id": "nf139",
+   "mtime": 1756084225964,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-step symbol.rfa": {
+   "id": "nf140",
+   "mtime": 1761526708984,
+   "size": 749568,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-tag_casework.rfa": {
+   "id": "nf141",
+   "mtime": 1779424334771,
+   "size": 679936,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-tag_plumbing fixture.rfa": {
+   "id": "nf142",
+   "mtime": 1779407707792,
+   "size": 679936,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-view_reference.rfa": {
+   "id": "nf143",
+   "mtime": 1756084926084,
+   "size": 622592,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-view_title.rfa": {
+   "id": "nf144",
+   "mtime": 1769486475635,
+   "size": 684032,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-an-view_title_no_detail_no.rfa": {
+   "id": "nf145",
+   "mtime": 1756952600007,
+   "size": 622592,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-det_boundary_elevation.rfa": {
+   "id": "nf146",
+   "mtime": 1761524737695,
+   "size": 720896,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-spot elevation.rfa": {
+   "id": "nf147",
+   "mtime": 1778199617401,
+   "size": 737280,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-spot elevation_slab_stepdown.rfa": {
+   "id": "nf148",
+   "mtime": 1763092227492,
+   "size": 733184,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-title block.rfa": {
+   "id": "nf149",
+   "mtime": 1786508937128,
+   "size": 1449984,
+   "syncedAt": 1792105549524
+  },
+  "annotations/gh-title block_info_block.rfa": {
+   "id": "nf150",
+   "mtime": 1763953193696,
+   "size": 1552384,
+   "syncedAt": 1792105549524
+  },
+  "notes/bal notes.rfa": {
+   "id": "nf151",
+   "mtime": 1770850323146,
+   "size": 688128,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-an-general notes.rfa": {
+   "id": "nf152",
+   "mtime": 1789606706847,
+   "size": 704512,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-drafting checklist.rfa": {
+   "id": "nf153",
+   "mtime": 1756084963563,
+   "size": 671744,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-section_energyefficiency.rfa": {
+   "id": "nf154",
+   "mtime": 1756084971967,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-siteplan_cutfillsymbol.rfa": {
+   "id": "nf155",
+   "mtime": 1756085008169,
+   "size": 630784,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-siteplan_note.rfa": {
+   "id": "nf156",
+   "mtime": 1782426191491,
+   "size": 688128,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-siterelated_note.rfa": {
+   "id": "nf157",
+   "mtime": 1756085016783,
+   "size": 634880,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-site_acoustic requirements.rfa": {
+   "id": "nf158",
+   "mtime": 1756084976919,
+   "size": 647168,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-site_bal note.rfa": {
+   "id": "nf159",
+   "mtime": 1756084984300,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-site_bal.rfa": {
+   "id": "nf160",
+   "mtime": 1761785878984,
+   "size": 679936,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-site_sitecalculation.rfa": {
+   "id": "nf161",
+   "mtime": 1756084988261,
+   "size": 638976,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-site_soil classification report.rfa": {
+   "id": "nf162",
+   "mtime": 1756084992671,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-site_water tank.rfa": {
+   "id": "nf163",
+   "mtime": 1756084999801,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-ga-site_wind rate.rfa": {
+   "id": "nf164",
+   "mtime": 1756085003721,
+   "size": 622592,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-notes.rfa": {
+   "id": "nf165",
+   "mtime": 1789613174556,
+   "size": 716800,
+   "syncedAt": 1792105549524
+  },
+  "notes/gh-roof vent calculator - roof pitch 25.rfa": {
+   "id": "nf168",
+   "mtime": 1778216876841,
+   "size": 634880,
+   "syncedAt": 1792105549524
+  },
+  "notes/note_indicative_measurements.rfa": {
+   "id": "nf169",
+   "mtime": 1772057272011,
+   "size": 413696,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_air terminals.rfa": {
+   "id": "nf170",
+   "mtime": 1759703178601,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_area.rfa": {
+   "id": "nf171",
+   "mtime": 1758599028655,
+   "size": 684032,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_assemblies.rfa": {
+   "id": "nf172",
+   "mtime": 1759208546964,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_audiovisualdevices.rfa": {
+   "id": "nf173",
+   "mtime": 1759298889135,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_casework.rfa": {
+   "id": "nf174",
+   "mtime": 1759896836366,
+   "size": 684032,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_ceiling.rfa": {
+   "id": "nf175",
+   "mtime": 1759209149214,
+   "size": 630784,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_column.rfa": {
+   "id": "nf176",
+   "mtime": 1759209189614,
+   "size": 630784,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_conduitfittings.rfa": {
+   "id": "nf177",
+   "mtime": 1759297361356,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_conduits.rfa": {
+   "id": "nf178",
+   "mtime": 1759297340131,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_curtain wall mullion.rfa": {
+   "id": "nf179",
+   "mtime": 1759297319813,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_curtainpanels.rfa": {
+   "id": "nf180",
+   "mtime": 1759297305196,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_data devices.rfa": {
+   "id": "nf181",
+   "mtime": 1759297288669,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_detailitems.rfa": {
+   "id": "nf182",
+   "mtime": 1769736203333,
+   "size": 475136,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_door.rfa": {
+   "id": "nf183",
+   "mtime": 1791930508948,
+   "size": 696320,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_ductaccessories.rfa": {
+   "id": "nf184",
+   "mtime": 1759297235970,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_ductfittings.rfa": {
+   "id": "nf185",
+   "mtime": 1759297213690,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_ductinsulations.rfa": {
+   "id": "nf186",
+   "mtime": 1759297200754,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_ductlinings.rfa": {
+   "id": "nf187",
+   "mtime": 1759297184433,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_ducts.rfa": {
+   "id": "nf188",
+   "mtime": 1759297067075,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_electrical equipments.rfa": {
+   "id": "nf189",
+   "mtime": 1759297048479,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_electrical fixtures.rfa": {
+   "id": "nf190",
+   "mtime": 1759297027567,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_electricalconnector.rfa": {
+   "id": "nf191",
+   "mtime": 1759296977245,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_entourage.rfa": {
+   "id": "nf192",
+   "mtime": 1759296958084,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_fascia.rfa": {
+   "id": "nf193",
+   "mtime": 1759296943086,
+   "size": 684032,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_fire alarm devices.rfa": {
+   "id": "nf194",
+   "mtime": 1759296929609,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_fire protection.rfa": {
+   "id": "nf195",
+   "mtime": 1759296901603,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_flex dutcs.rfa": {
+   "id": "nf196",
+   "mtime": 1759296882693,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_flex pipe.rfa": {
+   "id": "nf197",
+   "mtime": 1759296867536,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_floor.rfa": {
+   "id": "nf198",
+   "mtime": 1759300115972,
+   "size": 634880,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_floor_spot elevation.rfa": {
+   "id": "nf199",
+   "mtime": 1761781645027,
+   "size": 684032,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_food service equipment.rfa": {
+   "id": "nf200",
+   "mtime": 1759296846129,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_furniture systems.rfa": {
+   "id": "nf201",
+   "mtime": 1759296829340,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_furniture.rfa": {
+   "id": "nf202",
+   "mtime": 1759296814335,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_generic models.rfa": {
+   "id": "nf203",
+   "mtime": 1759296800026,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_hardscape.rfa": {
+   "id": "nf204",
+   "mtime": 1759296783633,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_hvac zones.rfa": {
+   "id": "nf205",
+   "mtime": 1759296762556,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_keynote.rfa": {
+   "id": "nf206",
+   "mtime": 1788396509329,
+   "size": 679936,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_lightning devices.rfa": {
+   "id": "nf207",
+   "mtime": 1759296733507,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_lightning fixture.rfa": {
+   "id": "nf208",
+   "mtime": 1770071643213,
+   "size": 696320,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_lines_path of travel.rfa": {
+   "id": "nf209",
+   "mtime": 1759296696025,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_mass floor.rfa": {
+   "id": "nf210",
+   "mtime": 1759296682201,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_mass.rfa": {
+   "id": "nf211",
+   "mtime": 1759209911332,
+   "size": 630784,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_material.rfa": {
+   "id": "nf212",
+   "mtime": 1775532240055,
+   "size": 696320,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_materiallegend.rfa": {
+   "id": "nf213",
+   "mtime": 1768534966293,
+   "size": 688128,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_mechanical control device.rfa": {
+   "id": "nf214",
+   "mtime": 1759296667458,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_mechanical equipment sets.rfa": {
+   "id": "nf215",
+   "mtime": 1759296647270,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_mechanical equipment.rfa": {
+   "id": "nf216",
+   "mtime": 1759296632114,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_medical equipment.rfa": {
+   "id": "nf217",
+   "mtime": 1759296609754,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_model group.rfa": {
+   "id": "nf218",
+   "mtime": 1759296588939,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_multicategory.rfa": {
+   "id": "nf219",
+   "mtime": 1758578411993,
+   "size": 688128,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_nurse call devices.rfa": {
+   "id": "nf220",
+   "mtime": 1759296571609,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_parking.rfa": {
+   "id": "nf221",
+   "mtime": 1759699966070,
+   "size": 688128,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_parts.rfa": {
+   "id": "nf222",
+   "mtime": 1759296542738,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_pipe accessories.rfa": {
+   "id": "nf223",
+   "mtime": 1777876025891,
+   "size": 638976,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_pipe fittings.rfa": {
+   "id": "nf224",
+   "mtime": 1761599719991,
+   "size": 684032,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_pipe insulations.rfa": {
+   "id": "nf225",
+   "mtime": 1759296500162,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_pipes.rfa": {
+   "id": "nf226",
+   "mtime": 1759296483004,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_planting.rfa": {
+   "id": "nf227",
+   "mtime": 1759296446451,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_plumbing equipment.rfa": {
+   "id": "nf228",
+   "mtime": 1759296422305,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_plumbing fixtures.rfa": {
+   "id": "nf229",
+   "mtime": 1779319190328,
+   "size": 679936,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_property.rfa": {
+   "id": "nf230",
+   "mtime": 1759210436906,
+   "size": 630784,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_propertylines.rfa": {
+   "id": "nf231",
+   "mtime": 1760676732082,
+   "size": 684032,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_railing.rfa": {
+   "id": "nf232",
+   "mtime": 1763013259565,
+   "size": 684032,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_railings.rfa": {
+   "id": "nf233",
+   "mtime": 1759299430176,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_railings_handrails.rfa": {
+   "id": "nf234",
+   "mtime": 1759296302692,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_railings_top rails.rfa": {
+   "id": "nf235",
+   "mtime": 1759296288563,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_ramp.rfa": {
+   "id": "nf236",
+   "mtime": 1759298210458,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_revision cloud.rfa": {
+   "id": "nf237",
+   "mtime": 1759210549756,
+   "size": 630784,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_roads.rfa": {
+   "id": "nf238",
+   "mtime": 1759296206611,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_roof.rfa": {
+   "id": "nf239",
+   "mtime": 1759296170417,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_roof_gutters.rfa": {
+   "id": "nf240",
+   "mtime": 1759296190854,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_roof_soffits.rfa": {
+   "id": "nf241",
+   "mtime": 1759295773219,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_room.rfa": {
+   "id": "nf242",
+   "mtime": 1765169879293,
+   "size": 704512,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_rvt link.rfa": {
+   "id": "nf243",
+   "mtime": 1759296124735,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_security devices.rfa": {
+   "id": "nf244",
+   "mtime": 1759296107811,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_signage.rfa": {
+   "id": "nf245",
+   "mtime": 1759296090028,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_site.rfa": {
+   "id": "nf246",
+   "mtime": 1759297661785,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_site_pads.rfa": {
+   "id": "nf247",
+   "mtime": 1759296038477,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_site_property lines.rfa": {
+   "id": "nf248",
+   "mtime": 1759296022170,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_slab edge.rfa": {
+   "id": "nf249",
+   "mtime": 1759295945493,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_spaces.rfa": {
+   "id": "nf250",
+   "mtime": 1759295928093,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_speciality equipment.rfa": {
+   "id": "nf251",
+   "mtime": 1759295905018,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_sprinklers.rfa": {
+   "id": "nf252",
+   "mtime": 1759295870460,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_stairs.rfa": {
+   "id": "nf253",
+   "mtime": 1759295845033,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_stairs_landings.rfa": {
+   "id": "nf254",
+   "mtime": 1759295749078,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_stairs_runs.rfa": {
+   "id": "nf255",
+   "mtime": 1759295689712,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_stairs_supports.rfa": {
+   "id": "nf256",
+   "mtime": 1759295652830,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_structural area reinforcement.rfa": {
+   "id": "nf257",
+   "mtime": 1759295587862,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_structural beam systems.rfa": {
+   "id": "nf258",
+   "mtime": 1759295531994,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_structural columns.rfa": {
+   "id": "nf259",
+   "mtime": 1759298112729,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_structural connections.rfa": {
+   "id": "nf260",
+   "mtime": 1759297571716,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_structural foundations.rfa": {
+   "id": "nf261",
+   "mtime": 1759297556447,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_structural framing.rfa": {
+   "id": "nf262",
+   "mtime": 1759297541572,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_system_zones.rfa": {
+   "id": "nf263",
+   "mtime": 1759297517168,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_telephone devices.rfa": {
+   "id": "nf264",
+   "mtime": 1759297500921,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_template.rfa": {
+   "id": "nf265",
+   "mtime": 1759208580125,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_temporary structures.rfa": {
+   "id": "nf266",
+   "mtime": 1759297472894,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_toposolid link.rfa": {
+   "id": "nf267",
+   "mtime": 1759211444147,
+   "size": 630784,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_toposolid.rfa": {
+   "id": "nf268",
+   "mtime": 1759297456433,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_vertical circulation.rfa": {
+   "id": "nf269",
+   "mtime": 1759297435913,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_wall.rfa": {
+   "id": "nf270",
+   "mtime": 1773291485820,
+   "size": 696320,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_wall_sweep.rfa": {
+   "id": "nf271",
+   "mtime": 1759297394607,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_window.rfa": {
+   "id": "nf272",
+   "mtime": 1788399539046,
+   "size": 700416,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-an-tag_wires.rfa": {
+   "id": "nf273",
+   "mtime": 1759365706058,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-tb_a4_aplace_ma_portrait.rfa": {
+   "id": "nf274",
+   "mtime": 1756085111919,
+   "size": 806912,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-xan-det_ceilingheight_note.rfa": {
+   "id": "nf275",
+   "mtime": 1756085127787,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-xan-det_garageopening_note.rfa": {
+   "id": "nf276",
+   "mtime": 1756085136560,
+   "size": 626688,
+   "syncedAt": 1792105549524
+  },
+  "tags/gh-xan-det_roofpitch_note.rfa": {
+   "id": "nf277",
+   "mtime": 1756085170215,
+   "size": 626688,
+   "syncedAt": 1792105549524
   }
  },
- "lastSync": "2026-10-15T04:21:11.357Z"
+ "lastSync": "2026-10-15T23:05:49.524Z"
 }

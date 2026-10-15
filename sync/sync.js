@@ -288,7 +288,7 @@ function merge() {
     const d = L.readJson(path.join(EXPORT, j.id + '.json'), null);
     if (!d || !d.ok) { rep.failed.push(j.name + (d && d.error ? ' - ' + String(d.error).split('|')[0].trim() : '')); continue; }
     if (!d.types || !d.types.length) { rep.failed.push(j.name + ' - no types'); continue; }
-    const entry = { id: d.id, name: d.name, cat: d.cat, sub: d.sub, realPath: d.realPath, dims: d.dims, instanceParams: d.instanceParams, types: d.types.map(t => ({ name: t.name, params: t.params })) };
+    const entry = { id: d.id, name: j.name || d.name, cat: d.cat, sub: d.sub, realPath: j.realPath || d.realPath, dims: d.dims, instanceParams: d.instanceParams, types: d.types.map(t => ({ name: t.name, params: t.params })) };
     const at = fam.findIndex(x => x.id === entry.id);
     if (at >= 0) fam[at] = entry; else fam.push(entry);
     mesh[d.id] = d.types.map(t => t.mesh || null);

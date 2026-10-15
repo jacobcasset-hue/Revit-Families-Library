@@ -2232,7 +2232,19 @@
    "mtime": 1756085170215,
    "size": 626688,
    "syncedAt": 1792106514457
+  },
+  "notes/gh-roof vent calculator - roof pitch 22-5° (ncc 2025).rfa": {
+   "id": "nf278",
+   "mtime": 1782361048487,
+   "size": 684032,
+   "syncedAt": 1792107446629
+  },
+  "notes/gh-roof vent calculator - roof pitch 22-5° - version 1.rfa": {
+   "id": "nf279",
+   "mtime": 1756085027262,
+   "size": 630784,
+   "syncedAt": 1792107446629
   }
  },
- "lastSync": "2026-10-15T23:36:20.150Z"
+ "lastSync": "2026-10-15T23:37:26.629Z"
 }

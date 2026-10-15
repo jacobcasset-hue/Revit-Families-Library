@@ -295,10 +295,10 @@ def process_family(entry):
 
         result["ok"] = True
         result["sheetView"] = sheet_mode
-        result["name"] = entry["name"]
+        result["name"] = safe_u(entry["name"])   # names with non-ASCII characters (e.g. a degree sign) break json.dump in IronPython; sync.js keeps the real name
         result["cat"] = entry["cat"]
         result["sub"] = entry["sub"]
-        result["realPath"] = path
+        result["realPath"] = safe_u(path)
         result["dims"] = dims
         result["instanceParams"] = instance_params
         result["types"] = types_out

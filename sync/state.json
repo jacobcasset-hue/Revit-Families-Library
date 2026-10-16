@@ -1491,9 +1491,9 @@
   },
   "notes/gh-an-general notes.rfa": {
    "id": "nf152",
-   "mtime": 1789606706847,
-   "size": 704512,
-   "syncedAt": 1792106514457
+   "mtime": 1792108907473,
+   "size": 700416,
+   "syncedAt": 1792113703639
   },
   "notes/gh-ga-drafting checklist.rfa": {
    "id": "nf153",
@@ -2246,5 +2246,5 @@
    "syncedAt": 1792107446629
   }
  },
- "lastSync": "2026-10-15T23:37:26.629Z"
+ "lastSync": "2026-10-16T01:21:43.639Z"
 }

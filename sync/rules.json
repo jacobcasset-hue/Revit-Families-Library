@@ -3,6 +3,7 @@
  "specImagesRoot": "X:/Standard Inclusions/Specification Images",
  "revitUrl": "http://127.0.0.1:48884/revit_mcp",
  "meshVertCap": 25000,
+ "sharepointSyncRoot": "C:/Users/henry.casset/OneDrive - Glenvill Pty Ltd/Masters Drafting SharePoint - GH Revit Families Library",
  "ignore": [
   "/manufacturer's content/",
   "/superseded/"

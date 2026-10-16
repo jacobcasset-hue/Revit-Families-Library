@@ -19,3 +19,7 @@ node sync/sync.js baseline    mark everything as already synced
 ## Automatic weekly run
 
 Windows Task Scheduler task "Revit Families Library - weekly check" runs `weekly_check.ps1` every Monday at 8:00 (or when the PC next starts). It scans; if Revit is reachable it also runs the sync (extract, merge, push to GitHub); if more than 25 files are pending, or Revit is not reachable, it only shows a Windows notification. When it adds anything it creates `needs_publish.flag`: tell Claude "publish the library sync" to put the new data on the claude.ai page (the one step that cannot be automated, because pages cannot fetch from GitHub).
+
+## SharePoint copy
+
+`rules.json` > `sharepointSyncRoot` is the OneDrive-synced copy of the SharePoint `GH Revit Families Library`. After each sync, new families are copied into it (same sub-folders as X:) and OneDrive uploads them; changed families overwrite the SharePoint copy only when the X: file is newer; nothing is deleted. The Microsoft 365 connector is read-only, so this is the only way Claude can put files into SharePoint.

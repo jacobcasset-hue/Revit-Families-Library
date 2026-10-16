@@ -341,8 +341,32 @@ function merge() {
   };
   mkdirp(WORK);
   L.writeJson(SUMMARY, summary, true);
+  copyToSharePoint(run.jobs, rep);
   writeReport(rep);
   return rep;
+}
+
+// New families are copied into the OneDrive-synced copy of the SharePoint library, which uploads them.
+// Changed families only overwrite the SharePoint copy when the X: file is newer; nothing is ever deleted.
+function copyToSharePoint(jobs, rep) {
+  rep.sharepoint = [];
+  const root = L.rules.sharepointSyncRoot;
+  if (!root || !fs.existsSync(root)) { if (jobs.length) rep.sharepoint.push('SharePoint sync folder not found - copy the new files in by hand'); return; }
+  jobs.forEach(j => {
+    const src = L.norm(j.realPath);
+    if (!fs.existsSync(src)) return;
+    const dest = path.join(root, j.rel);
+    try {
+      if (fs.existsSync(dest)) {
+        if (j.kind !== 'changed' || fs.statSync(src).mtimeMs <= fs.statSync(dest).mtimeMs) return;
+      }
+      fs.mkdirSync(path.dirname(dest), { recursive: true });
+      fs.copyFileSync(src, dest);
+      rep.sharepoint.push((j.kind === 'new' ? 'added ' : 'updated ') + j.rel);
+    } catch (e) {
+      rep.sharepoint.push('FAILED ' + j.rel + ' (' + e.message + ')');
+    }
+  });
 }
 
 function writeReport(rep) {
@@ -352,6 +376,7 @@ function writeReport(rep) {
   sec('Updated (file changed)', rep.updated);
   sec('Moved / renamed folder', rep.moved);
   sec('Failed to extract', rep.failed);
+  sec('Copied to the SharePoint library folder (uploads by itself)', rep.sharepoint || []);
   sec('Product photo found automatically', rep.photoFrom);
   sec('No product photo (card shows the plan view) - drop a picture in sync/photos/<id>.jpg to fix', rep.noPhoto);
   fs.writeFileSync(REPORT, lines.join('\n'), 'utf8');

@@ -53,11 +53,22 @@ try {
         return
     }
 
+    # The task fires several times on Monday; once one run has completed, the later ones do nothing.
+    $okFile = Join-Path $PSScriptRoot 'last_ok.txt'
+    if (Test-Path $okFile) {
+        try { if (((Get-Date) - [datetime](Get-Content $okFile -Raw)).TotalDays -lt 5) { return } } catch { }
+    }
+
+    # At start-up the X: drive can take a few minutes to be mapped; wait for it (up to 20 minutes).
+    $libRoot = (Get-Content (Join-Path $PSScriptRoot 'rules.json') -Raw | ConvertFrom-Json).root
+    for ($i = 0; $i -lt 20 -and -not (Test-Path $libRoot); $i++) { Start-Sleep -Seconds 60 }
+
     $scan = (& $node $syncJs scan 2>&1 | Out-String).Trim()
     if ($scan -notmatch 'Pending work: (\d+) new, (\d+) changed, (\d+) moved') {
         Save-Report $scan
         if ($scan -match 'ERROR') { Show-Notice 'Revit Families Library: check failed' (($scan -split "`n" | Select-String 'ERROR' | Select-Object -First 1).ToString()) }
-        return   # up to date: stay quiet
+        else { Set-Content -Path $okFile -Value (Get-Date -Format 's') }   # up to date: stay quiet
+        return
     }
     $new = [int]$Matches[1]; $changed = [int]$Matches[2]; $moved = [int]$Matches[3]
     $total = $new + $changed + $moved
@@ -78,6 +89,7 @@ try {
 
     $run = (& $node $syncJs run 2>&1 | Out-String).Trim()
     Save-Report ("Automatic sync ($summary)`r`n`r`n" + $run)
+    if ($run -notmatch 'ERROR') { Set-Content -Path $okFile -Value (Get-Date -Format 's') }
 
     $sumFile = Join-Path $PSScriptRoot 'work\summary.json'
     if ((Test-Path $sumFile) -and ((Get-Item $sumFile).LastWriteTime -gt (Get-Date).AddMinutes(-30))) {

@@ -2259,6 +2259,11 @@
       var from = overrides[id] && overrides[id].meshFrom;
       if (from && MESH_DATA[from] && !MESH_DATA[id]) MESH_DATA[id] = MESH_DATA[from];
     });
+    // families the sync tool has marked as removed (their file is gone from the library folder)
+    for (var ri = FAMILIES.length - 1; ri >= 0; ri--) {
+      var ro = overrides && overrides[FAMILIES[ri].id];
+      if (ro && ro.removed) FAMILIES.splice(ri, 1);
+    }
     // make sure every category / sub-category in use has a place in the navigation
     FAMILIES.forEach(function (f) {
       var entry = STRUCTURE.filter(function (e) { return e[0] === f.cat; })[0];

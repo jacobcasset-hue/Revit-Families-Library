@@ -68,7 +68,7 @@ function libraryFamilies() {
   });
   const overrides = readJson(path.join(DATA, 'sync_overrides.json'), {});
   Object.keys(overrides).forEach(id => { if (byId[id]) Object.assign(byId[id], overrides[id]); });
-  return Object.keys(byId).map(id => byId[id]);
+  return Object.keys(byId).map(id => byId[id]).filter(f => !f.removed);
 }
 
 function nextId(fams) {

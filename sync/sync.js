@@ -171,10 +171,11 @@ async function extract(pending) {
   const moves = pending.moved || [];
   if (!jobs.length && !moves.length) { log('Nothing to extract.'); L.writeJson(RUN, { jobs: [], moves: [] }, true); return { jobs: [], moves: [] }; }
 
-  if (jobs.length) {
+  if (jobs.length && !flag('prepare')) {
     const status = await revitStatus();
     if (!status || status.revit_available === false) {
       throw new Error('Cannot reach Revit on ' + L.rules.revitUrl + '. Open Revit (pyRevit must be running) and try again. ' +
+        'Newer versions of the extension reject unpaired requests (HTTP 401): this tool cannot pair, so use "extract --prepare" and run the script through the paired MCP connection. ' +
         'If it still fails, check Task Manager for a second Revit.exe fighting over port 48884.');
     }
     log('Revit connected. Extracting ' + jobs.length + ' families...');
@@ -184,6 +185,17 @@ async function extract(pending) {
   const manifestPath = path.join(WORK, 'manifest.json');
   L.writeJson(manifestPath, jobs.map(j => ({ id: j.id, name: j.name, cat: j.cat, sub: j.sub, realPath: j.realPath })), true);
   const template = fs.readFileSync(path.join(__dirname, 'revit_extract.py'), 'utf8');
+  if (flag('prepare')) {
+    // Revit now only accepts reviewed requests from the paired MCP connection, so this tool cannot call it directly.
+    // Write the filled-in Revit script and the run record; Claude runs the script through the paired connection, then "merge".
+    const codeFile = path.join(WORK, 'extract_code.py');
+    const filled = template.split('__MANIFEST__').join(manifestPath).split('__OUTDIR__').join(EXPORT)
+      .split('__START__').join('0').split('__END__').join(String(jobs.length)).split('__VERTCAP__').join(String(process.env.SYNC_VERTCAP || L.rules.meshVertCap || 5000));
+    fs.writeFileSync(codeFile, filled, 'utf8');
+    L.writeJson(RUN, { jobs: jobs, moves: moves, extractedAt: new Date().toISOString() }, true);
+    log('Prepared ' + jobs.length + ' families. Run this file in Revit through the paired connection, then run "merge":\n  ' + codeFile);
+    return { jobs: jobs, moves: moves };
+  }
   const BATCH = 2;
   let failures = 0;
   for (let i = 0; i < jobs.length; i += BATCH) {

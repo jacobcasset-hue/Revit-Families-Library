@@ -22,3 +22,7 @@ Windows Task Scheduler task "Revit Families Library - weekly check" runs `weekly
 ## SharePoint copy
 
 `rules.json` > `sharepointSyncRoot` is the OneDrive-synced copy of the SharePoint `GH Revit Families Library`. After each sync, new families are copied into it (same sub-folders as X:) and OneDrive uploads them; changed families overwrite the SharePoint copy only when the X: file is newer; nothing is deleted. The Microsoft 365 connector is read-only, so this is the only way Claude can put files into SharePoint.
+
+## Revit pairing (newer extension versions)
+
+The pyRevit extension now rejects requests that are not paired and reviewed in Revit (HTTP 401, "Bridge is disconnected or pairing is invalid"). This tool cannot pair, so `run` and the Monday automatic sync only work when the old unauthenticated route is available. Otherwise: in Revit choose **MCP > Bridge > Connect**, run `node sync/sync.js extract --prepare`, run the generated `sync/work/extract_code.py` through the paired MCP connection (Claude does this), then `node sync/sync.js merge` and `push`.

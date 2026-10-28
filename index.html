@@ -667,6 +667,26 @@
   @keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.16); } 100% { transform: scale(1); } }
   #detailCol.is-entering .identity, #detailCol.is-entering .tabs, #detailCol.is-entering .viewport { animation: enter 260ms cubic-bezier(0.16, 1, 0.3, 1) both; }
   .star-btn.is-pop, .shortlist-pill.is-bump { animation: pop 260ms cubic-bezier(0.16, 1, 0.3, 1); }
+  /* opening a family: the card thumbnail morphs into the preview; the rest of the page only cross-fades briefly */
+  ::view-transition-group(family-preview) { animation-duration: 340ms; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  ::view-transition-old(family-preview), ::view-transition-new(family-preview) { animation-duration: 340ms; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 120ms; }
+
+  /* ---------- Home tiles: brand logos at full strength, category tiles show real families ---------- */
+  .brand-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .brand-tile { padding: 22px 20px 18px; gap: 14px; }
+  .brand-tile .category-tile-logo { height: 44px; }
+  .brand-tile .category-tile-count { font-size: 12px; }
+  .category-tiles.has-strips { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .category-tile.has-strip { gap: 12px; padding: 14px; }
+  .category-tile.has-strip .category-tile-name { font-size: 16px; font-weight: 600; letter-spacing: -0.005em; }
+  .tile-strip { display: flex; gap: 6px; width: 100%; }
+  .tile-strip .t {
+    flex: 1 1 0; min-width: 0; aspect-ratio: 1; border: 1px solid var(--border-3); border-radius: 6px;
+    background-color: var(--thumb-bg); display: flex; align-items: center; justify-content: center; padding: 3px;
+  }
+  .tile-strip .t.is-empty { background-image: repeating-linear-gradient(135deg, var(--hatch) 0 1px, transparent 1px 7px); }
+  .tile-strip .t img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
   /* ---------- Narrow screens: stack everything, keep the dashboard and sidebar usable ---------- */
   @media (max-width: 859px) {
@@ -764,6 +784,7 @@
     :root:not([data-theme="light"]) .category-tile-logo { background: var(--thumb-bg); border-radius: 6px; padding: 4px 10px; }
     :root:not([data-theme="light"]) .brand-banner-logo { height: 42px; }
     :root:not([data-theme="light"]) .category-tile-logo { height: 40px; }
+    :root:not([data-theme="light"]) .brand-tile .category-tile-logo { height: 52px; }
   }
   :root[data-theme="dark"] {
     color-scheme: dark;
@@ -781,6 +802,7 @@
   :root[data-theme="dark"] .category-tile-logo { background: var(--thumb-bg); border-radius: 6px; padding: 4px 10px; }
   :root[data-theme="dark"] .brand-banner-logo { height: 42px; }
   :root[data-theme="dark"] .category-tile-logo { height: 40px; }
+    :root[data-theme="dark"] .brand-tile .category-tile-logo { height: 52px; }
 </style>
 
 <div class="app">
@@ -1436,6 +1458,11 @@
     setTimeout(function () { el.classList.remove(cls); }, 300);
   }
 
+  function clearPreviewName() {
+    var vp = document.querySelector("#detailCol .viewport");
+    if (vp) vp.style.viewTransitionName = "";
+  }
+
   function prefersReducedMotion() {
     return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }
@@ -1636,14 +1663,14 @@
     if (brands.length > 0) {
       html += '<div class="dashboard-section">';
       html += '<div class="dashboard-section-title" role="heading" aria-level="2">Browse by brand</div>';
-      html += '<div class="category-tiles">';
+      html += '<div class="brand-tiles">';
       brands.forEach(function (brand) {
         var count = FAMILIES.filter(function (f) { return f.sub && f.sub.indexOf(brand + " - ") === 0; }).length;
         var logo = BRAND_LOGOS[brand];
         var titleHtml = logo
           ? '<div class="category-tile-logo">' + logo + '</div>'
           : '<div class="category-tile-name">' + escapeHtml(brandTitle(brand)) + '</div>';
-        html += '<button class="category-tile" data-action="select-brand" data-brand="' + escapeHtml(brand) + '">' +
+        html += '<button class="category-tile brand-tile" data-action="select-brand" data-brand="' + escapeHtml(brand) + '">' +
           titleHtml +
           '<div class="category-tile-count mono">' + count + (count === 1 ? " family" : " families") + '</div>' +
           '</button>';
@@ -1653,11 +1680,25 @@
 
     html += '<div class="dashboard-section">';
     html += '<div class="dashboard-section-title" role="heading" aria-level="2">Browse by category</div>';
-    html += '<div class="category-tiles">';
+    html += '<div class="category-tiles has-strips">';
     STRUCTURE.forEach(function (entry) {
       var name = entry[0];
-      var count = FAMILIES.filter(function (f) { return f.cat === name; }).length;
-      html += '<button class="category-tile" data-action="select-cat-flat" data-cat="' + escapeHtml(name) + '">' +
+      var inCat = FAMILIES.filter(function (f) { return f.cat === name; });
+      var count = inCat.length;
+      // three real thumbnails (photo first, then plan view) so a tile shows what is inside
+      var pics = [];
+      inCat.forEach(function (f) {
+        var im = FAMILY_IMAGES[f.id];
+        var src = im && (im.photo || im.threeD || im.plan);
+        if (src) pics.push(src);
+      });
+      // a near-empty picture (a bare symbol) says little: prefer the ones with real detail, then fill up
+      var detailed = pics.filter(function (p) { return p.length > 9000; });
+      var chosen = detailed.concat(pics.filter(function (p) { return p.length <= 9000; })).slice(0, 3);
+      var strip = chosen.map(function (p) { return '<span class="t"><img src="' + p + '" alt="" loading="lazy" /></span>'; }).join("");
+      for (var si = chosen.length; si < 3; si++) strip += '<span class="t is-empty"></span>';
+      html += '<button class="category-tile has-strip" data-action="select-cat-flat" data-cat="' + escapeHtml(name) + '">' +
+        '<div class="tile-strip" aria-hidden="true">' + strip + '</div>' +
         '<div class="category-tile-name">' + escapeHtml(name) + '</div>' +
         '<div class="category-tile-count mono">' + count + (count === 1 ? " family" : " families") + '</div>' +
         '</button>';
@@ -2492,16 +2533,51 @@
         break;
       }
       case "select-family": {
-        pickFamily(el.getAttribute("data-id"));
-        renderAll();
-        var detailEl = document.getElementById("detailCol");
-        if (state.selId && detailEl) {
-          detailEl.scrollTop = 0;
-          detailEl.classList.add("is-entering");   // one short arrival per family, not on every type click
-          setTimeout(function () { detailEl.classList.remove("is-entering"); }, 320);
-          if (isNarrow() && detailEl.scrollIntoView) detailEl.scrollIntoView({ block: "start" });   // instant: a smooth scroll across a long list feels slow
-          var heading = document.getElementById("famHeading");
-          if (heading) heading.focus({ preventScroll: true });
+        var famId = el.getAttribute("data-id");
+        var thumbEl = el.querySelector(".thumb");
+        var opening = state.selId !== famId;
+        var selectIt = function (morphing) {
+          pickFamily(famId);
+          renderAll();
+          var detailEl = document.getElementById("detailCol");
+          if (state.selId && detailEl) {
+            detailEl.scrollTop = 0;
+            if (!morphing) {   // the morph already carries the arrival
+              detailEl.classList.add("is-entering");   // one short arrival per family, not on every type click
+              setTimeout(function () { detailEl.classList.remove("is-entering"); }, 320);
+            }
+            if (isNarrow() && detailEl.scrollIntoView) detailEl.scrollIntoView({ block: "start" });   // instant: a smooth scroll across a long list feels slow
+            var heading = document.getElementById("famHeading");
+            if (heading) heading.focus({ preventScroll: true });
+          }
+        };
+        // The clicked card's thumbnail morphs into the preview (View Transitions: Chrome, Edge, Safari; other browsers just switch)
+        if (opening && thumbEl && !isNarrow() && !prefersReducedMotion() && document.startViewTransition) {
+          thumbEl.style.viewTransitionName = "family-preview";
+          var opened = false;
+          // the browser runs the update on its next rendered frame; if that is delayed (hidden tab), open the family anyway
+          var openOnce = function (morphing) {
+            if (opened) return;
+            opened = true;
+            selectIt(morphing);
+            if (morphing) {
+              var vp = document.querySelector("#detailCol .viewport");
+              if (vp) vp.style.viewTransitionName = "family-preview";
+            }
+          };
+          try {
+            var vt = document.startViewTransition(function () { openOnce(true); });
+            var quiet = function () {};
+            vt.ready.catch(quiet); vt.updateCallbackDone.catch(quiet);   // a skipped transition is not an error
+            vt.finished.then(clearPreviewName, clearPreviewName);
+            setTimeout(function () { if (!opened) { thumbEl.style.viewTransitionName = ""; openOnce(false); } }, 500);
+            setTimeout(function () { try { vt.skipTransition(); } catch (e) {} }, 1100);   // never leave a stuck overlay over the page (hidden tab, slow frame)
+          } catch (err) {
+            thumbEl.style.viewTransitionName = "";
+            openOnce(false);
+          }
+        } else {
+          selectIt(false);
         }
         break;
       }

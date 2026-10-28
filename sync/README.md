@@ -14,7 +14,6 @@ node sync/sync.js baseline    mark everything as already synced
 - Product photos: matched automatically from `X:\Standard Inclusions\Specification Images` by model code; otherwise drop `photos/<id>.jpg` (or `photos/<family file name>.jpg`).
 - `state.json` remembers what was synced (file time/size). `last_report.md` is the last run's report. `work/` is scratch.
 - Publishing the data to the Claude artifact is a Claude step - say "sync the library" (skill `sync-revit-library`).
-- `patch_html.js` is the one-time patch that taught `index.html` to load the shards.
 
 ## Automatic weekly run
 

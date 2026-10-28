@@ -18,6 +18,8 @@
     --float-bg: rgba(255, 255, 255, 0.92);
     --thumb-bg: #fbfbfc;
     --shine: rgba(255, 255, 255, 0.4);
+    --brand-mayde: #932454; --brand-aplace: #e85a35; --brand-glenvill: #202020;
+    --err: #8f2d2d; --err-text: #8f2d2d;
     --header-pill-1: #232322;
     --header-pill-2: #161615;
     --header-pill-border: rgba(255, 255, 255, 0.12);
@@ -633,6 +635,38 @@
     z-index: 20;
   }
   .toast.is-visible { opacity: 1; transform: translateY(0); }
+  .toast.is-error { background: var(--err); color: #fff; }
+
+  /* ---------- Type roles: Archivo for interface text; IBM Plex Mono stays for data (codes, counts, parameters) ---------- */
+  .btn, .tab, .detail-close, .nav-toggle-label, .sidebar-download-btn, .shortlist-pill, .toast {
+    font-family: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+  }
+  .toast { font-weight: 500; font-size: 12.5px; letter-spacing: 0.01em; }
+  .count, .card-meta, .shortlist-pill, .folder-label, .category-tile-count, .type-btn, .param-table .pc.value { font-variant-numeric: tabular-nums; }
+  .identity .fam-name { font-size: 21px; font-weight: 600; text-wrap: balance; }
+  .empty-note, .help-list li, .type-list-note, .viewport-loading { text-wrap: pretty; }
+  .dashboard-section-title { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; }
+
+  /* ---------- Colour: brand wayfinding on spec families, one clear error tone ---------- */
+  .card-brand { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-3); line-height: 1.3; min-width: 0; }
+  .card-brand-dot { flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--ink-4); }
+  .card-brand-dot.b-mayde { background: var(--brand-mayde); }
+  .card-brand-dot.b-aplace { background: var(--brand-aplace); }
+  .card-brand-dot.b-glenvill { background: var(--brand-glenvill); }
+  .viewport-loading.is-error { color: var(--err-text); }
+
+  /* ---------- Quieter: no hover glow, lighter dividers, calmer tracking ---------- */
+  .card:not(.is-selected):hover, .category-tile:hover { box-shadow: none; }
+  .detail-section { border-bottom-color: var(--border-light); }
+  .identity .breadcrumb, .section-cap, .section-toggle, .cap, .meta-cell .m-label { letter-spacing: 0.08em; }
+
+  /* ---------- Motion: feedback and continuity only ---------- */
+  @keyframes enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @keyframes enter-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.16); } 100% { transform: scale(1); } }
+  #detailCol.is-entering .identity, #detailCol.is-entering .tabs, #detailCol.is-entering .viewport { animation: enter 260ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .star-btn.is-pop, .shortlist-pill.is-bump { animation: pop 260ms cubic-bezier(0.16, 1, 0.3, 1); }
 
   /* ---------- Narrow screens: stack everything, keep the dashboard and sidebar usable ---------- */
   @media (max-width: 859px) {
@@ -669,6 +703,8 @@
   @media (prefers-reduced-motion: reduce) {
     .card, .category-tile, .star-btn, .toast, .section-chev, .plan-image-box img { transition: none; }
     .toast { transform: none; }
+    #detailCol.is-entering .identity, #detailCol.is-entering .tabs, #detailCol.is-entering .viewport { animation-name: enter-fade; }
+    .star-btn.is-pop, .shortlist-pill.is-bump { animation: none; }
   }
 
   /* ---------- Independent per-column scrolling (desktop widths only;
@@ -719,7 +755,7 @@
       --viewport: #17191b; --viewport-grid: #232629;
       --border-strong: #34383c; --border: #3b4045; --border-2: #32363a; --border-3: #2d3135;
       --border-light: #2a2e32; --border-light-2: #262a2d; --border-light-3: #232628;
-      --dim-line: #6b727a; --hatch: #2a2d31; --hatch-2: #2a2d31; --white: #26292d; --float-bg: rgba(33, 35, 38, 0.92); --shine: rgba(255, 255, 255, 0.035);
+      --dim-line: #6b727a; --hatch: #2a2d31; --hatch-2: #2a2d31; --white: #26292d; --float-bg: rgba(33, 35, 38, 0.92); --shine: rgba(255, 255, 255, 0.035); --brand-mayde: #d86a96; --brand-glenvill: #c9cdd2; --err: #b84a4a; --err-text: #e58a8a;
     }
     :root:not([data-theme="light"]) .nav-row:hover:not(.is-selected) { background: rgba(255, 255, 255, 0.06); }
     :root:not([data-theme="light"]) .card .thumb span { color: #565b62; }
@@ -737,7 +773,7 @@
     --viewport: #17191b; --viewport-grid: #232629;
     --border-strong: #34383c; --border: #3b4045; --border-2: #32363a; --border-3: #2d3135;
     --border-light: #2a2e32; --border-light-2: #262a2d; --border-light-3: #232628;
-    --dim-line: #6b727a; --hatch: #2a2d31; --hatch-2: #2a2d31; --white: #26292d; --float-bg: rgba(33, 35, 38, 0.92); --shine: rgba(255, 255, 255, 0.035);
+    --dim-line: #6b727a; --hatch: #2a2d31; --hatch-2: #2a2d31; --white: #26292d; --float-bg: rgba(33, 35, 38, 0.92); --shine: rgba(255, 255, 255, 0.035); --brand-mayde: #d86a96; --brand-glenvill: #c9cdd2; --err: #b84a4a; --err-text: #e58a8a;
   }
   :root[data-theme="dark"] .nav-row:hover:not(.is-selected) { background: rgba(255, 255, 255, 0.06); }
   :root[data-theme="dark"] .card .thumb span { color: #565b62; }
@@ -1163,6 +1199,7 @@
   var MESH_DATA = {};
   var meshesLoaded = false;
   var meshFailed = false;
+  var meshDone = 0;
   var meshPromise = null;
   var SYNC_OVERRIDES = {};
   var MESH_URLS = [
@@ -1280,8 +1317,16 @@
     if (meshesLoaded) return Promise.resolve();
     if (!meshPromise) {
       meshFailed = false;
+      meshDone = 0;
       // every file is required except the last one (the sync shard may not exist yet); a failed fetch must not count as "loaded"
-      meshPromise = Promise.all(MESH_URLS.map(function (u, i) { return i === MESH_URLS.length - 1 ? loadJsonOpt(u, {}) : loadJson(u); })).then(function (r) {
+      meshPromise = Promise.all(MESH_URLS.map(function (u, i) {
+        return (i === MESH_URLS.length - 1 ? loadJsonOpt(u, {}) : loadJson(u)).then(function (data) {
+          meshDone++;
+          var p = document.getElementById("meshProgress");
+          if (p) p.textContent = meshDone + " of " + MESH_URLS.length + " files";
+          return data;
+        });
+      })).then(function (r) {
         Object.assign(MESH_DATA, r[0]);
         Object.assign.apply(Object, [MESH_DATA_TYPE].concat(r.slice(1, 8)));
         applyMeshAliases();
@@ -1372,12 +1417,23 @@
   }
 
   var toastTimer = null;
-  function showToast(msg, ms) {
+  function showToast(msg, ms, kind) {
     var el = document.getElementById("toast");
     el.textContent = msg;
+    el.classList.toggle("is-error", kind === "error");
     el.classList.add("is-visible");
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function () { el.classList.remove("is-visible"); }, ms || 3200);
+  }
+
+  // one-shot feedback pulse on a control (restarts cleanly if pressed again)
+  function bump(el) {
+    if (!el) return;
+    var cls = el.classList.contains("star-btn") ? "is-pop" : "is-bump";
+    el.classList.remove(cls);
+    void el.offsetWidth;
+    el.classList.add(cls);
+    setTimeout(function () { el.classList.remove(cls); }, 300);
   }
 
   function prefersReducedMotion() {
@@ -1470,6 +1526,16 @@
   }
 
   /* ---------------- List column ---------------- */
+  // Spec families repeat across brands and levels with near-identical names, so say which one a card is
+  function brandLine(f) {
+    if (!f.sub) return "";
+    var i = f.sub.indexOf(" - ");
+    if (i === -1) return '<div class="card-brand"><span>' + escapeHtml(f.sub) + '</span></div>';
+    var brand = f.sub.slice(0, i), level = f.sub.slice(i + 3);
+    var cls = brand === "Mayde Home" ? "b-mayde" : brand === "Aplace" ? "b-aplace" : brand === "Glenvill Homes" ? "b-glenvill" : "";
+    return '<div class="card-brand"><span class="card-brand-dot ' + cls + '" aria-hidden="true"></span><span>' + escapeHtml(brandTitle(brand) + " · " + level) + '</span></div>';
+  }
+
   function buildCardHtml(f) {
     var model = findParamValue(f.types[0].params, "Model") || findParamValue(f.types[0].params, "Manufacturer") || f.cat;
     var thumbImg = FAMILY_IMAGES[f.id] && (FAMILY_IMAGES[f.id].photo || FAMILY_IMAGES[f.id].threeD || FAMILY_IMAGES[f.id].plan);
@@ -1478,7 +1544,7 @@
       : '<div class="thumb"><span class="mono">NO EXPORT FOUND</span></div>';
     return '<button class="card' + (f.id === state.selId ? " is-selected" : "") + '" data-action="select-family" data-id="' + f.id + '" title="' + escapeHtml(f.name) + '"' + (f.id === state.selId ? ' aria-current="true"' : "") + '>' +
       thumb +
-      '<div class="card-body"><div class="card-name">' + escapeHtml(cardTitle(f)) + '</div>' +
+      '<div class="card-body"><div class="card-name">' + escapeHtml(cardTitle(f)) + '</div>' + brandLine(f) +
       '<div class="card-meta mono">' + escapeHtml(model) + " \u00b7 " + f.types.length + (f.types.length === 1 ? " type" : " types") + '</div></div></button>';
   }
 
@@ -1696,7 +1762,7 @@
       grid.className = "grid";
       grid.innerHTML = "";
       if (qText) {
-        emptyNote.innerHTML = 'No families match “' + escapeHtml(qText) + '”. Try fewer words, a model code or a type code' +
+        emptyNote.innerHTML = 'No families match “' + escapeHtml(qText) + '”. Try fewer words, a model code or a type code such as WAAW-BTP 1218' +
           (state.cat !== "All" || state.brand ? ', or <button type="button" data-action="select-all">search all folders</button>' : "") +
           '. <button type="button" data-action="clear-search">Clear search</button> · <button type="button" data-action="request-family">Request this family</button>';
       } else {
@@ -1815,9 +1881,9 @@
     var hasOrbit = !meshPending && !meshError && state.view === "3D" && (typeMesh || MESH_DATA[sel.id]) && typeof THREE !== "undefined";
 
     if (meshPending) {
-      html += '<div class="viewport-loading mono" role="status">Loading 3D models…<br>This only happens the first time and can take a few seconds.</div>';
+      html += '<div class="viewport-loading mono" role="status">Loading 3D models… <span id="meshProgress">' + meshDone + ' of ' + MESH_URLS.length + ' files</span><br>This only happens the first time and can take a few seconds.</div>';
     } else if (meshError) {
-      html += '<div class="viewport-loading mono" role="alert">Couldn’t load the 3D models. Check your connection, then try again.<br><br>' +
+      html += '<div class="viewport-loading is-error mono" role="alert">Couldn’t load the 3D models. Check your connection, then try again.<br><br>' +
         '<button type="button" class="btn btn-secondary mono" data-action="retry-3d">Try again</button></div>';
     } else if (state.view === "Plan" && planSrc) {
       html += '<div class="plan-wrap">' +
@@ -1918,9 +1984,6 @@
       if (p[1] && String(p[1]).length > 150) return false;
       return true;
     });
-    var instanceOnly = sel.instanceParams.filter(function (n) {
-      return findParamValue(type.params, n) === null;
-    });
 
     html += '<div class="detail-section' + (isSectionCollapsed("params") ? " is-collapsed" : "") + '">' +
       sectionHeader("params", "Parameters for this type") + '<div class="section-body"><div class="param-table mono">' +
@@ -1930,11 +1993,6 @@
       html += '<div class="pc name">' + escapeHtml(p[0]) + '</div>' +
         '<div class="pc value">' + escapeHtml(p[1]) + '</div>' +
         '<div class="pc scope">' + scope + '</div>';
-    });
-    instanceOnly.forEach(function (n) {
-      html += '<div class="pc name">' + escapeHtml(n) + '</div>' +
-        '<div class="pc value">Varies per instance</div>' +
-        '<div class="pc scope">Instance</div>';
     });
     html += '</div></div></div>';
 
@@ -2101,6 +2159,7 @@
   function disposeOrbitViewer() {
     if (!orbitState) return;
     try {
+      orbitState.stop();
       orbitState.renderer.dispose();
       orbitState.geometry.dispose();
       orbitState.material.dispose();
@@ -2151,6 +2210,10 @@
     var distance = radius * 3.0;
     var azimuth = Math.PI / 4;
     var elevation = Math.PI / 5;
+    // arrival: the model settles into its default view. Skipped for reduced motion, stopped by any input.
+    var toDist = distance, toAz = azimuth, settleRaf = 0, settling = !prefersReducedMotion();
+    if (settling) { distance = Math.min(MAX_DIST, toDist * 1.28); azimuth = toAz - 0.7; }
+    function stopSettle() { settling = false; if (settleRaf) cancelAnimationFrame(settleRaf); settleRaf = 0; }
 
     function updateCamera() {
       var x = center.x + distance * Math.cos(elevation) * Math.sin(azimuth);
@@ -2169,11 +2232,24 @@
     container.innerHTML = "";
     container.appendChild(renderer.domElement);
     renderer.render(scene, camera);
+    if (settling) {
+      var t0 = performance.now();
+      var step = function (now) {
+        if (!settling) return;
+        var k = Math.min(1, (now - t0) / 650), ease = 1 - Math.pow(1 - k, 4);
+        distance = toDist * (1.28 - 0.28 * ease);
+        azimuth = toAz - 0.7 * (1 - ease);
+        updateCamera(); renderer.render(scene, camera); syncZoomRange();
+        if (k < 1) settleRaf = requestAnimationFrame(step); else settling = false;
+      };
+      settleRaf = requestAnimationFrame(step);
+    }
 
     var dragging = false;
     var lastX = 0, lastY = 0;
 
     function onPointerDown(e) {
+      stopSettle();
       dragging = true;
       lastX = e.clientX; lastY = e.clientY;
       container.setPointerCapture && e.pointerId != null && container.setPointerCapture(e.pointerId);
@@ -2190,6 +2266,7 @@
     function onPointerUp() { dragging = false; }
     function onWheel(e) {
       e.preventDefault();
+      stopSettle();
       distance = Math.max(MIN_DIST, Math.min(MAX_DIST, distance * (1 + e.deltaY * 0.001)));
       syncZoomRange();
       updateCamera();
@@ -2201,6 +2278,7 @@
       zoomRange.value = String(Math.round(v));
     }
     function setDistance(d) {
+      stopSettle();
       distance = Math.max(MIN_DIST, Math.min(MAX_DIST, d));
       syncZoomRange();
       updateCamera();
@@ -2236,6 +2314,7 @@
       gizmo.addEventListener("click", function (e) {
         var btn = e.target.closest("[data-nudge]");
         if (!btn) return;
+        stopSettle();
         var dir = btn.getAttribute("data-nudge");
         var azStep = Math.PI / 10, elStep = Math.PI / 14;
         if (dir === "left") azimuth -= azStep;
@@ -2256,7 +2335,7 @@
       });
     }
 
-    orbitState = { renderer: renderer, geometry: geometry, material: material, onResize: onResize, onPointerMove: onPointerMove, onPointerUp: onPointerUp };
+    orbitState = { stop: stopSettle, renderer: renderer, geometry: geometry, material: material, onResize: onResize, onPointerMove: onPointerMove, onPointerUp: onPointerUp };
   }
 
   function metaCell(label, value, isHtml) {
@@ -2408,6 +2487,7 @@
         state.shortlist = state.shortlist.filter(function (x) { return x !== rid; });
         saveShortlist();
         renderHeader(); renderNav(); renderDetail(); renderList();
+        bump(document.getElementById("shortlistPill"));
         showToast("Removed from shortlist.");
         break;
       }
@@ -2417,6 +2497,8 @@
         var detailEl = document.getElementById("detailCol");
         if (state.selId && detailEl) {
           detailEl.scrollTop = 0;
+          detailEl.classList.add("is-entering");   // one short arrival per family, not on every type click
+          setTimeout(function () { detailEl.classList.remove("is-entering"); }, 320);
           if (isNarrow() && detailEl.scrollIntoView) detailEl.scrollIntoView({ block: "start" });   // instant: a smooth scroll across a long list feels slow
           var heading = document.getElementById("famHeading");
           if (heading) heading.focus({ preventScroll: true });
@@ -2456,14 +2538,19 @@
         el.setAttribute("aria-pressed", starOn ? "true" : "false");
         el.setAttribute("title", starOn ? "Remove from shortlist" : "Add to shortlist");
         el.setAttribute("aria-label", starOn ? "Remove from shortlist" : "Add to shortlist");
-        showToast(starOn ? "Added to shortlist (" + state.shortlist.length + " now)." : "Removed from shortlist (" + state.shortlist.length + " left).");
+        var firstStar = false;
+        try { if (starOn && !window.localStorage.getItem("rfl-first-star")) { firstStar = true; window.localStorage.setItem("rfl-first-star", "1"); } } catch (e) {}
+        showToast(firstStar
+          ? "Added to your shortlist. Open it from Shortlist at the top, and Download all gets every .rfa at once."
+          : (starOn ? "Added to shortlist (" + state.shortlist.length + " now)." : "Removed from shortlist (" + state.shortlist.length + " left)."), firstStar ? 6500 : 0);
+        bump(el); bump(document.getElementById("shortlistPill"));
         break;
       }
       case "primary-action": {
         var s4 = currentFamily();
         var s4Url = spDownloadUrl(s4);
-        if (s4Url) { startDownloads([s4Url]); showToast("Downloading " + s4.name + ".rfa from SharePoint. If nothing arrives, sign in to SharePoint in this browser and try again.", 6500); }
-        else showToast("This family doesn't have a file in the library folder yet, so there is nothing to download.");
+        if (s4Url) { startDownloads([s4Url]); showToast("Downloading " + s4.name + ".rfa. In Revit use Insert > Load Family. Nothing arriving? Sign in to SharePoint in this browser and try again.", 7500); }
+        else showToast("This family doesn't have a file in the library folder yet, so there is nothing to download.", 5000, "error");
         break;
       }
       case "download-shortlist": {
@@ -2473,10 +2560,10 @@
           var u = f ? spDownloadUrl(f) : null;
           if (u) dlUrls.push(u); else dlSkipped++;
         });
-        if (dlUrls.length === 0) { showToast("None of the shortlisted families have a file to download yet."); break; }
+        if (dlUrls.length === 0) { showToast("None of the shortlisted families have a file to download yet.", 5000, "error"); break; }
         startDownloads(dlUrls);
         showToast("Downloading " + dlUrls.length + " file" + (dlUrls.length === 1 ? "" : "s") + " from SharePoint" +
-          (dlSkipped ? " (" + dlSkipped + " skipped, no file)" : "") + ". If your browser asks, allow multiple downloads.");
+          (dlSkipped ? " (" + dlSkipped + " skipped, no file)" : "") + ". If your browser asks, allow multiple downloads. In Revit use Insert > Load Family.", 8000);
         break;
       }
       case "report-issue": {

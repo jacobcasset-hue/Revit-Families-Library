@@ -906,7 +906,12 @@
     .dashboard { grid-template-columns: minmax(0, 1fr); }
     .dashboard > .dashboard-side { grid-column: 1; grid-row: auto; }
   }
-  .hero { margin: -14px 0 8px -14px; border-bottom: 1px solid var(--rule); }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 42%); margin: -14px 0 8px -14px; border-bottom: 1px solid var(--rule); }
+  .hero .brand-tiles { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 1fr; border-top: 0; border-right: 0; border-bottom: 0; margin: 28px 0 28px 0; border-left: 1px solid var(--rule); align-self: stretch; }
+  .hero .brand-tile { border-left: 0; border-right: 1px solid var(--rule); border-top: 0; border-bottom: 1px solid var(--rule); justify-content: center; }
+  .hero .brand-tile:first-child { border-top: 1px solid var(--rule); }
+  .hero .brand-tile .category-tile-logo { height: 40px; }
+  @media (max-width: 1100px) { .hero { grid-template-columns: minmax(0, 1fr); } .hero .brand-tiles { margin: 0 0 0 0; border-left: 0; grid-auto-rows: auto; } }
   .hero-main { display: flex; flex-direction: column; min-width: 0; padding: 28px 32px; }
   .eyebrow { margin: 0; font-size: 13px; color: var(--ink-3); }
   .display { margin: clamp(20px, 5vh, 48px) 0 0; max-width: 12ch; font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, min(4.6vw, 8vh), 84px); line-height: 0.92; text-transform: uppercase; letter-spacing: 0.015em; }
@@ -1863,6 +1868,23 @@
     return html + '</div></div>';
   }
 
+  // The brand tiles, stacked in the right half of the hero
+  function brandTilesHtml() {
+    var html = '<nav class="brand-tiles" aria-label="Browse by brand">';
+    getBrandList().forEach(function (brand) {
+      var count = FAMILIES.filter(function (f) { return f.sub && f.sub.indexOf(brand + " - ") === 0; }).length;
+      var logo = BRAND_LOGOS[brand];
+      var titleHtml = logo
+        ? '<div class="category-tile-logo">' + logo + '</div>'
+        : '<div class="category-tile-name">' + escapeHtml(brandTitle(brand)) + '</div>';
+      html += '<button class="category-tile brand-tile" data-action="select-brand" data-brand="' + escapeHtml(brand) + '">' +
+        titleHtml +
+        '<div class="category-tile-count mono">' + count + (count === 1 ? " family" : " families") + '</div>' +
+        '</button>';
+    });
+    return html + '</nav>';
+  }
+
   // Home hero, as on the hub: very large Caslon capitals over a short intro and three facts
   function heroHtml() {
     var brands = getBrandList().map(brandTitle).join(", ");
@@ -1872,30 +1894,11 @@
       '<p class="lede">Every Mayde, Glenvill Homes and Aplace family in one place, with plan views, 3D models and parameters. Download the .rfa straight from the Glenvill SharePoint library.</p>' +
       '<div class="hero-facts"><div><b>' + FAMILIES.length + ' families</b>' + STRUCTURE.length + ' categories</div>' +
       '<div><b>' + getBrandList().length + ' brands</b>' + escapeHtml(brands) + '</div>' +
-      '<div><b>' + (FAMILY_DATES.synced ? 'Synced ' + fmtDay(Date.parse(FAMILY_DATES.synced), true) : 'Live library') + '</b>With the Glenvill X: drive</div></div></div></section>';
+      '<div><b>' + (FAMILY_DATES.synced ? 'Synced ' + fmtDay(Date.parse(FAMILY_DATES.synced), true) : 'Live library') + '</b>With the Glenvill X: drive</div></div></div>' + brandTilesHtml() + '</section>';
   }
 
   function buildDashboardHtml() {
     var html = "";
-
-    var brands = getBrandList();
-    if (brands.length > 0) {
-      html += '<div class="dashboard-section">';
-      html += '<div class="dashboard-section-title" role="heading" aria-level="2">Browse by brand</div>';
-      html += '<div class="brand-tiles">';
-      brands.forEach(function (brand) {
-        var count = FAMILIES.filter(function (f) { return f.sub && f.sub.indexOf(brand + " - ") === 0; }).length;
-        var logo = BRAND_LOGOS[brand];
-        var titleHtml = logo
-          ? '<div class="category-tile-logo">' + logo + '</div>'
-          : '<div class="category-tile-name">' + escapeHtml(brandTitle(brand)) + '</div>';
-        html += '<button class="category-tile brand-tile" data-action="select-brand" data-brand="' + escapeHtml(brand) + '">' +
-          titleHtml +
-          '<div class="category-tile-count mono">' + count + (count === 1 ? " family" : " families") + '</div>' +
-          '</button>';
-      });
-      html += '</div></div>';
-    }
 
     html += '<div class="dashboard-section">';
     html += '<div class="dashboard-section-title" role="heading" aria-level="2">Browse by category</div>';

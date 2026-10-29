@@ -871,7 +871,15 @@
   :root[data-theme="dark"] nav.col-nav .nav-row:hover:not(.is-selected) { background: #201e1b; }
 
   /* Caslon capitals for headings only; Archivo for everything you read or click */
-  .brand .title { font-family: var(--font-display); font-weight: 400; font-size: 19px; letter-spacing: 0.06em; }
+  /* slimmer header: small wordmark over a small Caslon title */
+  header { padding: 10px 22px; gap: 12px; align-items: center; }
+  .brand { gap: 2px; }
+  .brand img { height: 17px; margin: 0 0 4px -1px; }
+  .brand .title { font-family: var(--font-display); font-weight: 400; font-size: 13px; letter-spacing: 0.08em; }
+  .nav-toggle { height: 28px; min-width: 28px; padding: 0 9px; font-size: 13px; }
+  .nav-toggle .nav-toggle-label { font-size: 10.5px; }
+  #searchInput { font-size: 12px; padding: 6px 12px; }
+  .shortlist-pill { min-height: 28px; padding: 5px 12px; }
   .dashboard-section-title { font-family: var(--font-display); font-weight: 400; font-size: 24px; letter-spacing: 0.015em; line-height: 1; padding-bottom: 10px; margin-bottom: 14px; border-bottom: 2px solid var(--ink); }
   .dashboard-section-header .dashboard-section-title { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
   .dashboard-section-header { border-bottom: 2px solid var(--ink); margin-bottom: 14px; padding-bottom: 10px; }

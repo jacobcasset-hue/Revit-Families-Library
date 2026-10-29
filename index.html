@@ -356,20 +356,23 @@
     align-items: center;
     justify-content: center;
     padding: 4px;
+    position: relative;
   }
-  .card .thumb:has(span) {
-    background-image: repeating-linear-gradient(135deg, var(--hatch) 0 1px, transparent 1px 7px);
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 6px;
+  /* no picture yet: a calm placeholder on the same plate, not a hatched "error" box */
+  .card .thumb.is-blank { flex-direction: column; gap: 5px; color: #a3a9b0; font-size: 11px; letter-spacing: 0.02em; }
+  .card .thumb.is-blank svg { width: 26px; height: 26px; }
+  .card .thumb.is-blank i { font-style: normal; }
+  .grid-compact .card .thumb.is-blank svg { width: 18px; height: 18px; }
+  .grid-compact .card .thumb.is-blank i { display: none; }
+  /* "New" for two weeks after a family is first added, "Updated" for two weeks after its file is re-saved */
+  .fresh-badge {
+    position: absolute; top: 5px; left: 5px; z-index: 1;
+    font-size: 10.5px; font-weight: 600; font-style: normal; letter-spacing: 0.03em; line-height: 1;
+    padding: 3px 6px; border-radius: 999px; pointer-events: none;
   }
-  .card .thumb span {
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: var(--ink-4);
-    background: #fbfbfc;
-    padding: 1px 3px;
-  }
+  .fresh-badge.is-new { background: var(--accent); color: var(--white); }
+  .fresh-badge.is-updated { background: var(--white); color: var(--ink-2); border: 1px solid var(--border); padding: 2px 5px; }
+  .grid-compact .fresh-badge { display: none; }
   .card .card-body { display: flex; flex-direction: column; gap: 3px; padding: 8px 2px 2px; }
   .card { min-width: 0; overflow: hidden; }
   .card-wrap { position: relative; display: flex; flex-direction: column; min-width: 0; }
@@ -603,6 +606,19 @@
   .viewport-loading { font-size: 12px; color: var(--ink-3); text-align: center; line-height: 1.6; }
   .help-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 12px; line-height: 1.5; color: var(--ink-2); }
   .help-list b { font-weight: 600; color: var(--ink); }
+  .whats-new { display: flex; flex-direction: column; gap: 2px; }
+  .whats-new-day { font-size: 11px; letter-spacing: 0.04em; color: var(--ink-4); padding: 8px 0 2px; font-variant-numeric: tabular-nums; }
+  .whats-new-day:first-child { padding-top: 0; }
+  .whats-new-row {
+    display: flex; align-items: baseline; gap: 6px; width: 100%; text-align: left; cursor: pointer;
+    font: inherit; font-size: 12px; line-height: 1.4; color: var(--ink-2);
+    background: none; border: none; border-radius: 6px; padding: 3px 4px; margin: 0 -4px;
+  }
+  .whats-new-row:hover { background: var(--panel-alt); color: var(--ink); }
+  .whats-new-row .what { flex: 0 0 auto; font-size: 10.5px; font-weight: 600; letter-spacing: 0.03em; color: var(--ink-3); }
+  .whats-new-row .what.is-new { color: var(--accent); }
+  .whats-new-row .name { min-width: 0; overflow-wrap: anywhere; }
+  .whats-new-foot { font-size: 11px; color: var(--ink-4); padding-top: 8px; font-variant-numeric: tabular-nums; }
   .help-keys { font-size: 11px; color: var(--ink-3); padding-top: 6px; line-height: 1.7; }
   .help-keys kbd { font: inherit; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 3px; padding: 0 5px; background: var(--white); color: var(--ink-2); }
 
@@ -778,7 +794,6 @@
       --dim-line: #6b727a; --hatch: #2a2d31; --hatch-2: #2a2d31; --white: #26292d; --float-bg: rgba(33, 35, 38, 0.92); --shine: rgba(255, 255, 255, 0.035); --brand-mayde: #d86a96; --brand-glenvill: #c9cdd2; --err: #b84a4a; --err-text: #e58a8a;
     }
     :root:not([data-theme="light"]) .nav-row:hover:not(.is-selected) { background: rgba(255, 255, 255, 0.06); }
-    :root:not([data-theme="light"]) .card .thumb span { color: #565b62; }
     /* brand logos keep their own colours, on a light plate */
     :root:not([data-theme="light"]) .brand-banner-logo,
     :root:not([data-theme="light"]) .category-tile-logo { background: var(--thumb-bg); border-radius: 6px; padding: 4px 10px; }
@@ -797,7 +812,6 @@
     --dim-line: #6b727a; --hatch: #2a2d31; --hatch-2: #2a2d31; --white: #26292d; --float-bg: rgba(33, 35, 38, 0.92); --shine: rgba(255, 255, 255, 0.035); --brand-mayde: #d86a96; --brand-glenvill: #c9cdd2; --err: #b84a4a; --err-text: #e58a8a;
   }
   :root[data-theme="dark"] .nav-row:hover:not(.is-selected) { background: rgba(255, 255, 255, 0.06); }
-  :root[data-theme="dark"] .card .thumb span { color: #565b62; }
   :root[data-theme="dark"] .brand-banner-logo,
   :root[data-theme="dark"] .category-tile-logo { background: var(--thumb-bg); border-radius: 6px; padding: 4px 10px; }
   :root[data-theme="dark"] .brand-banner-logo { height: 42px; }
@@ -1218,6 +1232,18 @@
   // project. Captured 2026-09-14. Lintel's real file wasn't found in the library on disk,
   // so it has no real images.
   var FAMILY_IMAGES = {};
+
+  // data/family_dates.json (written by the sync tool): when each .rfa was last saved, and when a family was first added
+  var FAMILY_DATES = { synced: null, updated: {}, added: {} };
+  var FRESH_DAYS = 14, NEWS_DAYS = 30;
+  function freshness(id) {
+    var now = Date.now(), win = FRESH_DAYS * 864e5, a = FAMILY_DATES.added[id], u = FAMILY_DATES.updated[id];
+    if (a && now - a < win) return "new";
+    return u && now - u < win ? "updated" : "";
+  }
+  function fmtDay(ms, withYear) {
+    return new Date(ms).toLocaleDateString("en-AU", withYear ? { day: "numeric", month: "short", year: "numeric" } : { day: "numeric", month: "short" });
+  }
   var MESH_DATA = {};
   var meshesLoaded = false;
   var meshFailed = false;
@@ -1563,12 +1589,64 @@
     return '<div class="card-brand"><span class="card-brand-dot ' + cls + '" aria-hidden="true"></span><span>' + escapeHtml(brandTitle(brand) + " · " + level) + '</span></div>';
   }
 
+  // "Added 16 Oct 2026 · File updated 27 Oct 2026" under the family name
+  function datesLine(id) {
+    var a = FAMILY_DATES.added[id], u = FAMILY_DATES.updated[id], parts = [];
+    if (a) parts.push("Added " + fmtDay(a, true));
+    if (u && !(a && fmtDay(a, true) === fmtDay(u, true))) parts.push("File updated " + fmtDay(u, true));
+    return parts.length ? '<div class="fam-meta mono">' + parts.join(" · ") + '</div>' : "";
+  }
+
+  var BLANK_ICON ='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>';
+
+  // Plan drawings of small things (a socket, the dot a column makes) sit in a big white box and read as empty.
+  // Once one has loaded, crop it to its linework with a margin, enlarge it, and remember the result per family.
+  var FIT_CACHE = {};
+  function fitPlanThumb(img) {
+    var id = img.getAttribute("data-fit");
+    img.removeAttribute("data-fit");
+    var W = img.naturalWidth, H = img.naturalHeight;
+    if (!W || !H) return;
+    var s = Math.min(1, 320 / Math.max(W, H)), cw = Math.max(1, Math.round(W * s)), ch = Math.max(1, Math.round(H * s));
+    var c = document.createElement("canvas");
+    c.width = cw; c.height = ch;
+    var x = c.getContext("2d", { willReadFrequently: true });
+    x.fillStyle = "#fff"; x.fillRect(0, 0, cw, ch); x.drawImage(img, 0, 0, cw, ch);
+    var p = x.getImageData(0, 0, cw, ch).data, x0 = cw, y0 = ch, x1 = -1, y1 = -1;
+    for (var yy = 0; yy < ch; yy++) for (var xx = 0; xx < cw; xx++) {
+      var o = (yy * cw + xx) * 4;
+      if (p[o] < 235 || p[o + 1] < 235 || p[o + 2] < 235) { if (xx < x0) x0 = xx; if (xx > x1) x1 = xx; if (yy < y0) y0 = yy; if (yy > y1) y1 = yy; }
+    }
+    // blank, or the drawing already fills most of the plate: leave it alone
+    if (x1 < 0 || Math.max((x1 - x0 + 1) / cw, (y1 - y0 + 1) / ch) >= 0.6) { FIT_CACHE[id] = ""; return; }
+    var pad = 0.2, minSide = 0.25;   // never magnify a mark beyond about 4x
+    var rw = Math.min(W, Math.max((x1 - x0 + 1) / cw * W * (1 + 2 * pad), W * minSide));
+    var rh = Math.min(H, Math.max((y1 - y0 + 1) / ch * H * (1 + 2 * pad), H * minSide));
+    var sx = Math.max(0, Math.min(W - rw, (x0 + x1 + 1) / 2 / cw * W - rw / 2));
+    var sy = Math.max(0, Math.min(H - rh, (y0 + y1 + 1) / 2 / ch * H - rh / 2));
+    var k = 240 / Math.max(rw, rh), out = document.createElement("canvas");
+    out.width = Math.max(1, Math.round(rw * k)); out.height = Math.max(1, Math.round(rh * k));
+    var ox = out.getContext("2d");
+    ox.fillStyle = "#fff"; ox.fillRect(0, 0, out.width, out.height);
+    ox.drawImage(img, sx, sy, rw, rh, 0, 0, out.width, out.height);
+    try { FIT_CACHE[id] = out.toDataURL("image/png"); img.src = FIT_CACHE[id]; } catch (e) { FIT_CACHE[id] = ""; }
+  }
+  document.addEventListener("load", function (e) {
+    var t = e.target;
+    if (t && t.tagName === "IMG" && t.getAttribute("data-fit")) fitPlanThumb(t);
+  }, true);
+
   function buildCardHtml(f) {
     var model = findParamValue(f.types[0].params, "Model") || findParamValue(f.types[0].params, "Manufacturer") || f.cat;
-    var thumbImg = FAMILY_IMAGES[f.id] && (FAMILY_IMAGES[f.id].photo || FAMILY_IMAGES[f.id].threeD || FAMILY_IMAGES[f.id].plan);
+    var im = FAMILY_IMAGES[f.id] || {};
+    var thumbImg = im.photo || im.threeD || im.plan;
+    var fresh = freshness(f.id);
+    var badge = fresh ? '<b class="fresh-badge is-' + fresh + '">' + (fresh === "new" ? "New" : "Updated") + '</b>' : "";
+    // a plan drawing of something small is trimmed to its linework once it has loaded (fitPlanThumb), then remembered
+    var fitted = FIT_CACHE[f.id], isPlan = thumbImg && !im.photo && !im.threeD;
     var thumb = thumbImg
-      ? '<div class="thumb"><img src="' + thumbImg + '" alt="" style="max-width:100%;max-height:100%;object-fit:contain" /></div>'
-      : '<div class="thumb"><span class="mono">NO EXPORT FOUND</span></div>';
+      ? '<div class="thumb">' + badge + '<img src="' + (fitted || thumbImg) + '" alt=""' + (isPlan && fitted === undefined ? ' data-fit="' + f.id + '"' : "") + ' style="max-width:100%;max-height:100%;object-fit:contain" /></div>'
+      : '<div class="thumb is-blank">' + badge + BLANK_ICON + '<i>No preview yet</i></div>';
     return '<button class="card' + (f.id === state.selId ? " is-selected" : "") + '" data-action="select-family" data-id="' + f.id + '" title="' + escapeHtml(f.name) + '"' + (f.id === state.selId ? ' aria-current="true"' : "") + '>' +
       thumb +
       '<div class="card-body"><div class="card-name">' + escapeHtml(cardTitle(f)) + '</div>' + brandLine(f) +
@@ -1656,6 +1734,35 @@
       '</svg>'
   };
 
+  // Latest additions and re-saved files from the sync, one row per day, kind and category (a single family links to itself)
+  function whatsNewHtml() {
+    var now = Date.now(), events = [];
+    FAMILIES.forEach(function (f) {
+      var a = FAMILY_DATES.added[f.id], u = FAMILY_DATES.updated[f.id];
+      if (a && now - a < NEWS_DAYS * 864e5) events.push({ t: a, kind: "new", f: f });
+      else if (u && now - u < NEWS_DAYS * 864e5) events.push({ t: u, kind: "updated", f: f });
+    });
+    events.sort(function (a, b) { return b.t - a.t; });
+    var groups = [], byKey = {};
+    events.forEach(function (e) {
+      var key = fmtDay(e.t) + "|" + e.kind + "|" + e.f.cat, g = byKey[key];
+      if (!g) { g = byKey[key] = { t: e.t, kind: e.kind, cat: e.f.cat, fams: [] }; groups.push(g); }
+      g.fams.push(e.f);
+    });
+    var html = '<div class="dashboard-section"><div class="dashboard-section-title" role="heading" aria-level="2">What’s new</div><div class="whats-new">', day = "";
+    groups.slice(0, 8).forEach(function (g) {
+      var d = fmtDay(g.t);
+      if (d !== day) { day = d; html += '<div class="whats-new-day">' + d + '</div>'; }
+      var one = g.fams.length === 1;
+      html += '<button class="whats-new-row" ' + (one ? 'data-action="select-family" data-id="' + g.fams[0].id : 'data-action="select-cat-flat" data-cat="' + escapeHtml(g.cat)) + '">' +
+        '<span class="what' + (g.kind === "new" ? " is-new" : "") + '">' + (g.kind === "new" ? "New" : "Updated") + '</span>' +
+        '<span class="name">' + (one ? escapeHtml(g.fams[0].name) : escapeHtml(g.cat) + " · " + g.fams.length + " families") + '</span></button>';
+    });
+    if (!groups.length) html += '<div class="empty-note mono">Nothing new in the last ' + NEWS_DAYS + ' days.</div>';
+    if (FAMILY_DATES.synced) html += '<div class="whats-new-foot mono">Library synced ' + fmtDay(Date.parse(FAMILY_DATES.synced), true) + ' · ' + FAMILIES.length + ' families</div>';
+    return html + '</div></div>';
+  }
+
   function buildDashboardHtml() {
     var html = "";
 
@@ -1738,7 +1845,7 @@
       html += '</div></div>';
     }
 
-    var side = '<div class="dashboard-section">' +
+    var side = whatsNewHtml() + '<div class="dashboard-section">' +
       '<div class="dashboard-section-title" role="heading" aria-level="2">Need something?</div>' +
       '<div class="dashboard-actions">' +
       '<button class="btn btn-secondary" data-action="request-family">Request a family</button>' +
@@ -1899,6 +2006,7 @@
       '<button type="button" class="detail-close mono" data-action="close-detail" aria-label="Close family details" title="Close (Esc)">Close</button></div>' +
       '<div class="fam-name" id="famHeading" role="heading" aria-level="1" tabindex="-1">' + escapeHtml(sel.name) + '</div>' +
       (metaParts.length ? '<div class="fam-meta mono">' + escapeHtml(metaParts.join(" \u00b7 ")) + '</div>' : "") +
+      datesLine(sel.id) +
       '<div class="identity-actions">' +
         '<button class="btn btn-primary mono" data-action="primary-action">Download .rfa</button>' +
         '<button class="btn btn-secondary mono" data-action="report-issue">Report an issue</button>' +
@@ -2777,7 +2885,9 @@
     loadJsonOpt("data/family_images_type_sync.json", {}),
     loadJsonOpt("data/photos_sync.json", {}),
     loadJsonOpt("data/sync_overrides.json", {}),
+    loadJsonOpt("data/family_dates.json", {}),
   ]).then(function (results) {
+    FAMILY_DATES = Object.assign(FAMILY_DATES, results[17]);
     Object.assign(FAMILY_IMAGES_TYPE, results[8]);
     Object.assign(FAMILY_IMAGES_TYPE, results[10]);
     Object.assign(FAMILY_IMAGES_TYPE, results[6]);

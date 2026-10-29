@@ -7,6 +7,7 @@
 //   node sync/sync.js push                 commit + push the data to GitHub
 //   node sync/sync.js run [--no-push] [--no-changed]   scan -> extract -> merge -> push in one go
 //   node sync/sync.js baseline             accept every file as already synced (clears the "changed" list)
+//   node sync/sync.js dates                rebuild data/family_dates.json (New / Updated badges) from state.json
 //
 // The page itself (index.html) never needs editing: it loads the *_sync.json shards at start-up.
 // Publishing the updated shards to the Claude artifact is done by Claude (see sync/README.md).
@@ -27,6 +28,7 @@ const SHARDS = {
   images: path.join(L.DATA, 'family_images_type_sync.json'),
   photos: path.join(L.DATA, 'photos_sync.json'),
   overrides: path.join(L.DATA, 'sync_overrides.json'),
+  dates: path.join(L.DATA, 'family_dates.json'),
 };
 const args = process.argv.slice(3);
 const flag = n => args.includes('--' + n);
@@ -295,6 +297,7 @@ function merge() {
   const rep = { added: [], updated: [], moved: [], failed: [], noPhoto: [], photoFrom: [] };
   const specFiles = walkImages(L.rules.specImagesRoot).map(f => ({ file: f, code: codeOf(f) }));
   const changedShards = new Set();
+  const newIds = [];
 
   for (const j of run.jobs) {
     const d = L.readJson(path.join(EXPORT, j.id + '.json'), null);
@@ -316,6 +319,7 @@ function merge() {
       return 'data:' + (/\.jpe?g$/i.test(file) ? 'image/jpeg' : 'image/png') + ';base64,' + fs.readFileSync(full).toString('base64');
     });
     if (j.kind === 'new') {
+      newIds.push(entry.id);
       const hit = findPhoto(entry, specFiles);
       const uri = hit ? toDataUri(hit.file) : null;
       if (uri) { photos[entry.id] = uri; rep.photoFrom.push(entry.name + '  <-  ' + hit.how); }
@@ -345,10 +349,11 @@ function merge() {
   L.writeJson(SHARDS.overrides, overrides);
   st.lastSync = new Date(now).toISOString();
   L.writeJson(L.STATE_FILE, st, true);
+  writeDates(st, newIds, now);
 
   const summary = {
     syncedAt: st.lastSync,
-    changedDataFiles: ['families_sync.json', 'mesh_type_sync.json', 'family_images_type_sync.json', 'photos_sync.json', 'sync_overrides.json'].map(f => 'data/' + f),
+    changedDataFiles: ['families_sync.json', 'mesh_type_sync.json', 'family_images_type_sync.json', 'photos_sync.json', 'sync_overrides.json', 'family_dates.json'].map(f => 'data/' + f),
     added: rep.added.length, updated: rep.updated.length, moved: rep.moved.length, failed: rep.failed.length,
   };
   mkdirp(WORK);
@@ -356,6 +361,17 @@ function merge() {
   copyToSharePoint(run.jobs, rep);
   writeReport(rep);
   return rep;
+}
+
+// What the page shows as "Updated 27 Oct" / "New": when each .rfa was last saved, and when the sync first added it.
+// Families that were already in the library before this file existed have no "added" date and never count as new.
+function writeDates(st, newIds, now) {
+  const prev = L.readJson(SHARDS.dates, {});
+  const added = Object.assign({}, prev.added);
+  newIds.forEach(id => { added[id] = now; });
+  const updated = {};
+  Object.values(st.files).forEach(e => { updated[e.id] = Math.max(updated[e.id] || 0, e.mtime); });
+  L.writeJson(SHARDS.dates, { synced: st.lastSync, updated: updated, added: added });
 }
 
 // New families are copied into the OneDrive-synced copy of the SharePoint library, which uploads them.
@@ -444,6 +460,7 @@ function baseline() {
     }
     else if (cmd === 'push') push();
     else if (cmd === 'baseline') baseline();
+    else if (cmd === 'dates') { const st = loadState(); writeDates(st, [], Date.now()); log('Wrote data/family_dates.json'); }
     else if (cmd === 'run') {
       const p = scan();
       if (!p.new.length && !p.changed.length && !p.moved.length) return;
@@ -452,7 +469,7 @@ function baseline() {
       if (!flag('no-push')) push();
       log('\nNext: publish the updated data files to the artifact (ask Claude: "publish the library sync").');
     } else {
-      log('Usage: node sync/sync.js scan | extract | merge | push | run [--no-push] [--no-changed] | baseline');
+      log('Usage: node sync/sync.js scan | extract | merge | push | run [--no-push] [--no-changed] | baseline | dates');
       process.exitCode = 1;
     }
   } catch (e) {

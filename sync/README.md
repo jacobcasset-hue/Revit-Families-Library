@@ -11,6 +11,7 @@ node sync/sync.js baseline    mark everything as already synced
 - **Revit must be open** (a project is not needed) and pyRevit running for `run`/`extract`; the tool talks to the same route the MCP server uses (`http://127.0.0.1:48884/revit_mcp/execute_code/`).
 - Category / sub-category come from the folder: top folder = category, `<Brand> Spec Families\<Level>` = "Brand - Level", Doors / Windows are flat. Edit `rules.json` to change this or to ignore folders (`ignore`).
 - Results go to `data/families_sync.json`, `mesh_type_sync.json`, `family_images_type_sync.json`, `photos_sync.json`, `sync_overrides.json`. `index.html` loads them at start-up, so it never needs re-editing.
+- `data/family_dates.json` is rewritten on every merge (`node sync/sync.js dates` rebuilds it without Revit): the page shows "New" for two weeks after a family is first added (`added`, stamped at merge) and "Updated" for two weeks after its file is re-saved (`updated`, the `.rfa` time from `state.json`), plus the "What's new" list on the home screen.
 - Product photos: matched automatically from `X:\Standard Inclusions\Specification Images` by model code; otherwise drop `photos/<id>.jpg` (or `photos/<family file name>.jpg`).
 - `state.json` remembers what was synced (file time/size). `last_report.md` is the last run's report. `work/` is scratch.
 - Publishing the data to the Claude artifact is a Claude step - say "sync the library" (skill `sync-revit-library`).

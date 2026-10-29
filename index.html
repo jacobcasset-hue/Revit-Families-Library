@@ -1,7 +1,7 @@
 <!doctype html><html lang="en-AU"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Revit Families Library</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Archivo:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
   :root {
@@ -817,6 +817,71 @@
   :root[data-theme="dark"] .brand-banner-logo { height: 42px; }
   :root[data-theme="dark"] .category-tile-logo { height: 40px; }
     :root[data-theme="dark"] .brand-tile .category-tile-logo { height: 52px; }
+
+  /* ---------- Glenvill Atelier: matches the GH Drafting Hub (warm paper and ink, square, flat, Caslon capitals) ----------
+     One layer on top of the rules above; values come from the hub's DESIGN.md / tokens.css. */
+  :root {
+    --font-display: "Libre Caslon Display", "Big Caslon", "Book Antiqua", Georgia, serif;
+    --accent: #111110; --accent-hover: #3b3833; --ink: #111110; --ink-2: #3b3833; --ink-3: #625d55; --ink-4: #625d55;
+    --bg: #fbfaf7; --panel: #fbfaf7; --panel-alt: #f3efe8; --panel-alt2: #f3efe8; --group-open: #ebe5da; --sidebar-bg: #f3efe8;
+    --viewport: #ffffff; --viewport-grid: #ebe5da; --thumb-bg: #ffffff; --white: #ffffff; --shine: transparent;
+    --border-strong: #111110; --border: #111110; --border-2: #c7c0b4; --border-3: #dcd5c8;
+    --border-light: #dcd5c8; --border-light-2: #dcd5c8; --border-light-3: #ebe5da;
+    --dim-line: #8a8378; --hatch: #dcd5c8; --hatch-2: #dcd5c8; --float-bg: rgba(251, 250, 247, 0.94);
+    --err: #8e2f2a; --err-text: #8e2f2a;
+    --header-bg-1: #161513; --header-bg-2: #161513; --header-pill-1: #161513; --header-pill-2: #161513; --header-pill-border: rgba(255, 255, 255, 0.3);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --accent: #f3efe8; --accent-hover: #ffffff; --ink: #f3efe8; --ink-2: #d9d3c8; --ink-3: #a8a196; --ink-4: #a8a196;
+      --bg: #1a1917; --panel: #22201d; --panel-alt: #1f1d1a; --panel-alt2: #1f1d1a; --group-open: #2a2824; --sidebar-bg: #1f1d1a;
+      --viewport: #1a1917; --viewport-grid: #2a2824; --white: #22201d; --shine: transparent;
+      --border-strong: #948d81; --border: #948d81; --border-2: #4a463f; --border-3: #34312c;
+      --border-light: #34312c; --border-light-2: #2e2b26; --border-light-3: #2a2824;
+      --hatch: #2a2824; --hatch-2: #2a2824; --float-bg: rgba(34, 32, 29, 0.92);
+      --err: #e39a93; --err-text: #e39a93;
+      --header-bg-1: #131210; --header-bg-2: #131210; --header-pill-1: #131210; --header-pill-2: #131210;
+    }
+  }
+  :root[data-theme="dark"] {
+    --accent: #f3efe8; --accent-hover: #ffffff; --ink: #f3efe8; --ink-2: #d9d3c8; --ink-3: #a8a196; --ink-4: #a8a196;
+    --bg: #1a1917; --panel: #22201d; --panel-alt: #1f1d1a; --panel-alt2: #1f1d1a; --group-open: #2a2824; --sidebar-bg: #1f1d1a;
+    --viewport: #1a1917; --viewport-grid: #2a2824; --white: #22201d; --shine: transparent;
+    --border-strong: #948d81; --border: #948d81; --border-2: #4a463f; --border-3: #34312c;
+    --border-light: #34312c; --border-light-2: #2e2b26; --border-light-3: #2a2824;
+    --hatch: #2a2824; --hatch-2: #2a2824; --float-bg: rgba(34, 32, 29, 0.92);
+    --err: #e39a93; --err-text: #e39a93;
+    --header-bg-1: #131210; --header-bg-2: #131210; --header-pill-1: #131210; --header-pill-2: #131210;
+  }
+
+  /* square corners, flat: separation comes from rules, not shadows */
+  *, *::before, *::after { border-radius: 0 !important; }
+  header { background: var(--header-bg-1); }
+  #searchInput, .shortlist-pill, .nav-toggle { background: var(--header-bg-1); }
+  .card:hover, .category-tile:hover { box-shadow: none; background: var(--group-open); border-color: var(--rule, var(--ink)); }
+  .card.is-selected { box-shadow: none; border: 2px solid var(--accent); }
+
+  /* the folder list is a near-black sidebar with white text, like the hub */
+  nav.col-nav {
+    --ink: #ffffff; --ink-2: #ede9e0; --ink-3: #bdb7ac; --ink-4: #bdb7ac; --accent: #ffffff; --white: #161513;
+    --border: #4a463f; --border-strong: #2f2c28; --border-light: #2f2c28; --border-light-2: #2f2c28; --group-open: #201e1b;
+    background: #161513; color: var(--ink-2);
+  }
+  nav.col-nav .nav-row:hover:not(.is-selected) { background: #201e1b; }
+  :root:not([data-theme="light"]) nav.col-nav .nav-row:hover:not(.is-selected),
+  :root[data-theme="dark"] nav.col-nav .nav-row:hover:not(.is-selected) { background: #201e1b; }
+
+  /* Caslon capitals for headings only; Archivo for everything you read or click */
+  .brand .title { font-family: var(--font-display); font-weight: 400; font-size: 19px; letter-spacing: 0.06em; }
+  .dashboard-section-title { font-family: var(--font-display); font-weight: 400; font-size: 24px; letter-spacing: 0.015em; line-height: 1; padding-bottom: 10px; margin-bottom: 14px; border-bottom: 2px solid var(--ink); }
+  .dashboard-section-header .dashboard-section-title { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+  .dashboard-section-header { border-bottom: 2px solid var(--ink); margin-bottom: 14px; padding-bottom: 10px; }
+  .identity .fam-name, .brand-banner-name { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.015em; line-height: 0.95; }
+  .identity .fam-name { font-size: 30px; }
+  .brand-banner-name { font-size: 34px; }
+
+  /* status tags like the hub's: New = ink fill, Updated = subtle blue */
+  .fresh-badge.is-updated { background: #bbc9df; color: #000; border: 0; padding: 3px 6px; }
 </style>
 
 <div class="app">

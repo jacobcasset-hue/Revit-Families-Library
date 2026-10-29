@@ -896,22 +896,15 @@
   :root:not([data-theme="light"]) .brand-banner-logo, :root:not([data-theme="light"]) .category-tile-logo,
   :root[data-theme="dark"] .brand-banner-logo, :root[data-theme="dark"] .category-tile-logo { background: none; padding: 0; }
 
-  /* home hero: very large Caslon capitals beside a black-and-white photograph, edge to edge */
+  /* home hero: very large Caslon capitals, edge to edge */
   .dashboard { flex-wrap: wrap; }
-  .hero { flex: 0 0 100%; display: grid; grid-template-columns: minmax(0, 54fr) minmax(0, 46fr); margin: -14px -14px 8px; border-bottom: 1px solid var(--rule); }
+  .hero { flex: 0 0 100%; margin: -14px -14px 8px; border-bottom: 1px solid var(--rule); }
   .hero-main { display: flex; flex-direction: column; min-width: 0; padding: 28px 32px; }
-  .hero-photo { position: relative; margin: 0; min-height: clamp(300px, 46vh, 440px); background: #c7c0b4; overflow: hidden; border-left: 1px solid var(--rule); }
-  .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 40%; filter: grayscale(1) contrast(1.06); }
-  .hero-photo figcaption { position: absolute; left: 0; bottom: 0; padding: 8px 12px; background: var(--bg); color: var(--ink-3); font-size: 12px; }
   .eyebrow { margin: 0; font-size: 13px; color: var(--ink-3); }
   .display { margin: clamp(20px, 5vh, 48px) 0 0; max-width: 12ch; font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, min(4.6vw, 8vh), 84px); line-height: 0.92; text-transform: uppercase; letter-spacing: 0.015em; }
   .lede { margin: 20px 0 0; max-width: 52ch; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
   .hero-facts { margin-top: auto; padding-top: 32px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; font-size: 12.5px; color: var(--ink-3); }
   .hero-facts b { display: block; color: var(--ink); font-weight: 600; font-size: 13px; }
-  @media (max-width: 1180px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-photo { order: -1; min-height: 0; height: clamp(200px, 32vh, 320px); border-left: 0; border-bottom: 1px solid var(--rule); }
-  }
   @media (max-width: 720px) { .hero-facts { grid-template-columns: 1fr; gap: 10px; } .hero-main { padding: 20px 16px; } }
 
   /* status tags like the hub's: New = ink fill, Updated = subtle blue */
@@ -1862,7 +1855,7 @@
     return html + '</div></div>';
   }
 
-  // Home hero, as on the hub: very large Caslon capitals beside a black-and-white photograph of a Glenvill home
+  // Home hero, as on the hub: very large Caslon capitals over a short intro and three facts
   function heroHtml() {
     var brands = getBrandList().map(brandTitle).join(", ");
     return '<section class="hero" aria-label="About this library">' +
@@ -1871,9 +1864,7 @@
       '<p class="lede">Every Mayde, Glenvill Homes and Aplace family in one place, with plan views, 3D models and parameters. Download the .rfa straight from the Glenvill SharePoint library.</p>' +
       '<div class="hero-facts"><div><b>' + FAMILIES.length + ' families</b>' + STRUCTURE.length + ' categories</div>' +
       '<div><b>' + getBrandList().length + ' brands</b>' + escapeHtml(brands) + '</div>' +
-      '<div><b>' + (FAMILY_DATES.synced ? 'Synced ' + fmtDay(Date.parse(FAMILY_DATES.synced), true) : 'Live library') + '</b>With the Glenvill X: drive</div></div></div>' +
-      '<figure class="hero-photo"><img src="data/hero-bentleigh.webp" alt="Bentleigh House by Glenvill Homes: rendered upper storey over a curved, fluted entry" decoding="async" />' +
-      '<figcaption>Bentleigh House, Glenvill Homes</figcaption></figure></section>';
+      '<div><b>' + (FAMILY_DATES.synced ? 'Synced ' + fmtDay(Date.parse(FAMILY_DATES.synced), true) : 'Live library') + '</b>With the Glenvill X: drive</div></div></div></section>';
   }
 
   function buildDashboardHtml() {

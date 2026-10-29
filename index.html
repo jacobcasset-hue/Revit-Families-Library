@@ -858,8 +858,7 @@
   *, *::before, *::after { border-radius: 0 !important; }
   header { background: var(--header-bg-1); }
   #searchInput, .shortlist-pill, .nav-toggle { background: var(--header-bg-1); }
-  .card:hover, .category-tile:hover { box-shadow: none; background: var(--group-open); border-color: var(--rule, var(--ink)); }
-  .card.is-selected { box-shadow: none; border: 2px solid var(--accent); }
+  .card:hover, .category-tile:hover { box-shadow: none; background: var(--group-open); }
 
   /* the folder list is a near-black sidebar with white text, like the hub */
   nav.col-nav {
@@ -879,6 +878,41 @@
   .identity .fam-name, .brand-banner-name { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.015em; line-height: 0.95; }
   .identity .fam-name { font-size: 30px; }
   .brand-banner-name { font-size: 34px; }
+
+  /* drawing-register grid: cells share thin ink rules; hover fills sand */
+  :root { --rule: #111110; --brand-mayde: #6a4f6a; --brand-aplace: #b8652a; --brand-glenvill: #111110; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rule: #948d81; --brand-mayde: #c09bc0; --brand-aplace: #e0925a; --brand-glenvill: #f3efe8; } }
+  :root[data-theme="dark"] { --rule: #948d81; --brand-mayde: #c09bc0; --brand-aplace: #e0925a; --brand-glenvill: #f3efe8; }
+  .grid, .grid.grid-compact, .category-tiles, .category-tiles.has-strips, .brand-tiles { gap: 0; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+  .card, .category-tile { border: 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--panel); }
+  .card { padding: 12px; }
+  .card.is-selected { border: 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); box-shadow: inset 0 0 0 2px var(--accent); }
+  .grid-compact .card { padding: 6px 8px; }
+  .category-tile.has-strip, .brand-tile { padding: 16px 18px; }
+  .brand-tiles { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .tile-no { font-family: var(--font-display); font-size: 40px; line-height: 0.8; color: var(--ink); }
+  /* brand logos follow the ink colour (the hub uses ink, taupe and blue only), so they need no light plate in dark mode */
+  .category-tile-logo, .brand-banner-logo { color: var(--ink); }
+  :root:not([data-theme="light"]) .brand-banner-logo, :root:not([data-theme="light"]) .category-tile-logo,
+  :root[data-theme="dark"] .brand-banner-logo, :root[data-theme="dark"] .category-tile-logo { background: none; padding: 0; }
+
+  /* home hero: very large Caslon capitals beside a black-and-white photograph, edge to edge */
+  .dashboard { flex-wrap: wrap; }
+  .hero { flex: 0 0 100%; display: grid; grid-template-columns: minmax(0, 54fr) minmax(0, 46fr); margin: -14px -14px 8px; border-bottom: 1px solid var(--rule); }
+  .hero-main { display: flex; flex-direction: column; min-width: 0; padding: 28px 32px; }
+  .hero-photo { position: relative; margin: 0; min-height: clamp(300px, 46vh, 440px); background: #c7c0b4; overflow: hidden; border-left: 1px solid var(--rule); }
+  .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 40%; filter: grayscale(1) contrast(1.06); }
+  .hero-photo figcaption { position: absolute; left: 0; bottom: 0; padding: 8px 12px; background: var(--bg); color: var(--ink-3); font-size: 12px; }
+  .eyebrow { margin: 0; font-size: 13px; color: var(--ink-3); }
+  .display { margin: clamp(20px, 5vh, 48px) 0 0; max-width: 12ch; font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, min(4.6vw, 8vh), 84px); line-height: 0.92; text-transform: uppercase; letter-spacing: 0.015em; }
+  .lede { margin: 20px 0 0; max-width: 52ch; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
+  .hero-facts { margin-top: auto; padding-top: 32px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; font-size: 12.5px; color: var(--ink-3); }
+  .hero-facts b { display: block; color: var(--ink); font-weight: 600; font-size: 13px; }
+  @media (max-width: 1180px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; min-height: 0; height: clamp(200px, 32vh, 320px); border-left: 0; border-bottom: 1px solid var(--rule); }
+  }
+  @media (max-width: 720px) { .hero-facts { grid-template-columns: 1fr; gap: 10px; } .hero-main { padding: 20px 16px; } }
 
   /* status tags like the hub's: New = ink fill, Updated = subtle blue */
   .fresh-badge.is-updated { background: #bbc9df; color: #000; border: 0; padding: 3px 6px; }
@@ -1739,63 +1773,63 @@
 
   var BRAND_LOGOS = {
     "Mayde Home": '<svg width="395" height="105" viewBox="0 0 395 105" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Mayde">' +
-      '<path d="M88.6604 42.6932V77.6661C88.6604 80.0054 86.7889 81.8769 84.4496 81.8769H73.8057C71.4663 81.8769 69.5949 80.0054 69.5949 77.6661V47.8397C69.5949 41.1726 64.7993 39.769 61.7582 39.769C58.717 39.769 53.8045 41.2896 53.8045 47.8397V77.6661C53.8045 80.0054 51.933 81.8769 49.5937 81.8769H38.9497C36.7274 81.8769 34.8559 80.0054 34.8559 77.6661V47.8397C34.8559 41.1726 30.0603 39.769 26.9022 39.769C23.7441 39.769 18.9485 41.2896 18.9485 47.8397V77.6661C18.9485 80.0054 17.0771 81.8769 14.8547 81.8769H4.21078C1.87146 81.8769 0 80.0054 0 77.6661V26.7858C0 24.4464 1.87146 22.575 4.21078 22.575H15.9074C17.5449 22.575 18.9485 23.9786 18.9485 25.7331V27.1367C21.9896 23.7446 26.6683 21.1714 33.6863 21.1714C41.8739 21.1714 47.2543 24.2125 50.4124 29.1251C53.8044 24.6804 59.3019 21.1714 67.3725 21.1714C81.9933 21.1714 88.6604 30.7626 88.6604 42.6932Z" fill="#932454"/>' +
-      '<path d="M146.325 22.575H158.022C160.361 22.575 162.233 24.4464 162.233 26.7858V77.6661C162.233 80.0054 160.361 81.8769 158.022 81.8769H146.325C144.571 81.8769 143.167 80.4732 143.167 78.7188V76.0285C139.658 80.3563 134.395 83.2804 126.441 83.2804C107.96 83.2804 98.0181 67.7239 98.0181 52.2844C98.0181 36.8449 107.96 21.1714 126.441 21.1714C134.395 21.1714 139.658 24.0955 143.167 28.4233V25.7331C143.167 23.9786 144.571 22.575 146.325 22.575ZM142.582 52.2844C142.582 44.3307 136.968 39.5351 129.833 39.5351C121.996 39.5351 117.201 44.9155 117.201 52.2844C117.201 59.6533 121.996 64.9168 129.833 64.9168C136.968 64.9168 142.582 60.1211 142.582 52.2844Z" fill="#932454"/>' +
-      '<path d="M215.336 21.2385H227.266C229.489 21.2385 231.009 24.7969 230.191 26.9023C225.735 38.0427 211.965 73.3639 208.318 81.8764C203.639 92.9882 195.709 104.451 182.024 104.451C180.269 104.451 178.749 104.334 177.345 104.217C175.825 103.983 174.655 102.696 174.655 101.059V91.2337C174.655 89.5962 176.059 88.1926 177.696 88.0756C180.722 88.0132 185.398 87.0723 187.168 85.2684C190.068 82.3131 190.809 77.8554 189.203 74.0371C184.789 63.5517 173.639 35.9607 169.251 25.5663C168.315 23.5779 169.836 21.2385 172.175 21.2385H183.872C186.094 21.2385 188.083 22.6421 188.784 24.7475L199.545 56.1439L210.423 24.7475C211.125 22.6421 213.113 21.2385 215.336 21.2385Z" fill="#932454"/>' +
-      '<path d="M282.943 0H293.587C295.926 0 297.797 1.87146 297.797 4.21079V77.6656C297.797 80.0049 295.926 81.8764 293.587 81.8764H281.89C280.136 81.8764 278.732 80.4727 278.732 78.7183V76.028C275.34 80.3558 270.076 83.2799 262.006 83.2799C243.642 83.2799 233.583 67.7234 233.583 52.2839C233.583 36.8444 243.642 21.1709 262.006 21.1709C270.076 21.1709 275.34 24.095 278.732 28.4228V4.21079C278.732 1.87146 280.603 0 282.943 0ZM278.147 52.2839C278.147 44.3302 272.65 39.5346 265.515 39.5346C257.561 39.5346 252.765 44.915 252.765 52.2839C252.765 59.6528 257.561 64.9163 265.515 64.9163C272.65 64.9163 278.147 60.1206 278.147 52.2839Z" fill="#932454"/>' +
-      '<path d="M368.562 53.805C368.562 56.1443 366.691 58.0157 364.468 58.0157H325.518C327.507 64.9167 333.238 68.0748 340.49 68.0748C345.169 68.0748 348.795 66.3203 351.017 64.4489C352.07 63.5131 353.473 63.3962 354.643 64.098L362.948 69.0106C364.585 70.0633 364.936 72.2856 363.766 73.8062C358.62 79.5375 350.432 83.2804 340.49 83.2804C320.372 83.2804 307.155 70.6481 307.155 52.2844C307.155 33.9207 320.723 21.1714 337.683 21.1714C354.643 21.1714 368.913 31.6983 368.562 53.805ZM351.251 46.5531C349.73 39.5351 344.935 36.377 338.385 36.377C332.303 36.377 327.39 40.0029 325.635 46.5531H351.251Z" fill="#932454"/>' +
-      '<path d="M394.998 72.5636C394.998 78.4119 390.202 83.0905 384.471 83.0905C378.739 83.0905 373.944 78.4119 373.944 72.5636C373.944 66.7153 378.622 62.0366 384.471 62.0366C390.319 62.0366 394.998 66.8322 394.998 72.5636Z" fill="#FF855C"/>' +
+      '<path d="M88.6604 42.6932V77.6661C88.6604 80.0054 86.7889 81.8769 84.4496 81.8769H73.8057C71.4663 81.8769 69.5949 80.0054 69.5949 77.6661V47.8397C69.5949 41.1726 64.7993 39.769 61.7582 39.769C58.717 39.769 53.8045 41.2896 53.8045 47.8397V77.6661C53.8045 80.0054 51.933 81.8769 49.5937 81.8769H38.9497C36.7274 81.8769 34.8559 80.0054 34.8559 77.6661V47.8397C34.8559 41.1726 30.0603 39.769 26.9022 39.769C23.7441 39.769 18.9485 41.2896 18.9485 47.8397V77.6661C18.9485 80.0054 17.0771 81.8769 14.8547 81.8769H4.21078C1.87146 81.8769 0 80.0054 0 77.6661V26.7858C0 24.4464 1.87146 22.575 4.21078 22.575H15.9074C17.5449 22.575 18.9485 23.9786 18.9485 25.7331V27.1367C21.9896 23.7446 26.6683 21.1714 33.6863 21.1714C41.8739 21.1714 47.2543 24.2125 50.4124 29.1251C53.8044 24.6804 59.3019 21.1714 67.3725 21.1714C81.9933 21.1714 88.6604 30.7626 88.6604 42.6932Z" fill="currentColor"/>' +
+      '<path d="M146.325 22.575H158.022C160.361 22.575 162.233 24.4464 162.233 26.7858V77.6661C162.233 80.0054 160.361 81.8769 158.022 81.8769H146.325C144.571 81.8769 143.167 80.4732 143.167 78.7188V76.0285C139.658 80.3563 134.395 83.2804 126.441 83.2804C107.96 83.2804 98.0181 67.7239 98.0181 52.2844C98.0181 36.8449 107.96 21.1714 126.441 21.1714C134.395 21.1714 139.658 24.0955 143.167 28.4233V25.7331C143.167 23.9786 144.571 22.575 146.325 22.575ZM142.582 52.2844C142.582 44.3307 136.968 39.5351 129.833 39.5351C121.996 39.5351 117.201 44.9155 117.201 52.2844C117.201 59.6533 121.996 64.9168 129.833 64.9168C136.968 64.9168 142.582 60.1211 142.582 52.2844Z" fill="currentColor"/>' +
+      '<path d="M215.336 21.2385H227.266C229.489 21.2385 231.009 24.7969 230.191 26.9023C225.735 38.0427 211.965 73.3639 208.318 81.8764C203.639 92.9882 195.709 104.451 182.024 104.451C180.269 104.451 178.749 104.334 177.345 104.217C175.825 103.983 174.655 102.696 174.655 101.059V91.2337C174.655 89.5962 176.059 88.1926 177.696 88.0756C180.722 88.0132 185.398 87.0723 187.168 85.2684C190.068 82.3131 190.809 77.8554 189.203 74.0371C184.789 63.5517 173.639 35.9607 169.251 25.5663C168.315 23.5779 169.836 21.2385 172.175 21.2385H183.872C186.094 21.2385 188.083 22.6421 188.784 24.7475L199.545 56.1439L210.423 24.7475C211.125 22.6421 213.113 21.2385 215.336 21.2385Z" fill="currentColor"/>' +
+      '<path d="M282.943 0H293.587C295.926 0 297.797 1.87146 297.797 4.21079V77.6656C297.797 80.0049 295.926 81.8764 293.587 81.8764H281.89C280.136 81.8764 278.732 80.4727 278.732 78.7183V76.028C275.34 80.3558 270.076 83.2799 262.006 83.2799C243.642 83.2799 233.583 67.7234 233.583 52.2839C233.583 36.8444 243.642 21.1709 262.006 21.1709C270.076 21.1709 275.34 24.095 278.732 28.4228V4.21079C278.732 1.87146 280.603 0 282.943 0ZM278.147 52.2839C278.147 44.3302 272.65 39.5346 265.515 39.5346C257.561 39.5346 252.765 44.915 252.765 52.2839C252.765 59.6528 257.561 64.9163 265.515 64.9163C272.65 64.9163 278.147 60.1206 278.147 52.2839Z" fill="currentColor"/>' +
+      '<path d="M368.562 53.805C368.562 56.1443 366.691 58.0157 364.468 58.0157H325.518C327.507 64.9167 333.238 68.0748 340.49 68.0748C345.169 68.0748 348.795 66.3203 351.017 64.4489C352.07 63.5131 353.473 63.3962 354.643 64.098L362.948 69.0106C364.585 70.0633 364.936 72.2856 363.766 73.8062C358.62 79.5375 350.432 83.2804 340.49 83.2804C320.372 83.2804 307.155 70.6481 307.155 52.2844C307.155 33.9207 320.723 21.1714 337.683 21.1714C354.643 21.1714 368.913 31.6983 368.562 53.805ZM351.251 46.5531C349.73 39.5351 344.935 36.377 338.385 36.377C332.303 36.377 327.39 40.0029 325.635 46.5531H351.251Z" fill="currentColor"/>' +
+      '<path d="M394.998 72.5636C394.998 78.4119 390.202 83.0905 384.471 83.0905C378.739 83.0905 373.944 78.4119 373.944 72.5636C373.944 66.7153 378.622 62.0366 384.471 62.0366C390.319 62.0366 394.998 66.8322 394.998 72.5636Z" fill="currentColor"/>' +
       '</svg>',
     "Glenvill Homes": '<svg xmlns="http://www.w3.org/2000/svg" width="331.67" height="31.04" viewBox="0 0 331.67 31.04" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Glenvill Homes">' +
-      '<defs><clipPath id="glenvill-logo-clip-path"><rect width="331.67" height="31.04" fill="#202020"/></clipPath></defs>' +
-      '<rect width="2.209" height="29.651" transform="translate(256.333 0.949)" fill="#202020"/>' +
-      '<path d="M240.554,19.486,229.528,2.26V30.307h2.223V9.7l8.813,14.039L249.377,9.7V30.307H251.6V2.26Z" transform="translate(29.835 0.294)" fill="#202020"/>' +
-      '<rect width="2.21" height="29.651" transform="translate(282.254 0.949)" fill="#202020"/>' +
-      '<path d="M240.564,14.043,232.335.84h-2.807V.925L240.553,18.1,251.6.925V.84h-2.806Z" transform="translate(29.835 0.109)" fill="#202020"/>' +
-      '<rect width="2.199" height="29.651" transform="translate(195.191 0.947)" fill="#202020"/>' +
-      '<path d="M175.41.838V14.956h17.821V.838H191.02v11.9H177.642V.838Z" transform="translate(22.801 0.109)" fill="#202020"/>' +
-      '<path d="M175.41,14.058V28.771h2.232V16.27H191.02v12.5h2.211V14.058Z" transform="translate(22.801 1.827)" fill="#202020"/>' +
-      '<rect width="2.22" height="29.651" transform="translate(216.852 0.947)" fill="#202020"/>' +
+      '<defs><clipPath id="glenvill-logo-clip-path"><rect width="331.67" height="31.04" fill="currentColor"/></clipPath></defs>' +
+      '<rect width="2.209" height="29.651" transform="translate(256.333 0.949)" fill="currentColor"/>' +
+      '<path d="M240.554,19.486,229.528,2.26V30.307h2.223V9.7l8.813,14.039L249.377,9.7V30.307H251.6V2.26Z" transform="translate(29.835 0.294)" fill="currentColor"/>' +
+      '<rect width="2.21" height="29.651" transform="translate(282.254 0.949)" fill="currentColor"/>' +
+      '<path d="M240.564,14.043,232.335.84h-2.807V.925L240.553,18.1,251.6.925V.84h-2.806Z" transform="translate(29.835 0.109)" fill="currentColor"/>' +
+      '<rect width="2.199" height="29.651" transform="translate(195.191 0.947)" fill="currentColor"/>' +
+      '<path d="M175.41.838V14.956h17.821V.838H191.02v11.9H177.642V.838Z" transform="translate(22.801 0.109)" fill="currentColor"/>' +
+      '<path d="M175.41,14.058V28.771h2.232V16.27H191.02v12.5h2.211V14.058Z" transform="translate(22.801 1.827)" fill="currentColor"/>' +
+      '<rect width="2.22" height="29.651" transform="translate(216.852 0.947)" fill="currentColor"/>' +
       '<g clip-path="url(#glenvill-logo-clip-path)">' +
-      '<path d="M284.031,18.116c4.883,1.277,6.319,2.272,6.319,4.261v.087c0,1.958-1.866,3.175-4.7,3.175-3.061,0-5.871-1.128-8.82-3.546l-1.472,1.8c1.35,1.068,5.266,3.883,9.154,3.964,3.3.069,5.663-.655,7.027-2.157a4.851,4.851,0,0,0,1.219-3.528v-.05c0-4.389-3.917-5.7-8.146-6.457-3.392-.609-5.727-1.836-6.939-3.644a4.758,4.758,0,0,1-.818-3.368c.362-4.058,3.054-6.114,8-6.114a14.551,14.551,0,0,1,8.981,3.292L295.1,3.964A16.64,16.64,0,0,0,284.5.368c-6.024,0-10.072,3.541-10.072,8.812v.086c0,5.486,3.1,7.155,9.6,8.85" transform="translate(35.672 0.048)" fill="#202020"/>' +
-      '<path d="M286.944,12.605c-4.919-1.286-6.641-1.844-6.641-4.189V8.329c0-1.8,1.724-3.06,4.236-3.06,2.348,0,4.849.934,7.635,2.857l1.32-1.953a13.918,13.918,0,0,0-8.517-3.159c-4.584,0-6.867,1.712-7.187,5.388l-.008.051a3.907,3.907,0,0,0,.705,2.787c1.088,1.607,3.237,2.709,6.389,3.275,6.172,1.109,8.812,3.275,8.821,7.242a5.652,5.652,0,0,1-1.429,4.148c-1.464,1.616-3.889,2.434-7.212,2.434-.146,0-.294,0-.443,0-4.135-.087-8.244-3.034-9.656-4.15l-1.469,1.8a18.326,18.326,0,0,0,12.153,4.561c6.526,0,10.478-3.476,10.478-9.07v-.086c0-5.278-3.511-7.273-9.177-8.779" transform="translate(35.549 0.392)" fill="#202020"/>' +
-      '<path d="M211.83,2.964a12.247,12.247,0,0,0-12.1,12.363,12.1,12.1,0,1,0,24.2,0,12.247,12.247,0,0,0-12.1-12.363m9.162,12.4c0,5.56-3.966,9.753-9.226,9.753-5.219,0-9.31-4.322-9.31-9.839v-.087c0-5.561,3.966-9.753,9.226-9.753,5.219,0,9.31,4.322,9.31,9.84Z" transform="translate(25.962 0.385)" fill="#202020"/>' +
-      '<path d="M212.163.278a15.467,15.467,0,0,0-11.115,4.509,15.284,15.284,0,0,0-4.383,10.837v.086A15,15,0,0,0,212.08,30.968,15.474,15.474,0,0,0,223.2,26.46a15.281,15.281,0,0,0,4.38-10.837v-.087A15,15,0,0,0,212.163.278m.065,28.341a13.065,13.065,0,1,1,12.918-12.943,12.945,12.945,0,0,1-12.918,12.943" transform="translate(25.563 0.036)" fill="#202020"/>' +
-      '<path d="M272.474,5.774V3.547H257.357V14.662h13.511v-2.2H259.592V5.774Z" transform="translate(33.452 0.461)" fill="#202020"/>' +
-      '<path d="M272.445,23.476H259.592V16.355h11.276V14.108H257.357v11.6h15.088Z" transform="translate(33.452 1.834)" fill="#202020"/>' +
-      '<rect width="15.088" height="2.236" transform="translate(290.809 28.361)" fill="#202020"/>' +
-      '<path d="M256.886,3.063h15.893l.046-2.225H254.653V30.49h2.233Z" transform="translate(33.101 0.109)" fill="#202020"/>' +
-      '<path d="M63.538,5.806V3.579H48.421V14.693H61.932V12.472H50.657V5.806Z" transform="translate(6.294 0.465)" fill="#202020"/>' +
-      '<path d="M63.509,23.465H50.658V16.387H61.933V14.14H48.421V25.7H63.509Z" transform="translate(6.294 1.838)" fill="#202020"/>' +
-      '<rect width="15.088" height="2.236" transform="translate(54.715 28.355)" fill="#202020"/>' +
-      '<path d="M47.95,3.057H63.89V.832H45.717V30.484H47.95Z" transform="translate(5.942 0.108)" fill="#202020"/>' +
-      '<path d="M29.588.832V27.426h14.93V25.192H31.829V.832Z" transform="translate(3.846 0.108)" fill="#202020"/>' +
-      '<path d="M29.118,28.245V.832H26.892V30.483H44.869V28.245Z" transform="translate(3.496 0.108)" fill="#202020"/>' +
-      '<path d="M125.24,28.287V.832h-2.215V30.483h17.967v-2.2Z" transform="translate(15.991 0.108)" fill="#202020"/>' +
-      '<path d="M125.712.832V27.465h14.932V25.233h-12.68V.832Z" transform="translate(16.341 0.108)" fill="#202020"/>' +
-      '<rect width="2.24" height="29.649" transform="translate(73.683 0.942)" fill="#202020"/>' +
-      '<path d="M67.915,2.422,85.226,26.737V.831H83V19.816L69.613.836h-1.7Z" transform="translate(8.828 0.108)" fill="#202020"/>' +
-      '<path d="M85.226,27.808,67.915,3.485V30.139h2.227V10.278L83.829,30.139h1.4Z" transform="translate(8.828 0.453)" fill="#202020"/>' +
-      '<rect width="2.236" height="29.652" transform="translate(94.875 0.939)" fill="#202020"/>' +
-      '<path d="M101.835,28.39,112.555.828h-2.418l-8.264,21.528L93.693.829H91.354Z" transform="translate(11.875 0.107)" fill="#202020"/>' +
-      '<path d="M112.179.828,101.017,29.534l.412,1.078H103.1L114.562.828Z" transform="translate(13.131 0.107)" fill="#202020"/>' +
-      '<path d="M90.849.829H88.487L99.816,30.612h2.363Z" transform="translate(11.502 0.107)" fill="#202020"/>' +
-      '<rect width="2.232" height="29.651" transform="translate(130.369 0.94)" fill="#202020"/>' +
-      '<rect width="2.232" height="29.651" transform="translate(133.425 0.94)" fill="#202020"/>' +
-      '<rect width="9.912" height="2.234" transform="translate(13.735 14.003)" fill="#202020"/>' +
-      '<path d="M24.468,16.731h0V24.8l-.121.121A12.75,12.75,0,0,1,15.3,28.679,13.065,13.065,0,0,1,2.361,15.519,13.064,13.064,0,0,1,15.3,2.361a12.794,12.794,0,0,1,10.148,5l1.863-1.451A15.146,15.146,0,0,0,15.3,0,15.427,15.427,0,0,0,0,15.519,15.427,15.427,0,0,0,15.3,31.04,15.094,15.094,0,0,0,26.012,26.6l.692-.811V14H24.468Z" fill="#202020"/>' +
-      '<path d="M24.433,7.5a11.981,11.981,0,0,0-9.5-4.682A12.243,12.243,0,0,0,2.815,15.153,12.243,12.243,0,0,0,14.932,27.492a11.932,11.932,0,0,0,8.349-3.4v-7.4H13.368v2.234h7.684v4.107a10.212,10.212,0,0,1-6.12,2.1,9.879,9.879,0,0,1-9.755-9.978,9.879,9.879,0,0,1,9.755-9.978,9.633,9.633,0,0,1,7.638,3.771Z" transform="translate(0.366 0.366)" fill="#202020"/>' +
-      '<path d="M143.779,28.287V.832h-2.215V30.483h17.971v-2.2Z" transform="translate(18.401 0.108)" fill="#202020"/>' +
-      '<path d="M144.25.832V27.465h14.936V25.233H146.5V.832Z" transform="translate(18.75 0.108)" fill="#202020"/>' +
+      '<path d="M284.031,18.116c4.883,1.277,6.319,2.272,6.319,4.261v.087c0,1.958-1.866,3.175-4.7,3.175-3.061,0-5.871-1.128-8.82-3.546l-1.472,1.8c1.35,1.068,5.266,3.883,9.154,3.964,3.3.069,5.663-.655,7.027-2.157a4.851,4.851,0,0,0,1.219-3.528v-.05c0-4.389-3.917-5.7-8.146-6.457-3.392-.609-5.727-1.836-6.939-3.644a4.758,4.758,0,0,1-.818-3.368c.362-4.058,3.054-6.114,8-6.114a14.551,14.551,0,0,1,8.981,3.292L295.1,3.964A16.64,16.64,0,0,0,284.5.368c-6.024,0-10.072,3.541-10.072,8.812v.086c0,5.486,3.1,7.155,9.6,8.85" transform="translate(35.672 0.048)" fill="currentColor"/>' +
+      '<path d="M286.944,12.605c-4.919-1.286-6.641-1.844-6.641-4.189V8.329c0-1.8,1.724-3.06,4.236-3.06,2.348,0,4.849.934,7.635,2.857l1.32-1.953a13.918,13.918,0,0,0-8.517-3.159c-4.584,0-6.867,1.712-7.187,5.388l-.008.051a3.907,3.907,0,0,0,.705,2.787c1.088,1.607,3.237,2.709,6.389,3.275,6.172,1.109,8.812,3.275,8.821,7.242a5.652,5.652,0,0,1-1.429,4.148c-1.464,1.616-3.889,2.434-7.212,2.434-.146,0-.294,0-.443,0-4.135-.087-8.244-3.034-9.656-4.15l-1.469,1.8a18.326,18.326,0,0,0,12.153,4.561c6.526,0,10.478-3.476,10.478-9.07v-.086c0-5.278-3.511-7.273-9.177-8.779" transform="translate(35.549 0.392)" fill="currentColor"/>' +
+      '<path d="M211.83,2.964a12.247,12.247,0,0,0-12.1,12.363,12.1,12.1,0,1,0,24.2,0,12.247,12.247,0,0,0-12.1-12.363m9.162,12.4c0,5.56-3.966,9.753-9.226,9.753-5.219,0-9.31-4.322-9.31-9.839v-.087c0-5.561,3.966-9.753,9.226-9.753,5.219,0,9.31,4.322,9.31,9.84Z" transform="translate(25.962 0.385)" fill="currentColor"/>' +
+      '<path d="M212.163.278a15.467,15.467,0,0,0-11.115,4.509,15.284,15.284,0,0,0-4.383,10.837v.086A15,15,0,0,0,212.08,30.968,15.474,15.474,0,0,0,223.2,26.46a15.281,15.281,0,0,0,4.38-10.837v-.087A15,15,0,0,0,212.163.278m.065,28.341a13.065,13.065,0,1,1,12.918-12.943,12.945,12.945,0,0,1-12.918,12.943" transform="translate(25.563 0.036)" fill="currentColor"/>' +
+      '<path d="M272.474,5.774V3.547H257.357V14.662h13.511v-2.2H259.592V5.774Z" transform="translate(33.452 0.461)" fill="currentColor"/>' +
+      '<path d="M272.445,23.476H259.592V16.355h11.276V14.108H257.357v11.6h15.088Z" transform="translate(33.452 1.834)" fill="currentColor"/>' +
+      '<rect width="15.088" height="2.236" transform="translate(290.809 28.361)" fill="currentColor"/>' +
+      '<path d="M256.886,3.063h15.893l.046-2.225H254.653V30.49h2.233Z" transform="translate(33.101 0.109)" fill="currentColor"/>' +
+      '<path d="M63.538,5.806V3.579H48.421V14.693H61.932V12.472H50.657V5.806Z" transform="translate(6.294 0.465)" fill="currentColor"/>' +
+      '<path d="M63.509,23.465H50.658V16.387H61.933V14.14H48.421V25.7H63.509Z" transform="translate(6.294 1.838)" fill="currentColor"/>' +
+      '<rect width="15.088" height="2.236" transform="translate(54.715 28.355)" fill="currentColor"/>' +
+      '<path d="M47.95,3.057H63.89V.832H45.717V30.484H47.95Z" transform="translate(5.942 0.108)" fill="currentColor"/>' +
+      '<path d="M29.588.832V27.426h14.93V25.192H31.829V.832Z" transform="translate(3.846 0.108)" fill="currentColor"/>' +
+      '<path d="M29.118,28.245V.832H26.892V30.483H44.869V28.245Z" transform="translate(3.496 0.108)" fill="currentColor"/>' +
+      '<path d="M125.24,28.287V.832h-2.215V30.483h17.967v-2.2Z" transform="translate(15.991 0.108)" fill="currentColor"/>' +
+      '<path d="M125.712.832V27.465h14.932V25.233h-12.68V.832Z" transform="translate(16.341 0.108)" fill="currentColor"/>' +
+      '<rect width="2.24" height="29.649" transform="translate(73.683 0.942)" fill="currentColor"/>' +
+      '<path d="M67.915,2.422,85.226,26.737V.831H83V19.816L69.613.836h-1.7Z" transform="translate(8.828 0.108)" fill="currentColor"/>' +
+      '<path d="M85.226,27.808,67.915,3.485V30.139h2.227V10.278L83.829,30.139h1.4Z" transform="translate(8.828 0.453)" fill="currentColor"/>' +
+      '<rect width="2.236" height="29.652" transform="translate(94.875 0.939)" fill="currentColor"/>' +
+      '<path d="M101.835,28.39,112.555.828h-2.418l-8.264,21.528L93.693.829H91.354Z" transform="translate(11.875 0.107)" fill="currentColor"/>' +
+      '<path d="M112.179.828,101.017,29.534l.412,1.078H103.1L114.562.828Z" transform="translate(13.131 0.107)" fill="currentColor"/>' +
+      '<path d="M90.849.829H88.487L99.816,30.612h2.363Z" transform="translate(11.502 0.107)" fill="currentColor"/>' +
+      '<rect width="2.232" height="29.651" transform="translate(130.369 0.94)" fill="currentColor"/>' +
+      '<rect width="2.232" height="29.651" transform="translate(133.425 0.94)" fill="currentColor"/>' +
+      '<rect width="9.912" height="2.234" transform="translate(13.735 14.003)" fill="currentColor"/>' +
+      '<path d="M24.468,16.731h0V24.8l-.121.121A12.75,12.75,0,0,1,15.3,28.679,13.065,13.065,0,0,1,2.361,15.519,13.064,13.064,0,0,1,15.3,2.361a12.794,12.794,0,0,1,10.148,5l1.863-1.451A15.146,15.146,0,0,0,15.3,0,15.427,15.427,0,0,0,0,15.519,15.427,15.427,0,0,0,15.3,31.04,15.094,15.094,0,0,0,26.012,26.6l.692-.811V14H24.468Z" fill="currentColor"/>' +
+      '<path d="M24.433,7.5a11.981,11.981,0,0,0-9.5-4.682A12.243,12.243,0,0,0,2.815,15.153,12.243,12.243,0,0,0,14.932,27.492a11.932,11.932,0,0,0,8.349-3.4v-7.4H13.368v2.234h7.684v4.107a10.212,10.212,0,0,1-6.12,2.1,9.879,9.879,0,0,1-9.755-9.978,9.879,9.879,0,0,1,9.755-9.978,9.633,9.633,0,0,1,7.638,3.771Z" transform="translate(0.366 0.366)" fill="currentColor"/>' +
+      '<path d="M143.779,28.287V.832h-2.215V30.483h17.971v-2.2Z" transform="translate(18.401 0.108)" fill="currentColor"/>' +
+      '<path d="M144.25.832V27.465h14.936V25.233H146.5V.832Z" transform="translate(18.75 0.108)" fill="currentColor"/>' +
       '</g>' +
       '</svg>',
     "Aplace": '<svg xmlns="http://www.w3.org/2000/svg" width="140" height="28" viewBox="0 0 140 28" fill="none" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Aplace">' +
-      '<path d="M12.3221 0C6.06469 0 2.03339 2.88022 0.973596 8.1133L0.917817 8.39726L6.99265 9.76638L7.05857 9.47227C7.68228 6.61741 9.33029 5.23308 12.104 5.23308C15.2936 5.23308 16.7134 6.73911 16.7134 10.1112V11.5412H9.46213C3.44815 11.5412 0 14.4974 0 19.6545C0 24.3652 2.92079 27.068 8.00681 27.068C12.3373 27.068 15.1364 23.9799 16.3179 20.4911H16.9872V26.5305H23.0823V10.0605C23.0823 3.29096 19.5632 0 12.3221 0ZM16.7185 16.6931C16.7185 19.7863 14.0715 21.9515 10.2735 21.9515C7.57579 21.9515 6.15089 20.8816 6.15089 18.8533C6.15089 16.47 8.48347 15.968 10.4357 15.968H16.7185V16.6931Z" fill="#E85A35"/>' +
-      '<path d="M36.7228 0.669347H25.9473V26.5305H32.154V18.9445H36.9409C43.3199 18.9445 46.8543 14.9335 46.8543 9.89315C46.8543 3.81325 43.5785 0.669347 36.7228 0.669347ZM36.2512 13.9042H32.154V5.92778H36.165C39.527 5.92778 40.7338 7.18027 40.7338 9.89315C40.7338 12.606 39.4408 13.9042 36.2512 13.9042Z" fill="#E85A35"/>' +
-      '<path d="M55.358 0.669347H49.1514V26.5356H66.4378V20.9729H55.358V0.669347Z" fill="#E85A35"/>' +
-      '<path d="M77.629 0.669347L68.5776 26.5305H74.9973L76.767 20.7954H86.7666L88.5313 26.5305H95.169L86.1632 0.669347H77.629ZM78.1868 16.2722L79.1756 13.0827C79.9109 10.7552 80.6411 8.34148 81.2902 6.01398H82.3246C82.928 8.34148 83.6177 10.7552 84.3479 13.0827L85.3417 16.2722H78.1868Z" fill="#E85A35"/>' +
-      '<path d="M107.293 21.7893C102.811 21.7893 100.869 18.6403 100.869 13.5137C100.869 8.98548 102.765 5.49676 107.334 5.49676C110.914 5.49676 112.592 7.47945 113.282 11.2724L119.189 10.1061C118.414 3.68648 114.321 0.0659205 107.511 0.0659205C99.6668 0.0659205 94.7075 5.02517 94.7075 13.5137C94.7075 22.0022 99.322 27.1339 107.339 27.1339C114.235 27.1339 118.505 23.3815 119.281 16.9162L113.419 15.9274C112.643 19.766 111.091 21.7893 107.298 21.7893H107.293Z" fill="#E85A35"/>' +
-      '<path d="M140 6.05962V0.669347H121.639V26.5356H140V21.1453H127.886V15.8869H140V11.0594H127.886V6.05962H140Z" fill="#E85A35"/>' +
+      '<path d="M12.3221 0C6.06469 0 2.03339 2.88022 0.973596 8.1133L0.917817 8.39726L6.99265 9.76638L7.05857 9.47227C7.68228 6.61741 9.33029 5.23308 12.104 5.23308C15.2936 5.23308 16.7134 6.73911 16.7134 10.1112V11.5412H9.46213C3.44815 11.5412 0 14.4974 0 19.6545C0 24.3652 2.92079 27.068 8.00681 27.068C12.3373 27.068 15.1364 23.9799 16.3179 20.4911H16.9872V26.5305H23.0823V10.0605C23.0823 3.29096 19.5632 0 12.3221 0ZM16.7185 16.6931C16.7185 19.7863 14.0715 21.9515 10.2735 21.9515C7.57579 21.9515 6.15089 20.8816 6.15089 18.8533C6.15089 16.47 8.48347 15.968 10.4357 15.968H16.7185V16.6931Z" fill="currentColor"/>' +
+      '<path d="M36.7228 0.669347H25.9473V26.5305H32.154V18.9445H36.9409C43.3199 18.9445 46.8543 14.9335 46.8543 9.89315C46.8543 3.81325 43.5785 0.669347 36.7228 0.669347ZM36.2512 13.9042H32.154V5.92778H36.165C39.527 5.92778 40.7338 7.18027 40.7338 9.89315C40.7338 12.606 39.4408 13.9042 36.2512 13.9042Z" fill="currentColor"/>' +
+      '<path d="M55.358 0.669347H49.1514V26.5356H66.4378V20.9729H55.358V0.669347Z" fill="currentColor"/>' +
+      '<path d="M77.629 0.669347L68.5776 26.5305H74.9973L76.767 20.7954H86.7666L88.5313 26.5305H95.169L86.1632 0.669347H77.629ZM78.1868 16.2722L79.1756 13.0827C79.9109 10.7552 80.6411 8.34148 81.2902 6.01398H82.3246C82.928 8.34148 83.6177 10.7552 84.3479 13.0827L85.3417 16.2722H78.1868Z" fill="currentColor"/>' +
+      '<path d="M107.293 21.7893C102.811 21.7893 100.869 18.6403 100.869 13.5137C100.869 8.98548 102.765 5.49676 107.334 5.49676C110.914 5.49676 112.592 7.47945 113.282 11.2724L119.189 10.1061C118.414 3.68648 114.321 0.0659205 107.511 0.0659205C99.6668 0.0659205 94.7075 5.02517 94.7075 13.5137C94.7075 22.0022 99.322 27.1339 107.339 27.1339C114.235 27.1339 118.505 23.3815 119.281 16.9162L113.419 15.9274C112.643 19.766 111.091 21.7893 107.298 21.7893H107.293Z" fill="currentColor"/>' +
+      '<path d="M140 6.05962V0.669347H121.639V26.5356H140V21.1453H127.886V15.8869H140V11.0594H127.886V6.05962H140Z" fill="currentColor"/>' +
       '</svg>'
   };
 
@@ -1828,6 +1862,20 @@
     return html + '</div></div>';
   }
 
+  // Home hero, as on the hub: very large Caslon capitals beside a black-and-white photograph of a Glenvill home
+  function heroHtml() {
+    var brands = getBrandList().map(brandTitle).join(", ");
+    return '<section class="hero" aria-label="About this library">' +
+      '<div class="hero-main"><p class="eyebrow">Glenvill Homes \u00b7 Drafting</p>' +
+      '<h1 class="display">Revit Families Library</h1>' +
+      '<p class="lede">Every Mayde, Glenvill Homes and Aplace family in one place, with plan views, 3D models and parameters. Download the .rfa straight from the Glenvill SharePoint library.</p>' +
+      '<div class="hero-facts"><div><b>' + FAMILIES.length + ' families</b>' + STRUCTURE.length + ' categories</div>' +
+      '<div><b>' + getBrandList().length + ' brands</b>' + escapeHtml(brands) + '</div>' +
+      '<div><b>' + (FAMILY_DATES.synced ? 'Synced ' + fmtDay(Date.parse(FAMILY_DATES.synced), true) : 'Live library') + '</b>With the Glenvill X: drive</div></div></div>' +
+      '<figure class="hero-photo"><img src="data/hero-bentleigh.webp" alt="Bentleigh House by Glenvill Homes: rendered upper storey over a curved, fluted entry" decoding="async" />' +
+      '<figcaption>Bentleigh House, Glenvill Homes</figcaption></figure></section>';
+  }
+
   function buildDashboardHtml() {
     var html = "";
 
@@ -1853,7 +1901,7 @@
     html += '<div class="dashboard-section">';
     html += '<div class="dashboard-section-title" role="heading" aria-level="2">Browse by category</div>';
     html += '<div class="category-tiles has-strips">';
-    STRUCTURE.forEach(function (entry) {
+    STRUCTURE.forEach(function (entry, ei) {
       var name = entry[0];
       var inCat = FAMILIES.filter(function (f) { return f.cat === name; });
       var count = inCat.length;
@@ -1870,6 +1918,7 @@
       var strip = chosen.map(function (p) { return '<span class="t"><img src="' + p + '" alt="" loading="lazy" /></span>'; }).join("");
       for (var si = chosen.length; si < 3; si++) strip += '<span class="t is-empty"></span>';
       html += '<button class="category-tile has-strip" data-action="select-cat-flat" data-cat="' + escapeHtml(name) + '">' +
+        '<span class="tile-no" aria-hidden="true">' + (ei < 9 ? "0" : "") + (ei + 1) + '</span>' +
         '<div class="tile-strip" aria-hidden="true">' + strip + '</div>' +
         '<div class="category-tile-name">' + escapeHtml(name) + '</div>' +
         '<div class="category-tile-count mono">' + count + (count === 1 ? " family" : " families") + '</div>' +
@@ -1927,7 +1976,7 @@
       '<div class="help-keys mono"><kbd>/</kbd> search &nbsp; <kbd>Esc</kbd> close a family or clear search</div>' +
       '</div>';
 
-    return '<div class="dashboard-main">' + html + '</div><div class="dashboard-side">' + side + '</div>';
+    return heroHtml() + '<div class="dashboard-main">' + html + '</div><div class="dashboard-side">' + side + '</div>';
   }
 
   function renderList() {

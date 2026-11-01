@@ -1569,9 +1569,9 @@
   },
   "notes/gh-notes.rfa": {
    "id": "nf165",
-   "mtime": 1789613174556,
+   "mtime": 1793245010544,
    "size": 716800,
-   "syncedAt": 1792106514457
+   "syncedAt": 1793576825917
   },
   "notes/gh-roof vent calculator - roof pitch 25.rfa": {
    "id": "nf168",
@@ -2268,7 +2268,19 @@
    "mtime": 1793141435024,
    "size": 3051520,
    "syncedAt": 1793229317527
+  },
+  "bath room/gh-plumbing stack.rfa": {
+   "id": "nf284",
+   "mtime": 1761278927751,
+   "size": 737280,
+   "syncedAt": 1793576825917
+  },
+  "structural/timber posts.rfa": {
+   "id": "nf285",
+   "mtime": 1793334675044,
+   "size": 765952,
+   "syncedAt": 1793576825917
   }
  },
- "lastSync": "2026-10-28T23:15:17.527Z"
+ "lastSync": "2026-11-01T23:47:05.917Z"
 }

@@ -890,7 +890,7 @@
   .grid-compact .card { padding: 6px 8px; }
   .category-tile.has-strip, .brand-tile { padding: 16px 18px; }
   .brand-tiles { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  .tile-no { font-family: var(--font-display); font-size: 40px; line-height: 0.8; color: var(--ink); }
+  .tile-no { font-family: var(--font-display); font-size: 28px; line-height: 1; letter-spacing: 0.01em; color: var(--ink); overflow-wrap: anywhere; }
   /* brand logos follow the ink colour (the hub uses ink, taupe and blue only), so they need no light plate in dark mode */
   .category-tile-logo, .brand-banner-logo { color: var(--ink); }
   :root:not([data-theme="light"]) .brand-banner-logo, :root:not([data-theme="light"]) .category-tile-logo,
@@ -1940,9 +1940,8 @@
       var strip = chosen.map(function (p) { return '<span class="t"><img src="' + p + '" alt="" loading="lazy" /></span>'; }).join("");
       for (var si = chosen.length; si < 3; si++) strip += '<span class="t is-empty"></span>';
       html += '<button class="category-tile has-strip" data-action="select-cat-flat" data-cat="' + escapeHtml(name) + '">' +
-        '<span class="tile-no" aria-hidden="true">' + (ei < 9 ? "0" : "") + (ei + 1) + '</span>' +
+        '<span class="tile-no">' + escapeHtml(name) + '</span>' +
         '<div class="tile-strip" aria-hidden="true">' + strip + '</div>' +
-        '<div class="category-tile-name">' + escapeHtml(name) + '</div>' +
         '<div class="category-tile-count mono">' + count + (count === 1 ? " family" : " families") + '</div>' +
         '</button>';
     });

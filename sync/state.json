@@ -1,90 +1,6 @@
 {
  "version": 1,
  "files": {
-  "kitchen/mayde spec families/elevate/fp_fridge_rs9120wrj1.rfa": {
-   "id": "myfpfr1",
-   "mtime": 1791867159083,
-   "size": 1671168,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/classic/caroma_luna_handwallbasin_873715w.rfa": {
-   "id": "ghlhw1",
-   "mtime": 1789706057789,
-   "size": 2256896,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/classic/phoenix_vividrailshower_v685chr.rfa": {
-   "id": "ghrs1",
-   "mtime": 1767615112000,
-   "size": 823296,
-   "syncedAt": 1789394399000
-  },
-  "kitchen/gh spec families/prestige/fp_fridge_rs9121wruve1.rfa": {
-   "id": "ghfr1",
-   "mtime": 1789705643479,
-   "size": 2183168,
-   "syncedAt": 1789394399000
-  },
-  "kitchen/gh spec families/prestige/phoenix_vividslimlinepulloutsinkmixer_vs7105-10-1.rfa": {
-   "id": "ghpom1",
-   "mtime": 1767544018000,
-   "size": 774144,
-   "syncedAt": 1789394399000
-  },
-  "laundry/gh spec families/prestige/phoenix_vividslimlinesinkmixer_vs733-10-1.rfa": {
-   "id": "ghsm2",
-   "mtime": 1791867165642,
-   "size": 720896,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/prestige/caroma_conturaii_freestandingbath_cii7fsmw.rfa": {
-   "id": "ghcb1",
-   "mtime": 1789705840091,
-   "size": 1110016,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/prestige/caroma_lianoii_abovecounterbasin_852500mw.rfa": {
-   "id": "ghlac1",
-   "mtime": 1789705969410,
-   "size": 454656,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/prestige/caroma_lianoii_handwallbasin_853010mw.rfa": {
-   "id": "ghlhw2",
-   "mtime": 1789706012080,
-   "size": 520192,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/prestige/caroma_lianoii_insetbasin_852400mw.rfa": {
-   "id": "ghlib1",
-   "mtime": 1789705926884,
-   "size": 458752,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/prestige/caroma_urbaneii_bidettoilet_848610w.rfa": {
-   "id": "ghut1",
-   "mtime": 1789705794111,
-   "size": 827392,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/prestige/phoenix_switchmixwallbasinbathmixer_vs2820-10-1.rfa": {
-   "id": "ghswm1",
-   "mtime": 1765122140000,
-   "size": 651264,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/prestige/phoenix_vividslimlinemetalshelf_111-8600-10.rfa": {
-   "id": "ghsh1",
-   "mtime": 1744227608000,
-   "size": 688128,
-   "syncedAt": 1789394399000
-  },
-  "bath room/gh spec families/prestige/phoenix_vividslimlinevesselmixer_vs7901-10.rfa": {
-   "id": "ghvm1",
-   "mtime": 1767544826000,
-   "size": 765952,
-   "syncedAt": 1789394399000
-  },
   "doors/a&l/al_boutique sliding door.rfa": {
    "id": "bsd1",
    "mtime": 1765336473195,
@@ -289,18 +205,6 @@
    "size": 704512,
    "syncedAt": 1789394399000
   },
-  "bath room/aplace spec familes/essential/origin 1500 right hand corner bath.rfa": {
-   "id": "aplbo1",
-   "mtime": 1790645385835,
-   "size": 491520,
-   "syncedAt": 1791950584075
-  },
-  "bath room/aplace spec familes/essential/origin 1700 left hand corner bath.rfa": {
-   "id": "aplbo2",
-   "mtime": 1790645390967,
-   "size": 483328,
-   "syncedAt": 1791950584075
-  },
   "kitchen/oven with upgrades.rfa": {
    "id": "aplov1a",
    "mtime": 1755139229447,
@@ -312,36 +216,6 @@
    "mtime": 1762728702368,
    "size": 8790016,
    "syncedAt": 1791950584075
-  },
-  "bath room/aplace spec familes/advantage/shower_rail_phoenix_vivid.rfa": {
-   "id": "aplsr1",
-   "mtime": 1790651266187,
-   "size": 983040,
-   "syncedAt": 1789394399000
-  },
-  "bath room/aplace spec familes/advantage/spout_wall_phoenix_vividslimlineplus 230.rfa": {
-   "id": "aplsp1",
-   "mtime": 1790651315895,
-   "size": 507904,
-   "syncedAt": 1789394399000
-  },
-  "bath room/aplace spec familes/advantage/mixertap_wall_phoenix_vividslimline.rfa": {
-   "id": "aplwm1",
-   "mtime": 1790651368232,
-   "size": 540672,
-   "syncedAt": 1789394399000
-  },
-  "bath room/aplace spec familes/advantage/shelf_metal_phoenix_radii_roundplate.rfa": {
-   "id": "aplsh1",
-   "mtime": 1790651487474,
-   "size": 901120,
-   "syncedAt": 1789394399000
-  },
-  "kitchen/kitchen_dishwasher_standard.rfa": {
-   "id": "apldw1",
-   "mtime": 1753147195057,
-   "size": 524288,
-   "syncedAt": 1789394399000
   },
   "kitchen/rangehood with upgrades.rfa": {
    "id": "aplrg1",
@@ -1021,12 +895,6 @@
    "size": 2441216,
    "syncedAt": 1789394399000
   },
-  "bath room/freestanding bath.rfa": {
-   "id": "fb1",
-   "mtime": 1791867181534,
-   "size": 983040,
-   "syncedAt": 1789394399000
-  },
   "bath room/toilet with upgrades.rfa": {
    "id": "tw1",
    "mtime": 1791867187767,
@@ -1104,12 +972,6 @@
    "mtime": 1792036656203,
    "size": 4071424,
    "syncedAt": 1792038071357
-  },
-  "kitchen/aplace spec families/essential/sink mixer_phoenix_ivy mkii swivel.rfa": {
-   "id": "nf116",
-   "mtime": 1792037318410,
-   "size": 925696,
-   "syncedAt": 1792038026805
   },
   "kitchen/kitchen sink with upgrades.rfa": {
    "id": "nf117",
@@ -2280,6 +2142,144 @@
    "mtime": 1793577846723,
    "size": 1064960,
    "syncedAt": 1791950584075
+  },
+  "bath room/freestanding bath - clark 1600 round.rfa": {
+   "id": "fb1",
+   "mtime": 1793578592178,
+   "size": 983040,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/mayde spec families/elevate/fridge - fisher & paykel french door refrigerator rs9120wrj1.rfa": {
+   "id": "myfpfr1",
+   "mtime": 1793578598175,
+   "size": 1462272,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/classic/hand wall basin - caroma luna 873715w.rfa": {
+   "id": "ghlhw1",
+   "mtime": 1793578601744,
+   "size": 2396160,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/classic/rail shower - phoenix vivid v685chr.rfa": {
+   "id": "ghrs1",
+   "mtime": 1793578606253,
+   "size": 884736,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/gh spec families/prestige/fridge - fisher & paykel french door refrigerator rs9121wruve1.rfa": {
+   "id": "ghfr1",
+   "mtime": 1793578611720,
+   "size": 1892352,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/gh spec families/prestige/kitchen pull-out mixer - phoenix vivid slimline vs7105-10-1.rfa": {
+   "id": "ghpom1",
+   "mtime": 1793578615273,
+   "size": 839680,
+   "syncedAt": 1789394399000
+  },
+  "laundry/gh spec families/prestige/laundry sink mixer - phoenix vivid slimline vs733-10-1.rfa": {
+   "id": "ghsm2",
+   "mtime": 1793578618217,
+   "size": 778240,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/freestanding bath - caroma contura ii cii7fsmw.rfa": {
+   "id": "ghcb1",
+   "mtime": 1793578621803,
+   "size": 1257472,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/above counter basin - caroma liano ii 852500mw.rfa": {
+   "id": "ghlac1",
+   "mtime": 1793578625530,
+   "size": 552960,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/hand wall basin - caroma liano ii 853010mw.rfa": {
+   "id": "ghlhw2",
+   "mtime": 1793578628848,
+   "size": 622592,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/inset basin - caroma liano ii 852400mw.rfa": {
+   "id": "ghlib1",
+   "mtime": 1793578632169,
+   "size": 557056,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/toilet suite - caroma urbane ii bidet 848610w.rfa": {
+   "id": "ghut1",
+   "mtime": 1793578635863,
+   "size": 978944,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/wall basin bath mixer - phoenix switchmix vs2820-10-1.rfa": {
+   "id": "ghswm1",
+   "mtime": 1793578638932,
+   "size": 708608,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/shower shelf - phoenix vivid slimline metal shelf 111-8600-10.rfa": {
+   "id": "ghsh1",
+   "mtime": 1793578641750,
+   "size": 708608,
+   "syncedAt": 1789394399000
+  },
+  "bath room/gh spec families/prestige/vessel mixer - phoenix vivid slimline vs7901-10.rfa": {
+   "id": "ghvm1",
+   "mtime": 1793578645368,
+   "size": 827392,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/essential/bath - caroma origin 1500 right hand corner.rfa": {
+   "id": "aplbo1",
+   "mtime": 1793578648860,
+   "size": 606208,
+   "syncedAt": 1791950584075
+  },
+  "bath room/aplace spec familes/essential/bath - caroma origin 1700 left hand corner.rfa": {
+   "id": "aplbo2",
+   "mtime": 1793578652307,
+   "size": 606208,
+   "syncedAt": 1791950584075
+  },
+  "bath room/aplace spec familes/advantage/rail shower - phoenix vivid v685chr.rfa": {
+   "id": "aplsr1",
+   "mtime": 1793578653309,
+   "size": 983040,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/bath spout - phoenix vivid slimline plus 230mm.rfa": {
+   "id": "aplsp1",
+   "mtime": 1793578654171,
+   "size": 507904,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/bath shower mixer - phoenix vivid slimline vs780.rfa": {
+   "id": "aplwm1",
+   "mtime": 1793578655000,
+   "size": 540672,
+   "syncedAt": 1789394399000
+  },
+  "bath room/aplace spec familes/advantage/shower shelf - phoenix radii round plate ra886.rfa": {
+   "id": "aplsh1",
+   "mtime": 1793578656080,
+   "size": 901120,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/dishwasher - haier standard hdw13v1si.rfa": {
+   "id": "apldw1",
+   "mtime": 1793578665366,
+   "size": 544768,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/aplace spec families/essential/sink mixer - phoenix ivy mkii swivel.rfa": {
+   "id": "nf116",
+   "mtime": 1793578666181,
+   "size": 925696,
+   "syncedAt": 1792038026805
   }
  },
  "lastSync": "2026-11-01T23:47:05.917Z"

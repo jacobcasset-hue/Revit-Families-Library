@@ -205,46 +205,10 @@
    "size": 704512,
    "syncedAt": 1789394399000
   },
-  "kitchen/oven with upgrades.rfa": {
-   "id": "aplov1a",
-   "mtime": 1755139229447,
-   "size": 6922240,
-   "syncedAt": 1791950584075
-  },
-  "kitchen/cooktop with upgrades.rfa": {
-   "id": "aplct1a",
-   "mtime": 1762728702368,
-   "size": 8790016,
-   "syncedAt": 1791950584075
-  },
-  "kitchen/rangehood with upgrades.rfa": {
-   "id": "aplrg1",
-   "mtime": 1791766017293,
-   "size": 2633728,
-   "syncedAt": 1791950584075
-  },
-  "bath room/aplace spec familes/essential/shelf_metal_phoenix_radii_roundplate.rfa": {
-   "id": "nf001",
-   "mtime": 1791757949433,
-   "size": 741376,
-   "syncedAt": 1791727200000
-  },
   "bath room/floor waste.rfa": {
    "id": "nf002",
    "mtime": 1753147191065,
    "size": 458752,
-   "syncedAt": 1791727200000
-  },
-  "bath room/mayde spec families/starter/base mk2 basin mixer (4 star).rfa": {
-   "id": "nf003",
-   "mtime": 1753147190784,
-   "size": 1396736,
-   "syncedAt": 1791950584075
-  },
-  "bath room/mayde spec families/starter/reece_basin_kado_lux_vanity_with overflow_415 mm.rfa": {
-   "id": "nf004",
-   "mtime": 1791761802676,
-   "size": 536576,
    "syncedAt": 1791727200000
   },
   "bath room/mayde spec families/starter/reece_basin_roca_debba_wall basin_500 mm.rfa": {
@@ -263,24 +227,6 @@
    "id": "nf007",
    "mtime": 1779423467177,
    "size": 749568,
-   "syncedAt": 1791727200000
-  },
-  "bath room/shower/shower hob_strip grate.rfa": {
-   "id": "nf008",
-   "mtime": 1779423427246,
-   "size": 851968,
-   "syncedAt": 1791727200000
-  },
-  "bath room/shower/shower screen_pivot door.rfa": {
-   "id": "nf009",
-   "mtime": 1779423405468,
-   "size": 864256,
-   "syncedAt": 1791727200000
-  },
-  "bath room/shower/shower screen_return.rfa": {
-   "id": "nf010",
-   "mtime": 1779423386480,
-   "size": 835584,
    "syncedAt": 1791727200000
   },
   "bath room/vanity base cupboards.rfa": {
@@ -679,40 +625,10 @@
    "size": 753664,
    "syncedAt": 1791727200000
   },
-  "kitchen/gh spec families/classic/caroma-monaco-evbu-singlebowl-undermount.rfa": {
-   "id": "nf077",
-   "mtime": 1791766335352,
-   "size": 450560,
-   "syncedAt": 1791950584075
-  },
-  "kitchen/gh spec families/classic/caroma-monaco-exdu-doublebowl-undermount.rfa": {
-   "id": "nf078",
-   "mtime": 1791766334993,
-   "size": 716800,
-   "syncedAt": 1791950584075
-  },
-  "kitchen/gh spec families/prestige/franke-maris-mrg610-37-singlebowl.rfa": {
-   "id": "nf079",
-   "mtime": 1791766514788,
-   "size": 1654784,
-   "syncedAt": 1791950584075
-  },
-  "kitchen/integrated underbench wine cabinet_fisher & paykel.rfa": {
-   "id": "nf080",
-   "mtime": 1753147194905,
-   "size": 1388544,
-   "syncedAt": 1791727200000
-  },
   "kitchen/kitchen cooker run.rfa": {
    "id": "nf081",
    "mtime": 1785368405492,
    "size": 19480576,
-   "syncedAt": 1791727200000
-  },
-  "kitchen/kitchen_dishwasher_integrated.rfa": {
-   "id": "nf082",
-   "mtime": 1753147195034,
-   "size": 667648,
    "syncedAt": 1791727200000
   },
   "plants/featuretree_type 1.rfa": {
@@ -889,18 +805,6 @@
    "size": 1748992,
    "syncedAt": 1791727200000
   },
-  "bath room/caroma luna® inset basin 1th.rfa": {
-   "id": "vb1",
-   "mtime": 1791867173557,
-   "size": 2441216,
-   "syncedAt": 1789394399000
-  },
-  "bath room/toilet with upgrades.rfa": {
-   "id": "tw1",
-   "mtime": 1791867187767,
-   "size": 1511424,
-   "syncedAt": 1789394399000
-  },
   "doors/a&l/al_standard sliding door.rfa": {
    "id": "sd1",
    "mtime": 1779430613055,
@@ -931,12 +835,6 @@
    "size": 565248,
    "syncedAt": 1789394399000
   },
-  "laundry/laundry trough cabinet.rfa": {
-   "id": "ltc1",
-   "mtime": 1756185275000,
-   "size": 2416640,
-   "syncedAt": 1789394399000
-  },
   "kitchen/kitchen sink.rfa": {
    "id": "ks1",
    "mtime": 1791867259691,
@@ -948,36 +846,6 @@
    "mtime": 1781827219765,
    "size": 995328,
    "syncedAt": 1789394399000
-  },
-  "bath room/mayde spec families/elevate/reece_bath_posh_solus_corner bath_freestanding left corner.rfa": {
-   "id": "nf112",
-   "mtime": 1791950013813,
-   "size": 3178496,
-   "syncedAt": 1791950311163
-  },
-  "bath room/mayde spec families/elevate/reece_bath_posh_solus_corner bath_freestanding right corner.rfa": {
-   "id": "nf113",
-   "mtime": 1791949842396,
-   "size": 3174400,
-   "syncedAt": 1791950311163
-  },
-  "bath room/aplace spec familes/essential/ivy shower arm & rose.rfa": {
-   "id": "nf114",
-   "mtime": 1792037054178,
-   "size": 1122304,
-   "syncedAt": 1792038026805
-  },
-  "bath room/mayde spec families/starter/reece_bath_posh_solus mk2_inset bath_1675mm with hob.rfa": {
-   "id": "nf115",
-   "mtime": 1792036656203,
-   "size": 4071424,
-   "syncedAt": 1792038071357
-  },
-  "kitchen/kitchen sink with upgrades.rfa": {
-   "id": "nf117",
-   "mtime": 1792037761050,
-   "size": 24887296,
-   "syncedAt": 1792038026805
   },
   "annotations/annotation option spec.rfa": {
    "id": "nf118",
@@ -1939,30 +1807,6 @@
    "size": 630784,
    "syncedAt": 1792107446629
   },
-  "bath room/mayde spec families/elevate/899615wluna universalins bsn 1th of.rfa": {
-   "id": "nf280",
-   "mtime": 1792453750820,
-   "size": 544768,
-   "syncedAt": 1792454036094
-  },
-  "bath room/mayde spec families/starter/899615wluna universalins bsn 1th of.rfa": {
-   "id": "nf281",
-   "mtime": 1792453750820,
-   "size": 544768,
-   "syncedAt": 1792454036094
-  },
-  "bath room/mayde spec families/elevate/reece_basin_roca_debba_wall basin_400 mm.rfa": {
-   "id": "nf282",
-   "mtime": 1793141435024,
-   "size": 3051520,
-   "syncedAt": 1793229317527
-  },
-  "bath room/mayde spec families/starter/reece_basin_roca_debba_wall basin_400 mm.rfa": {
-   "id": "nf283",
-   "mtime": 1793141435024,
-   "size": 3051520,
-   "syncedAt": 1793229317527
-  },
   "bath room/gh-plumbing stack.rfa": {
    "id": "nf284",
    "mtime": 1761278927751,
@@ -2280,6 +2124,162 @@
    "mtime": 1793578666181,
    "size": 925696,
    "syncedAt": 1792038026805
+  },
+  "bath room/vanity basin - caroma luna inset 1th.rfa": {
+   "id": "vb1",
+   "mtime": 1793578938344,
+   "size": 2609152,
+   "syncedAt": 1789394399000
+  },
+  "bath room/toilet - with upgrades.rfa": {
+   "id": "tw1",
+   "mtime": 1793578939566,
+   "size": 1515520,
+   "syncedAt": 1789394399000
+  },
+  "laundry/laundry trough cabinet - 600x500 42l utility standard.rfa": {
+   "id": "ltc1",
+   "mtime": 1793578945718,
+   "size": 1310720,
+   "syncedAt": 1789394399000
+  },
+  "kitchen/oven - with upgrades.rfa": {
+   "id": "aplov1a",
+   "mtime": 1793578947739,
+   "size": 4358144,
+   "syncedAt": 1791950584075
+  },
+  "kitchen/cooktop - with upgrades.rfa": {
+   "id": "aplct1a",
+   "mtime": 1793578951198,
+   "size": 8798208,
+   "syncedAt": 1791950584075
+  },
+  "kitchen/rangehood - with upgrades.rfa": {
+   "id": "aplrg1",
+   "mtime": 1793578952858,
+   "size": 2633728,
+   "syncedAt": 1791950584075
+  },
+  "bath room/aplace spec familes/essential/shower shelf - phoenix radii round plate ra886.rfa": {
+   "id": "nf001",
+   "mtime": 1793578965633,
+   "size": 806912,
+   "syncedAt": 1791727200000
+  },
+  "bath room/mayde spec families/starter/basin mixer - base mk2 4 star.rfa": {
+   "id": "nf003",
+   "mtime": 1793578968889,
+   "size": 1363968,
+   "syncedAt": 1791950584075
+  },
+  "bath room/mayde spec families/starter/basin - reece kado lux vanity with overflow 415mm.rfa": {
+   "id": "nf004",
+   "mtime": 1793578971676,
+   "size": 602112,
+   "syncedAt": 1791727200000
+  },
+  "bath room/shower/shower hob - strip grate.rfa": {
+   "id": "nf008",
+   "mtime": 1793578972478,
+   "size": 851968,
+   "syncedAt": 1791727200000
+  },
+  "bath room/shower/shower screen - pivot door.rfa": {
+   "id": "nf009",
+   "mtime": 1793578973521,
+   "size": 864256,
+   "syncedAt": 1791727200000
+  },
+  "bath room/shower/shower screen - return.rfa": {
+   "id": "nf010",
+   "mtime": 1793578974320,
+   "size": 835584,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/gh spec families/classic/kitchen sink - caroma monaco evbu single bowl undermount.rfa": {
+   "id": "nf077",
+   "mtime": 1793578982653,
+   "size": 655360,
+   "syncedAt": 1791950584075
+  },
+  "kitchen/gh spec families/classic/kitchen sink - caroma monaco exdu double bowl undermount.rfa": {
+   "id": "nf078",
+   "mtime": 1793578987208,
+   "size": 970752,
+   "syncedAt": 1791950584075
+  },
+  "kitchen/gh spec families/prestige/kitchen sink - franke maris mrg610-37 single bowl.rfa": {
+   "id": "nf079",
+   "mtime": 1793578990232,
+   "size": 1675264,
+   "syncedAt": 1791950584075
+  },
+  "kitchen/integrated underbench wine cabinet - fisher & paykel.rfa": {
+   "id": "nf080",
+   "mtime": 1793578994232,
+   "size": 1413120,
+   "syncedAt": 1791727200000
+  },
+  "kitchen/dishwasher - integrated.rfa": {
+   "id": "nf082",
+   "mtime": 1793578997066,
+   "size": 692224,
+   "syncedAt": 1791727200000
+  },
+  "bath room/mayde spec families/elevate/corner bath - reece posh solus freestanding left corner.rfa": {
+   "id": "nf112",
+   "mtime": 1793578998305,
+   "size": 3178496,
+   "syncedAt": 1791950311163
+  },
+  "bath room/mayde spec families/elevate/corner bath - reece posh solus freestanding right corner.rfa": {
+   "id": "nf113",
+   "mtime": 1793578999636,
+   "size": 3174400,
+   "syncedAt": 1791950311163
+  },
+  "bath room/aplace spec familes/essential/shower arm & rose - ivy.rfa": {
+   "id": "nf114",
+   "mtime": 1793579000794,
+   "size": 1118208,
+   "syncedAt": 1792038026805
+  },
+  "bath room/mayde spec families/starter/inset bath - reece posh solus mk2 1675mm with hob.rfa": {
+   "id": "nf115",
+   "mtime": 1793579002172,
+   "size": 4071424,
+   "syncedAt": 1792038071357
+  },
+  "kitchen/kitchen sink - with upgrades.rfa": {
+   "id": "nf117",
+   "mtime": 1793579007617,
+   "size": 24887296,
+   "syncedAt": 1792038026805
+  },
+  "bath room/mayde spec families/elevate/inset basin - caroma luna universal 899615w.rfa": {
+   "id": "nf280",
+   "mtime": 1793579018877,
+   "size": 663552,
+   "syncedAt": 1792454036094
+  },
+  "bath room/mayde spec families/starter/inset basin - caroma luna universal 899615w.rfa": {
+   "id": "nf281",
+   "mtime": 1793579022164,
+   "size": 663552,
+   "syncedAt": 1792454036094
+  },
+  "bath room/mayde spec families/elevate/wall basin - reece roca debba 400mm.rfa": {
+   "id": "nf282",
+   "mtime": 1793579025560,
+   "size": 3129344,
+   "syncedAt": 1793229317527
+  },
+  "bath room/mayde spec families/starter/wall basin - reece roca debba 400mm.rfa": {
+   "id": "nf283",
+   "mtime": 1793579029224,
+   "size": 3129344,
+   "syncedAt": 1793229317527
   }
  },
  "lastSync": "2026-11-01T23:47:05.917Z"

@@ -1378,7 +1378,9 @@
   var MESH_URLS = [
     "data/mesh_data.json",
     "data/mesh_type_0.json", "data/mesh_type_1.json", "data/mesh_type_2.json", "data/mesh_type_3.json", "data/mesh_type_4.json",
-    "data/mesh_type_aplace.json", "data/mesh_type_new.json", "data/mesh_type_sync.json"
+    "data/mesh_type_aplace.json", "data/mesh_type_new.json", "data/mesh_type_sync.json",
+    // the sync tool splits its mesh shard over numbered parts (sync/lib.js SPLIT_PARTS) to stay under 16 MB a file
+    "data/mesh_type_sync_2.json", "data/mesh_type_sync_3.json", "data/mesh_type_sync_4.json", "data/mesh_type_sync_5.json", "data/mesh_type_sync_6.json"
   ];
   var state = {
     q: "",
@@ -1491,9 +1493,9 @@
     if (!meshPromise) {
       meshFailed = false;
       meshDone = 0;
-      // every file is required except the last one (the sync shard may not exist yet); a failed fetch must not count as "loaded"
+      // every file is required except the sync shard parts (they may not exist yet); a failed fetch must not count as "loaded"
       meshPromise = Promise.all(MESH_URLS.map(function (u, i) {
-        return (i === MESH_URLS.length - 1 ? loadJsonOpt(u, {}) : loadJson(u)).then(function (data) {
+        return (i >= 8 ? loadJsonOpt(u, {}) : loadJson(u)).then(function (data) {
           meshDone++;
           var p = document.getElementById("meshProgress");
           if (p) p.textContent = meshDone + " of " + MESH_URLS.length + " files";
@@ -1503,7 +1505,7 @@
         Object.assign(MESH_DATA, r[0]);
         Object.assign.apply(Object, [MESH_DATA_TYPE].concat(r.slice(1, 8)));
         applyMeshAliases();
-        Object.assign(MESH_DATA_TYPE, r[8]);   // sync shard last, so re-read families win over aliases
+        Object.assign.apply(Object, [MESH_DATA_TYPE].concat(r.slice(8)));   // sync shard last, so re-read families win over aliases
         Object.keys(SYNC_OVERRIDES).forEach(function (id) {
           var from = SYNC_OVERRIDES[id] && SYNC_OVERRIDES[id].meshFrom;
           if (from && MESH_DATA[from] && !MESH_DATA[id]) MESH_DATA[id] = MESH_DATA[from];
@@ -3021,7 +3023,10 @@
     loadJsonOpt("data/photos_sync.json", {}),
     loadJsonOpt("data/sync_overrides.json", {}),
     loadJsonOpt("data/family_dates.json", {}),
+    loadJsonOpt("data/family_images_type_sync_2.json", {}),
+    loadJsonOpt("data/family_images_type_sync_3.json", {}),
   ]).then(function (results) {
+    results[14] = Object.assign({}, results[14], results[18], results[19]);   // sync image shard parts
     FAMILY_DATES = Object.assign(FAMILY_DATES, results[17]);
     Object.assign(FAMILY_IMAGES_TYPE, results[8]);
     Object.assign(FAMILY_IMAGES_TYPE, results[10]);

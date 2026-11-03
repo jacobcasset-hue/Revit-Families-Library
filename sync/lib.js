@@ -15,6 +15,35 @@ function writeJson(p, obj, pretty) {
   fs.writeFileSync(p, pretty ? JSON.stringify(obj, null, 1) : JSON.stringify(obj), 'utf8');
 }
 
+// Big per-family maps (meshes, plan images) are split over numbered files so each stays under the 16 MB
+// artifact file limit: name.json, name_2.json ... name_<parts>.json. index.html loads every part.
+const SPLIT_PARTS = { 'mesh_type_sync.json': 6, 'family_images_type_sync.json': 3 };
+const SPLIT_MAX_BYTES = 12 * 1024 * 1024;
+function splitPaths(p) {
+  const n = SPLIT_PARTS[path.basename(p)] || 1;
+  const out = [p];
+  for (let k = 2; k <= n; k++) out.push(p.replace(/\.json$/, '_' + k + '.json'));
+  return out;
+}
+function readSplit(p) {
+  return Object.assign.apply(Object, [{}].concat(splitPaths(p).map(f => readJson(f, {}))));
+}
+function writeSplit(p, obj) {
+  const files = splitPaths(p);
+  const parts = files.map(() => ({}));
+  const sizes = files.map(() => 0);
+  let at = 0;
+  Object.keys(obj).forEach(id => {
+    const len = JSON.stringify(obj[id]).length + id.length + 4;
+    if (sizes[at] && sizes[at] + len > SPLIT_MAX_BYTES && at < files.length - 1) at++;
+    parts[at][id] = obj[id];
+    sizes[at] += len;
+  });
+  if (sizes[files.length - 1] > SPLIT_MAX_BYTES) throw new Error(path.basename(p) + ' needs more than ' + files.length + ' parts - raise SPLIT_PARTS in sync/lib.js and add the file to index.html');
+  files.forEach((f, k) => writeJson(f, parts[k]));
+  return files;
+}
+
 const rules = readJson(RULES_FILE, null);
 if (!rules) throw new Error('sync/rules.json is missing');
 const ROOT = String(process.env.SYNC_ROOT || rules.root).replace(/\\/g, '/'); // e.g. X:/Systems/REVIT/Revit Families (SYNC_ROOT is for testing)
@@ -101,4 +130,4 @@ function displayName(file) {
   return path.basename(file).replace(/\.rfa$/i, '');
 }
 
-module.exports = { REPO, DATA, HTML, STATE_FILE, RULES_FILE, ROOT, readJson, writeJson, rules, norm, relPath, toWindows, scanDisk, libraryFamilies, nextId, classify, displayName };
+module.exports = { REPO, DATA, HTML, STATE_FILE, RULES_FILE, ROOT, readJson, writeJson, splitPaths, readSplit, writeSplit, rules, norm, relPath, toWindows, scanDisk, libraryFamilies, nextId, classify, displayName };

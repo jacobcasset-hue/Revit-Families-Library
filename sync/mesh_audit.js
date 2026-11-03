@@ -7,7 +7,7 @@ const cats = process.argv.slice(2);
 const data = f => L.readJson(path.join(L.DATA, f), {});
 const meshData = data('mesh_data.json');
 const typeMesh = {};
-['mesh_type_0.json', 'mesh_type_1.json', 'mesh_type_2.json', 'mesh_type_3.json', 'mesh_type_4.json', 'mesh_type_aplace.json', 'mesh_type_new.json', 'mesh_type_sync.json']
+['mesh_type_0.json', 'mesh_type_1.json', 'mesh_type_2.json', 'mesh_type_3.json', 'mesh_type_4.json', 'mesh_type_aplace.json', 'mesh_type_new.json'].concat(L.splitPaths(path.join(L.DATA, 'mesh_type_sync.json')).map(f => path.basename(f)))
   .forEach(f => Object.assign(typeMesh, data(f)));
 
 // aliases the page copies from another family at load time

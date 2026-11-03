@@ -288,8 +288,8 @@ function merge() {
   if (!run) throw new Error('No extraction run found - run "extract" first');
   mkdirp(L.DATA);
   const fam = L.readJson(SHARDS.families, []);
-  const mesh = L.readJson(SHARDS.mesh, {});
-  const imgs = L.readJson(SHARDS.images, {});
+  const mesh = L.readSplit(SHARDS.mesh);
+  const imgs = L.readSplit(SHARDS.images);
   const photos = L.readJson(SHARDS.photos, {});
   const overrides = L.readJson(SHARDS.overrides, {});
   const st = loadState();
@@ -343,8 +343,8 @@ function merge() {
   }
 
   L.writeJson(SHARDS.families, fam);
-  L.writeJson(SHARDS.mesh, mesh);
-  L.writeJson(SHARDS.images, imgs);
+  const meshFiles = L.writeSplit(SHARDS.mesh, mesh);
+  const imageFiles = L.writeSplit(SHARDS.images, imgs);
   L.writeJson(SHARDS.photos, photos);
   L.writeJson(SHARDS.overrides, overrides);
   st.lastSync = new Date(now).toISOString();
@@ -353,7 +353,7 @@ function merge() {
 
   const summary = {
     syncedAt: st.lastSync,
-    changedDataFiles: ['families_sync.json', 'mesh_type_sync.json', 'family_images_type_sync.json', 'photos_sync.json', 'sync_overrides.json', 'family_dates.json'].map(f => 'data/' + f),
+    changedDataFiles: ['families_sync.json'].concat(meshFiles.concat(imageFiles).map(f => path.basename(f)), ['photos_sync.json', 'sync_overrides.json', 'family_dates.json']).map(f => 'data/' + f),
     added: rep.added.length, updated: rep.updated.length, moved: rep.moved.length, failed: rep.failed.length,
   };
   mkdirp(WORK);

@@ -95,6 +95,10 @@ def collect_solids(document):
                 if isinstance(obj, DB.Solid):
                     if obj.Faces.Size > 0 and obj.Volume > 1e-6:
                         solids.append(obj)
+                elif isinstance(obj, DB.Mesh):
+                    # DirectShape / imported geometry (e.g. manufacturer sinks, mesh plants) comes as Mesh, not Solid
+                    if obj.NumTriangles > 0:
+                        solids.append(obj)
                 elif isinstance(obj, DB.GeometryInstance):
                     inst_geo = obj.GetInstanceGeometry()
                     if inst_geo is not None:
@@ -120,11 +124,16 @@ def build_mesh(document):
     i_arr = []
     counter = 0
     for solid in solids:
-        for face in solid.Faces:
-            try:
-                mesh = face.Triangulate(0.0)
-            except Exception:
-                continue
+        if isinstance(solid, DB.Mesh):
+            meshes = [solid]
+        else:
+            meshes = []
+            for face in solid.Faces:
+                try:
+                    meshes.append(face.Triangulate(0.0))
+                except Exception:
+                    continue
+        for mesh in meshes:
             if mesh is None:
                 continue
             for t_idx in range(mesh.NumTriangles):

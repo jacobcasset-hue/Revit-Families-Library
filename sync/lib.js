@@ -19,6 +19,40 @@ function writeJson(p, obj, pretty) {
 // artifact file limit: name.json, name_2.json ... name_<parts>.json. index.html loads every part.
 const SPLIT_PARTS = { 'mesh_type_sync.json': 6, 'family_images_type_sync.json': 3 };
 const SPLIT_MAX_BYTES = 12 * 1024 * 1024;
+// Heavy meshes (manufacturer sinks, tanks) are thinned by vertex clustering instead of dropped: points are snapped
+// to a grid, triangles that collapse are removed, and the grid grows until the mesh fits under maxVerts.
+// Output keeps the page's format: one vertex per triangle corner (flat shading), {v: [x,y,z...], i: [0,1,2...]}.
+function thinMesh(mesh, maxVerts) {
+  const v = mesh.v;
+  if (v.length / 3 <= maxVerts) return mesh;
+  const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
+  for (let k = 0; k < v.length; k++) { const a = k % 3; if (v[k] < lo[a]) lo[a] = v[k]; if (v[k] > hi[a]) hi[a] = v[k]; }
+  const diag = Math.hypot(hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]) || 1;
+  for (let cell = diag / 400; ; cell *= 1.25) {
+    const ids = new Map(), sum = [];
+    const cellOf = k => {
+      const key = Math.floor((v[k] - lo[0]) / cell) + ',' + Math.floor((v[k + 1] - lo[1]) / cell) + ',' + Math.floor((v[k + 2] - lo[2]) / cell);
+      let id = ids.get(key);
+      if (id === undefined) { id = ids.size; ids.set(key, id); sum.push([0, 0, 0, 0]); }
+      const s = sum[id]; s[0] += v[k]; s[1] += v[k + 1]; s[2] += v[k + 2]; s[3]++;
+      return id;
+    };
+    const tris = [], seen = new Set();
+    for (let k = 0; k < v.length; k += 9) {
+      const a = cellOf(k), b = cellOf(k + 3), c = cellOf(k + 6);
+      if (a === b || b === c || a === c) continue;
+      const key = [a, b, c].sort((x, y) => x - y).join(',');
+      if (seen.has(key)) continue;
+      seen.add(key);
+      tris.push(a, b, c);
+    }
+    if (tris.length > maxVerts) continue;
+    const out = [];
+    tris.forEach(id => { const s = sum[id]; out.push(Math.round(s[0] / s[3]), Math.round(s[1] / s[3]), Math.round(s[2] / s[3])); });
+    return { v: out, i: Array.from({ length: out.length / 3 }, (_, k) => k) };
+  }
+}
+
 function splitPaths(p) {
   const n = SPLIT_PARTS[path.basename(p)] || 1;
   const out = [p];
@@ -130,4 +164,4 @@ function displayName(file) {
   return path.basename(file).replace(/\.rfa$/i, '');
 }
 
-module.exports = { REPO, DATA, HTML, STATE_FILE, RULES_FILE, ROOT, readJson, writeJson, splitPaths, readSplit, writeSplit, rules, norm, relPath, toWindows, scanDisk, libraryFamilies, nextId, classify, displayName };
+module.exports = { REPO, DATA, HTML, STATE_FILE, RULES_FILE, ROOT, readJson, writeJson, thinMesh, splitPaths, readSplit, writeSplit, rules, norm, relPath, toWindows, scanDisk, libraryFamilies, nextId, classify, displayName };

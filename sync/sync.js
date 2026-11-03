@@ -192,7 +192,7 @@ async function extract(pending) {
     // Write the filled-in Revit script and the run record; Claude runs the script through the paired connection, then "merge".
     const codeFile = path.join(WORK, 'extract_code.py');
     const filled = template.split('__MANIFEST__').join(manifestPath).split('__OUTDIR__').join(EXPORT)
-      .split('__START__').join('0').split('__END__').join(String(jobs.length)).split('__VERTCAP__').join(String(process.env.SYNC_VERTCAP || L.rules.meshVertCap || 5000));
+      .split('__START__').join('0').split('__END__').join(String(jobs.length)).split('__VERTCAP__').join(String(process.env.SYNC_VERTCAP || L.rules.meshRawCap || L.rules.meshVertCap || 5000));
     fs.writeFileSync(codeFile, filled, 'utf8');
     L.writeJson(RUN, { jobs: jobs, moves: moves, extractedAt: new Date().toISOString() }, true);
     log('Prepared ' + jobs.length + ' families. Run this file in Revit through the paired connection, then run "merge":\n  ' + codeFile);
@@ -203,7 +203,7 @@ async function extract(pending) {
   for (let i = 0; i < jobs.length; i += BATCH) {
     const end = Math.min(i + BATCH, jobs.length);
     const code = template.split('__MANIFEST__').join(manifestPath).split('__OUTDIR__').join(EXPORT)
-      .split('__START__').join(String(i)).split('__END__').join(String(end)).split('__VERTCAP__').join(String(process.env.SYNC_VERTCAP || L.rules.meshVertCap || 5000));
+      .split('__START__').join(String(i)).split('__END__').join(String(end)).split('__VERTCAP__').join(String(process.env.SYNC_VERTCAP || L.rules.meshRawCap || L.rules.meshVertCap || 5000));
     process.stdout.write('  ' + (i + 1) + '-' + end + ' of ' + jobs.length + ' ... ');
     try {
       await revitExec(code, 'Library sync: extract families ' + (i + 1) + '-' + end);
@@ -306,7 +306,7 @@ function merge() {
     const entry = { id: d.id, name: j.name || d.name, cat: d.cat, sub: d.sub, realPath: j.realPath || d.realPath, dims: d.dims, instanceParams: d.instanceParams, types: d.types.map(t => ({ name: t.name, params: t.params })) };
     const at = fam.findIndex(x => x.id === entry.id);
     if (at >= 0) fam[at] = entry; else fam.push(entry);
-    mesh[d.id] = d.types.map(t => t.mesh || null);
+    mesh[d.id] = d.types.map(t => t.mesh ? L.thinMesh(t.mesh, L.rules.meshVertCap) : null);   // over the cap = thinned, not dropped
     imgs[d.id] = d.types.map((t, idx) => {
       let file = t.planFile;
       if (!file) {

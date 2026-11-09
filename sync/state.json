@@ -171,9 +171,9 @@
   },
   "windows/al_standard sliding windows.rfa": {
    "id": "ssw1",
-   "mtime": 1793591447592,
+   "mtime": 1793762394638,
    "size": 3211264,
-   "syncedAt": 1793740830207
+   "syncedAt": 1794186186600
   },
   "windows/trend windows/window-awning-trend synergy-48mm.rfa": {
    "id": "watsy1",
@@ -2280,7 +2280,13 @@
    "mtime": 1793579029224,
    "size": 3129344,
    "syncedAt": 1793229317527
+  },
+  "electrical/fan light heater - clipsal airflow 6600ads-we.rfa": {
+   "id": "nf286",
+   "mtime": 1794184787609,
+   "size": 479232,
+   "syncedAt": 1794186186600
   }
  },
- "lastSync": "2026-11-03T21:34:42.865Z"
+ "lastSync": "2026-11-09T01:03:06.600Z"
 }

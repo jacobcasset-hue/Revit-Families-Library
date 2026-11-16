@@ -376,8 +376,10 @@ function writeDates(st, newIds, now) {
 
 // New families are copied into the OneDrive-synced copy of the SharePoint library, which uploads them.
 // Changed families only overwrite the SharePoint copy when the X: file is newer; nothing is ever deleted.
+// --new-only: never overwrite an existing SharePoint file; newer X: copies are listed in the report instead.
 function copyToSharePoint(jobs, rep) {
   rep.sharepoint = [];
+  rep.sharepointSkipped = [];
   const root = L.rules.sharepointSyncRoot;
   if (!root || !fs.existsSync(root)) { if (jobs.length) rep.sharepoint.push('SharePoint sync folder not found - copy the new files in by hand'); return; }
   jobs.forEach(j => {
@@ -386,7 +388,9 @@ function copyToSharePoint(jobs, rep) {
     const dest = path.join(root, j.rel);
     try {
       if (fs.existsSync(dest)) {
-        if (j.kind !== 'changed' || fs.statSync(src).mtimeMs <= fs.statSync(dest).mtimeMs) return;
+        const newer = fs.statSync(src).mtimeMs > fs.statSync(dest).mtimeMs;
+        if (newer && flag('new-only')) rep.sharepointSkipped.push(j.rel + ' (X: copy is newer; SharePoint copy left as is)');
+        if (j.kind !== 'changed' || !newer || flag('new-only')) return;
       }
       fs.mkdirSync(path.dirname(dest), { recursive: true });
       fs.copyFileSync(src, dest);
@@ -405,6 +409,7 @@ function writeReport(rep) {
   sec('Moved / renamed folder', rep.moved);
   sec('Failed to extract', rep.failed);
   sec('Copied to the SharePoint library folder (uploads by itself)', rep.sharepoint || []);
+  if ((rep.sharepointSkipped || []).length) sec('Not copied to SharePoint (--new-only)', rep.sharepointSkipped);
   sec('Product photo found automatically', rep.photoFrom);
   sec('No product photo (card shows the plan view) - drop a picture in sync/photos/<id>.jpg to fix', rep.noPhoto);
   fs.writeFileSync(REPORT, lines.join('\n'), 'utf8');

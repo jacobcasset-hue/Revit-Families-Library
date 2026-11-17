@@ -1,6 +1,6 @@
 # Library sync report
 
-Run: 2026-11-17 23:21 UTC
+Run: 2026-11-17 23:24 UTC
 
 ## Added (1)
 - Windows : AL_Standard Overlooking Awning Windows (48 types)
@@ -11,10 +11,9 @@ Run: 2026-11-17 23:21 UTC
 
 ## Failed to extract (0)
 
-## Copied to the SharePoint library folder (uploads by itself) (1)
-- added Windows/AL_Standard Overlooking Awning Windows.rfa
+## Copied to the SharePoint library folder (uploads by itself) (0)
 
-## Product photo found automatically (0)
+## Product photo found automatically (1)
+- AL_Standard Overlooking Awning Windows  <-  sync/photos
 
-## No product photo (card shows the plan view) - drop a picture in sync/photos/<id>.jpg to fix (1)
-- AL_Standard Overlooking Awning Windows
+## No product photo (card shows the plan view) - drop a picture in sync/photos/<id>.jpg to fix (0)
